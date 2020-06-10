@@ -33,7 +33,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+
+        return view('user.apartments.create', compact('services'));
     }
 
     /**

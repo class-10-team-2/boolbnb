@@ -1,3 +1,4 @@
-@dd($apartments);
-
-<h2>APP</h2>
+@extends('layouts.app');
+@section('content')
+    
+@endsection
