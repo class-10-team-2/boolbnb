@@ -8,6 +8,7 @@ use App\User;
 use App\Service;
 use App\Message;
 use App\Sponsorship;
+use App\Apartment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -20,7 +21,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $userLogged = Auth::id();
+        $apartments = Apartment::where('user_id', '=', $userLogged)->get();
+        return view('user.apartments.index', compact('apartments'));
     }
 
     /**
