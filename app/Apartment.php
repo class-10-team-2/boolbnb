@@ -20,7 +20,7 @@ class Apartment extends Model
     }
     public function request()
     {
-        return $this->hasMany('App\Request');
+        return $this->hasMany('App\Message');
     }
     public function services()
     {

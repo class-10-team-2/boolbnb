@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class Message extends Model
 {
     protected $fillable = [
-        'sender', 'message', 'apartment_id'
+        'sender', 'text', 'apartment_id'
     ];
 
     public function apartment()
