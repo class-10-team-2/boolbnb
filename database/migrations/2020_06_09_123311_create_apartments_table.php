@@ -20,6 +20,7 @@ class CreateApartmentsTable extends Migration
             $table->string('slug')->unique();
             $table->unsignedTinyInteger('rooms');
             $table->unsignedTinyInteger('beds');
+            $table->unsignedTinyInteger('baths');
             $table->unsignedSmallInteger('mq');
             $table->text('address');
             $table->string('longitude', 20);
