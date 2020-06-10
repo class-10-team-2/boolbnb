@@ -10,7 +10,11 @@ use App\Message;
 use App\Sponsorship;
 use App\Apartment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class ApartmentController extends Controller
 {
@@ -46,7 +50,49 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'title' => 'required|max:100',
+            'rooms' => 'required|numeric|max:10|min:0',
+            'beds' => 'required|numeric|max:20|min:0',
+            'baths' => 'required|numeric|max:10|min:0',
+            'mq' => 'required|numeric|max:1000|min:10',
+            'services' => 'array',
+            'services.*' => 'exists:services,id',
+            'address' => 'required',
+            'img_path' => 'required'
+
+        ]);
+
+        $path = Storage::disk('public')->put('images', $data['img_path']);
+        $data['img_path'] = $path;
+
+
+        if ($validator->fails()) {
+            return redirect()->route('user.apartments.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] = Str::slug($data['title'], '-') . '-' . $now;
+
+        $data['user_id'] = Auth::id();
+        $apartment = new Apartment;
+        $apartment->fill($data);
+        $saved = $apartment->save();
+
+        if (!$saved) {
+            return redirect()->back()->withInput();;
+        }
+
+        if (isset($data['services'])) {
+            $apartment->services()->attach($data['services']);
+        }
+
+        return redirect()->route('user.apartments.index');
     }
 
     /**

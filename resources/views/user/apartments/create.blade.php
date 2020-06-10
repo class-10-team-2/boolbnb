@@ -41,6 +41,20 @@
             <label class="custom-file-label" for="img_path">Carica una foto</label>
           </div>
         </div>
+        <div class="form-group">
+          <h3>Seleziona i servizi disponibili</h3>
+          @foreach ($services as $service)
+            <div class="form-check form-check-inline">
+              <input type="checkbox" id="service-{{$service->id}}" name="services[]" value="{{$service->id}}"
+              {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+              
+              <label for="service-{{$service->id}}">{{$service->name}}</label>
+            </div>  
+          @endforeach
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Inserisci">
+          </div>
+        </div>
       </form>
       
     </div>
