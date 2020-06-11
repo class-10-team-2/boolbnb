@@ -1,2 +1,5 @@
 @extends('layouts.app')
-<h1>CIAO</h1>
+
+@section('content')
+    <input type="search" id="address-input" placeholder="Where are we going?" />
+@endsection
