@@ -2,10 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @foreach ($apartments as $apartment)
-
-
-        <div class="col-6">
+        <div class="col-12">
             <div class="card" style="width: 18rem;">
               <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
               <div class="card-body">
@@ -39,13 +36,17 @@
 
                 @endforeach
 
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('user.apartments.edit', $apartment->id)}}" class="btn btn-primary">Modifica</a>
+                <form class="" action="{{route('user.apartments.destroy', $apartment->id)}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <input class="btn btn-danger" type="submit" name="" value="ELIMINA">
+
+                </form>
               </div>
             </div>
 
         </div>
-
-        @endforeach
 
     </div>
 

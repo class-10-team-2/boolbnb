@@ -65,8 +65,7 @@ class ApartmentController extends Controller
 
         ]);
 
-        $path = Storage::disk('public')->put('images', $data['img_path']);
-        $data['img_path'] = $path;
+
 
 
         if ($validator->fails()) {
@@ -74,6 +73,9 @@ class ApartmentController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $path = Storage::disk('public')->put('images', $data['img_path']);
+        $data['img_path'] = $path;
 
 
         $now = Carbon::now()->format('Y-m-d-H-i-s');
@@ -92,7 +94,7 @@ class ApartmentController extends Controller
             $apartment->services()->attach($data['services']);
         }
 
-        return redirect()->route('user.apartments.index');
+        return redirect()->route('user.apartments.show', $apartment->id);
     }
 
     /**
@@ -103,7 +105,8 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        return view('user.apartments.show', compact('apartment'));
     }
 
     /**
@@ -114,7 +117,17 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $services = Service::all();
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+        return view('user.apartments.edit', compact('apartment','services'));
+
+
+
+
     }
 
     /**
@@ -126,7 +139,53 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] = Str::slug($data['title'], '-') . '-' . $now;
+        $user_id = Auth::id();
+        $apartment = Apartment::findOrFail($id);
+        $author = $apartment->user->id;
+
+
+
+        if ($user_id != $author) {
+            abort('404');
+        }
+
+        $validator = Validator::make($data, [
+            'title' => 'required|max:100',
+            'rooms' => 'required|numeric|max:10|min:0',
+            'beds' => 'required|numeric|max:20|min:0',
+            'baths' => 'required|numeric|max:10|min:0',
+            'mq' => 'required|numeric|max:1000|min:10',
+            'services' => 'array',
+            'services.*' => 'exists:services,id',
+            'address' => 'required',
+            'img_path' => 'required'
+
+        ]);
+
+
+        if (empty($data['img_path'] )) {
+            unset($data['img_path']);
+
+        }
+        else {
+            $path = Storage::disk('public')->put('images', $data['img_path']);
+            $data['img_path'] = $path;
+        }
+
+        $apartment->fill($data);
+        $updated = $apartment->update();
+
+        if (!$updated) {
+            return redirect()->back();
+        }
+
+
+        $apartment->services()->sync($data['services']);
+
+        return redirect()->route('user.apartments.show',$apartment->id);
     }
 
     /**
@@ -137,6 +196,18 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+        $apartment->services()->detach();
+        $deleted = $apartment->delete();
+
+        if (!$deleted) {
+            return redirect()->back();
+        }
+        return redirect()->route('user.apartments.index');
     }
+    
 }
