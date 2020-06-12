@@ -123,11 +123,7 @@ class ApartmentController extends Controller
         if ($user_id != $apartment->user_id) {
             abort('404');
         }
-        return view('user.apartments.edit', compact('apartment','services'));
-
-
-
-
+        return view('user.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -166,11 +162,9 @@ class ApartmentController extends Controller
         ]);
 
 
-        if (empty($data['img_path'] )) {
+        if (empty($data['img_path'])) {
             unset($data['img_path']);
-
-        }
-        else {
+        } else {
             $path = Storage::disk('public')->put('images', $data['img_path']);
             $data['img_path'] = $path;
         }
@@ -182,10 +176,15 @@ class ApartmentController extends Controller
             return redirect()->back();
         }
 
+        if (empty($data['services'])) {
+            unset($data['services']);
+            $apartment->services()->detach();
+        } else {
+            $apartment->services()->sync($data['services']);
+        }
 
-        $apartment->services()->sync($data['services']);
 
-        return redirect()->route('user.apartments.show',$apartment->id);
+        return redirect()->route('user.apartments.show', $apartment->id);
     }
 
     /**
@@ -209,5 +208,4 @@ class ApartmentController extends Controller
         }
         return redirect()->route('user.apartments.index');
     }
-    
 }

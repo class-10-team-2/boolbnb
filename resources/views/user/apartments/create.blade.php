@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 @section('content')
 <div class="container">
   <div class="row">
@@ -44,8 +44,11 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="address">Indirizzo</label>
-          <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}">
+          <label for="address-input">Indirizzo</label>
+          <input type="text" class="form-control address-input" id="address-input" name="address" value="{{old('address')}}">
+          <input type="text" class="form-control lat-input" name="latitude">
+          <input type="text" class="form-control lng-input" name="longitude">
+          
           @error('address')
             <small class="form-text">Errore</small>
           @enderror

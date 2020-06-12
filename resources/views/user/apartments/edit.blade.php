@@ -47,8 +47,11 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="address">Indirizzo</label>
-          <input type="text" class="form-control" id="address" name="address" value="{{old('address') ?? $apartment->address}}">
+          <label for="address-input">Indirizzo</label>
+          <input type="text" class="form-control address-input" id="address-input" name="address" value="{{old('address') ?? $apartment->address}}">
+          <input type="text" class="form-control lat-input" name="latitude" value="{{old('latitude') ?? $apartment->latitude}}">
+          <input type="text" class="form-control lng-input" name="longitude" value="{{old('longitude') ?? $apartment->longitude}}">
+          
           @error('address')
             <small class="form-text">Errore</small>
           @enderror
@@ -100,7 +103,7 @@
 
           @endforeach
           <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="Inserisci">
+            <input class="btn btn-primary" type="submit" value="Modifica">
           </div>
         </div>
       </form>

@@ -47693,13 +47693,22 @@ $(document).ready(function () {
   var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 
   var placesAutocomplete = places({
-    appId: 'plK18ES1VVUV',
-    apiKey: 'a35efa1809de4a5d0825dd615e7359b3',
-    container: document.querySelector('#address-input') // getRankingInfo: true
-
+    appId: "plK18ES1VVUV",
+    apiKey: "a35efa1809de4a5d0825dd615e7359b3",
+    container: document.querySelector(".address-input"),
+    templates: {
+      suggestion: function suggestion(_suggestion) {
+        return _suggestion.value;
+      }
+    }
+  }).configure({
+    getRankingInfo: true
+  });
+  placesAutocomplete.on("change", function resultSelected(e) {
+    document.querySelector(".lat-input").value = e.suggestion.latlng.lat || "";
+    document.querySelector(".lng-input").value = e.suggestion.latlng.lng || "";
   }); // alert('ciao')
-
-  console.log(placesAutocomplete); // var inputRadius = $('#address-input').value();
+  // var inputRadius = $('#address-input').value();
   //
   // const fixedOptions = {
   //   appId: 'YOUR_PLACES_APP_ID',
@@ -47789,8 +47798,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Boolean-Backend/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Boolean-Backend/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
