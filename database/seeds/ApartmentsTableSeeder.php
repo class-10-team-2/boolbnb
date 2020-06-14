@@ -14,6 +14,6 @@ class ApartmentsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        factory(Apartment::class, 30)->create();
+        factory(Apartment::class, 10)->create();
     }
 }
