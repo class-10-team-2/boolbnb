@@ -47707,7 +47707,38 @@ $(document).ready(function () {
   placesAutocomplete.on("change", function resultSelected(e) {
     document.querySelector(".lat-input").value = e.suggestion.latlng.lat || "";
     document.querySelector(".lng-input").value = e.suggestion.latlng.lng || "";
-  }); // alert('ciao')
+  }); // ===== FUNZIONE CHIAMATA AJAX PRINCIPALE =====
+
+  function ajaxCall() {
+    $.ajax({
+      url: "https://places-1.algolianet.com/1/places/query",
+      data: {
+        // api_key: apiKey,
+        // language: "it-IT",
+        query: "Tokyo",
+        type: "city"
+      },
+      method: "GET",
+      success: function success(data) {
+        //console.log(data);
+        var risultati = data.hits;
+
+        for (var i = 0; i < risultati.length; i++) {
+          var result = risultati[0];
+        }
+
+        var latitude = result._geoloc.lat;
+        console.log(latitude);
+        return latitude;
+      },
+      error: function error(err) {
+        return err;
+      }
+    });
+  }
+
+  var risultato = ajaxCall(); //console.log(JSON.stringify(risultato));
+  // alert('ciao')
   // var inputRadius = $('#address-input').value();
   //
   // const fixedOptions = {
