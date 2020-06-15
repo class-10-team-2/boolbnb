@@ -1,51 +1,32 @@
 require("./bootstrap");
 
+// const algoliasearch = require("algoliasearch/lite");
+// const instantsearch = require("instantsearch.js").default;
+
+import algoliasearch from "algoliasearch/lite";
+import instantsearch from "instantsearch.js";
+import { searchBox, hits } from "instantsearch.js/es/widgets";
+
 $(document).ready(function() {
-    var places = require("places.js");
+    const searchClient = algoliasearch(
+        "F3UGQY8R3Q",
+        "361561dc5b21da9217e367f936aaa509"
+    );
 
-    var placesAutocomplete = places({
-        appId: "plK18ES1VVUV",
-        apiKey: "a35efa1809de4a5d0825dd615e7359b3",
-        container: document.querySelector(".address-input"),
-        templates: {
-            suggestion: function(suggestion) {
-                return suggestion.value;
-            }
-        }
-    }).configure({
-        getRankingInfo: true
+    const search = instantsearch({
+        indexName: "apartments",
+        searchClient
     });
 
-    placesAutocomplete.on("change", function resultSelected(e) {
-        document.querySelector(".lat-input").value =
-            e.suggestion.latlng.lat || "";
-        document.querySelector(".lng-input").value =
-            e.suggestion.latlng.lng || "";
-    });
+    search.addWidgets([
+        searchBox({
+            container: ".instantsearch"
+        }),
 
-    // alert('ciao')
+        hits({
+            container: "#hits"
+        })
+    ]);
 
-    // var inputRadius = $('#address-input').value();
-    //
-    // const fixedOptions = {
-    //   appId: 'YOUR_PLACES_APP_ID',
-    //   apiKey: 'YOUR_PLACES_API_KEY',
-    //   container: $('#search-input-id'),
-    //   language: 'it', // Receives results in Italian
-    //   countries: ['it'], // Search in Italy
-    //   getRankingInfo=true
-    // };
-    //
-    // const reconfigurableOptions = {
-    //   type: 'address', // Search only for address
-    //   aroundLatLngViaIP: false // disable the extra search/boost around the source IP
-    // };
-    //
-    // const placesInstance = places(fixedOptions).configure(reconfigurableOptions);
-    //
-    // // riconfigurazione delle opzioni
-    // // raggio di ricerca dinamico a partire dalle coordinate dell'indirizzo selezionato
-    // placesInstance.configure({
-    //   aroundRadius: inputRadius
-    // })
+    search.start();
 });
