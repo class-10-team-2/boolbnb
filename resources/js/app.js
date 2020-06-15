@@ -32,15 +32,17 @@ $(document).ready(function() {
             // }
             templates: {
                 item: `
-                <a href="{{route('user.apartments.show', {{id}} )}}">
+                
                 <div>
                   <h4>
+                  <a href="/user/apartments/{{id}}">
                     {{ title }}
+                    </a>
                   </h4>
                   <p>{{ address }}</p>
                   <img src="{{ img_path }}" alt="" width=100px>
                  </div>
-                  </a>
+                  
                 `
             }
         })

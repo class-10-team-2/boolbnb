@@ -62704,7 +62704,7 @@ $(document).ready(function () {
     //     }
     // }
     templates: {
-      item: "\n                <a href=\"{{route('user.apartments.show', {{id}} )}}\">\n                <div>\n                  <h4>\n                    {{ title }}\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n                  </a>\n                "
+      item: "\n                \n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n                  \n                "
     }
   })]);
   search.start();
