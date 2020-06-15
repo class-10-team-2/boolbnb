@@ -23,6 +23,8 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "algoliasearch": "^4.3.0",
+        "instantsearch.js": "^4.7.0",
         "places.js": "^1.19.0"
     }
 }

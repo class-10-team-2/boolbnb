@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <input type="search" id="address-input" placeholder="Where are we going?" /> --}}
+<div class="container">
+    <div class="row">
+        <div class="col-12 instantsearch">
+
+            {{-- <input type="search" class="address-input" placeholder="Dove vuoi andare?" />
+            <input type="text" class="lat-input">   
+            <input type="text" class="lng-input">    --}}
+        </div>
+        <div id="hits">
+            
+        </div>
+    </div>
+</div>
+
     
 @endsection
