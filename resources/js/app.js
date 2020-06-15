@@ -1,6 +1,6 @@
 require("./bootstrap");
 
-$(document).ready(function() {
+$(document).ready(function () {
     var places = require("places.js");
 
     var placesAutocomplete = places({
@@ -8,12 +8,12 @@ $(document).ready(function() {
         apiKey: "a35efa1809de4a5d0825dd615e7359b3",
         container: document.querySelector(".address-input"),
         templates: {
-            suggestion: function(suggestion) {
+            suggestion: function (suggestion) {
                 return suggestion.value;
-            }
-        }
+            },
+        },
     }).configure({
-        getRankingInfo: true
+        getRankingInfo: true,
     });
 
     placesAutocomplete.on("change", function resultSelected(e) {
