@@ -62697,7 +62697,15 @@ $(document).ready(function () {
   search.addWidgets([Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_2__["searchBox"])({
     container: ".instantsearch"
   }), Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_2__["hits"])({
-    container: "#hits"
+    container: "#hits",
+    // templates: {
+    //     item(item) {
+    //         return `👉 ${item.address}`;
+    //     }
+    // }
+    templates: {
+      item: "\n                \n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n                  \n                "
+    }
   })]);
   search.start();
 });

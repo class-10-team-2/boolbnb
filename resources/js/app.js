@@ -24,7 +24,27 @@ $(document).ready(function() {
         }),
 
         hits({
-            container: "#hits"
+            container: "#hits",
+            // templates: {
+            //     item(item) {
+            //         return `👉 ${item.address}`;
+            //     }
+            // }
+            templates: {
+                item: `
+                
+                <div>
+                  <h4>
+                  <a href="/user/apartments/{{id}}">
+                    {{ title }}
+                    </a>
+                  </h4>
+                  <p>{{ address }}</p>
+                  <img src="{{ img_path }}" alt="" width=100px>
+                 </div>
+                  
+                `
+            }
         })
     ]);
 
