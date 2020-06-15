@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 use App\Apartment;
 
 class ApartmentsTableSeeder extends Seeder
@@ -14,6 +13,6 @@ class ApartmentsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        factory(Apartment::class, 10)->create();
+        factory(Apartment::class, 50)->create();
     }
 }
