@@ -14,6 +14,10 @@
             @enderror
         </div>
         <div class="form-group">
+            <label for="description">Descrizione</label>
+            <textarea class="form-control" id="description" name="description" rows="3">{{old('description')}}</textarea>
+          </div>
+        <div class="form-group">
           <label for="rooms">Numero di camere</label>
           <input type="number" min="0" max="10" id="rooms" name="rooms" value="{{old('rooms')}}">
           @error('rooms')

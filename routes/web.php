@@ -30,3 +30,6 @@ Route::namespace('User')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
     });
+
+Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
+Route::get('/search', 'Guest\SearchController@index')->name('guest.search');

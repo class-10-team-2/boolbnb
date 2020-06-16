@@ -55,6 +55,7 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($data, [
             'title' => 'required|max:100',
+            'description' => 'required|max:2500',
             'rooms' => 'required|numeric|max:10|min:0',
             'beds' => 'required|numeric|max:20|min:0',
             'baths' => 'required|numeric|max:10|min:0',
