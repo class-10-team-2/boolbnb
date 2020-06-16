@@ -72978,7 +72978,28 @@ $(document).ready(function () {
   var search = Object(instantsearch_js__WEBPACK_IMPORTED_MODULE_2__["default"])({
     indexName: "apartments",
     searchClient: searchClient
-  }); // Create a render function
+  }); //===========================================
+
+  var getParams = function getParams(url) {
+    var params = {};
+    var parser = document.createElement("a");
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split("&");
+
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      params[pair[0]] = decodeURIComponent(pair[1]);
+    }
+
+    return params;
+  };
+
+  var myparams = getParams(window.location.href);
+  console.log(myparams);
+  var lat = myparams.lat;
+  var lng = myparams.lng; //============================================
+  // Create a render function
 
   var renderSearchBox = function renderSearchBox(renderOptions, isFirstRender) {
     var query = renderOptions.query,
@@ -72988,24 +73009,24 @@ $(document).ready(function () {
         widgetParams = renderOptions.widgetParams;
 
     if (isFirstRender) {
-      var input = document.createElement('input');
-      var loadingIndicator = document.createElement('span');
-      loadingIndicator.textContent = 'Loading...';
-      var button = document.createElement('button');
-      button.textContent = 'X';
-      input.addEventListener('input', function (event) {
+      var input = document.createElement("input");
+      var loadingIndicator = document.createElement("span");
+      loadingIndicator.textContent = "Loading...";
+      var button = document.createElement("button");
+      button.textContent = "X";
+      input.addEventListener("input", function (event) {
         refine(event.target.value);
       });
-      button.addEventListener('click', function () {
+      button.addEventListener("click", function () {
         clear();
-      });
-      widgetParams.container.appendChild(input);
+      }); //widgetParams.container.appendChild(input);
+
       widgetParams.container.appendChild(loadingIndicator);
       widgetParams.container.appendChild(button);
     }
 
-    widgetParams.container.querySelector('input').value = query;
-    widgetParams.container.querySelector('span').hidden = !isSearchStalled;
+    widgetParams.container.querySelector("#searchbox").value = lat;
+    widgetParams.container.querySelector("#lng").value = lng; //widgetParams.container.querySelector("span").hidden = !isSearchStalled;
   }; // create custom widget
 
 
@@ -73015,7 +73036,7 @@ $(document).ready(function () {
   // instantiate custom widget
 
   search.addWidgets([customSearchBox({
-    container: document.querySelector('#searchbox')
+    container: document.querySelector(".instantsearch")
   })]); // search.addWidgets([
   //     searchBox({
   //         container: ".instantsearch"
@@ -73114,8 +73135,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
