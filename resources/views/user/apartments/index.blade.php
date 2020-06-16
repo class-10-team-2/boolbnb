@@ -3,8 +3,6 @@
 <div class="container">
     <div class="row">
         @foreach ($apartments as $apartment)
-
-
         <div class="col-6">
             <div class="card" style="width: 18rem;">
               <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
@@ -41,7 +39,7 @@
 
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
-              
+
             </div>
 
         </div>

@@ -10,7 +10,7 @@ class Apartment extends Model
     use Searchable;
 
     protected $fillable = [
-        'title', 'slug', 'rooms', 'beds', 'baths', 'mq', 'address', 'longitude', 'latitude', 'img_path', 'visible', 'user_id'
+        'title', 'description', 'slug', 'rooms', 'beds', 'baths', 'mq', 'address', 'longitude', 'latitude', 'img_path', 'visible', 'user_id'
     ];
 
     public function user()

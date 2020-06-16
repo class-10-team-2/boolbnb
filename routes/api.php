@@ -19,3 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('apartments', 'Api\ApartmentController@getAll');
+
+
+Route::post('homeinputfields', 'Api\HomeSearchController@getInputFields')->name('getinputfields');
+
+// Route::get('homeinputfields', 'Api\HomeSearchController@getInputFields');
