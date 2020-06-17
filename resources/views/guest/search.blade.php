@@ -3,9 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12 instantsearch"></div>
+        <div class="col-12" id="instantsearch">
             <input type="text" id="searchbox" name="" value="">
-        <div id="hits"></div>
+            <input type="text" id="lat" name="" value="">
+            <input type="text" id="lng" name="" value="">
+            <input type="text" id="address" name="" value="">
+        </div>
+            
+        <div id="hits">
+
+        </div>
     </div>
 </div>
 

@@ -23,4 +23,4 @@ Route::get('apartments', 'Api\ApartmentController@getAll');
 
 Route::post('homeinputfields', 'Api\HomeSearchController@getInputFields')->name('getinputfields');
 
-// Route::get('homeinputfields', 'Api\HomeSearchController@getInputFields');
+Route::get('homeinputfields', 'Api\HomeSearchController@getInputFields');
