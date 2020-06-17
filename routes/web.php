@@ -31,5 +31,10 @@ Route::namespace('User')
         Route::resource('apartments', 'ApartmentController');
     });
 
+
 Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
-Route::get('/search', 'Guest\SearchController@index')->name('guest.search');
+Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
+
+// Braintree
+Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
+// Route::post('/payment/make', 'PaymentsController@make')->name('payment.make');

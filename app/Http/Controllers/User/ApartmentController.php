@@ -9,6 +9,7 @@ use App\Service;
 use App\Message;
 use App\Sponsorship;
 use App\Apartment;
+use App\Sponsorship_pack;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -108,7 +109,9 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view('user.apartments.show', compact('apartment'));
+        $sponsorship_packs = Sponsorship_pack::all();
+
+        return view('user.apartments.show', compact('apartment', 'sponsorship_packs'));
     }
 
     /**

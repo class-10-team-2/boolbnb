@@ -45,10 +45,25 @@
                 </form>
               </div>
             </div>
-
         </div>
 
-    </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <form class="" action="{{route('payment.make')}}" method="post">
+                        @csrf
+                        @method('POST')
+                        <select name="">
+                            @foreach ($sponsorship_packs as $sponsorship_pack)
+                                <option value="{{$sponsorship_pack->id}}">Euro {{$sponsorship_pack->price}} per {{$sponsorship_pack->duration}} ore</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" name="" value="Vai alla pagina di pagamento">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
 
 </div>
 
