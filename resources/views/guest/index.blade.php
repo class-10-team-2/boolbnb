@@ -17,7 +17,7 @@
             <form class="" action="/search" method="GET">
                 @method('GET')
                 @csrf
-                <input type="search" class="address-input" name="location" placeholder="Dove vuoi andare?" />
+                <input type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
                 <input type="text" class="lat-input" name="lat">
                 <input type="text" class="lng-input" name="lng">
 
