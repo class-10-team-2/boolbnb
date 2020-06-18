@@ -39,9 +39,17 @@ Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // 
 Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 
 Route::namespace('User')
-        ->prefix('user')
-        ->middleware('auth')
-        ->group(function () {
-            Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
-            // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
-        });
+    ->prefix('user')
+    ->middleware('auth')
+    ->group(function () {
+        Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
+        // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
+    });
+
+Route::get('search', function () {
+    $query = 'new'; // <-- Change the query for testing.
+
+    $apartments = App\Apartment::search($query)->get();
+
+    return $apartments;
+});
