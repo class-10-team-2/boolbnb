@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     var myparams = getParams(window.location.href);
 
-    console.log(myparams);
+    // console.log(myparams);
 
     var lat = myparams.lat;
     var lng = myparams.lng;
@@ -122,10 +122,7 @@ $(document).ready(function() {
     search.addWidgets([
         searchBox({
             container: "#instantsearch",
-            queryHook(query, search) {
-                search(query);
-                console.log(query);
-            }
+
         }),
 
         hits({
@@ -137,7 +134,7 @@ $(document).ready(function() {
             // }
             templates: {
                 item: `
-    
+
                 <div>
                   <h4>
                   <a href="/user/apartments/{{id}}">
@@ -147,12 +144,12 @@ $(document).ready(function() {
                   <p>{{ address }}</p>
                   <img src="{{ img_path }}" alt="" width=100px>
                  </div>
-    
+
                 `
             }
         })
     ]);
 
     search.start();
-    // $(".ais-SearchBox-input").val(address);
+    $(".ais-SearchBox-input").val(address);
 });
