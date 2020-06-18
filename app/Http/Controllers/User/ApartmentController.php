@@ -213,4 +213,40 @@ class ApartmentController extends Controller
         }
         return redirect()->route('user.apartments.index');
     }
+
+    public function store_sponsorship(Request $request)
+    {
+
+        $data = $request->all();
+
+        $new_sponsorship = new Sponsorship;
+        $new_sponsorship->apartment_id = $data['apartId'];
+        $new_sponsorship->sponsorship_pack_id = $data['radioVal'];
+        $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
+        $duration = $sponsorship_checked->duration;
+        $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
+        $new_sponsorship->expiration_date = $exp_date;
+        $new_sponsorship->save();
+
+
+        // $data = $request->input('id');
+
+        // var_dump($request->all());
+        // dd($request->all());
+
+
+        // return view('user.apartments.show', 4);
+        // return view('user.apartments.sponsorships');
+    }
+
+    // public function view_sponsorship(Request $request)
+    // {
+    //     // $data = $request->input('id');
+    //
+    //     dd($request->all());
+    //
+    //
+    //     // return view('user.apartments.show', 4);
+    //     // return view('user.apartments.sponsorships');
+    // }
 }
