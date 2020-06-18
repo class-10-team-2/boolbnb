@@ -72995,8 +72995,8 @@ $(document).ready(function () {
     return params;
   };
 
-  var myparams = getParams(window.location.href);
-  console.log(myparams);
+  var myparams = getParams(window.location.href); // console.log(myparams);
+
   var lat = myparams.lat;
   var lng = myparams.lng;
   var address = myparams.address; //============================================
@@ -73064,11 +73064,7 @@ $(document).ready(function () {
   // ]);
 
   search.addWidgets([Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["searchBox"])({
-    container: "#instantsearch",
-    queryHook: function queryHook(query, search) {
-      search(query);
-      console.log(query);
-    }
+    container: "#instantsearch"
   }), Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["hits"])({
     container: "#hits",
     // templates: {
@@ -73077,10 +73073,11 @@ $(document).ready(function () {
     //     }
     // }
     templates: {
-      item: "\n    \n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n    \n                "
+      item: "\n\n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n\n                "
     }
   })]);
-  search.start(); // $(".ais-SearchBox-input").val(address);
+  search.start();
+  $(".ais-SearchBox-input").val(address);
 });
 
 /***/ }),
@@ -73148,8 +73145,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
