@@ -72974,79 +72974,110 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 $(document).ready(function () {
-  var searchClient = algoliasearch_lite__WEBPACK_IMPORTED_MODULE_1___default()("XZ2HPLQIIE", "7958bcb2f0ac963e3263a68539176db6");
+  var searchClient = algoliasearch_lite__WEBPACK_IMPORTED_MODULE_1___default()("F3UGQY8R3Q", "361561dc5b21da9217e367f936aaa509");
   var search = Object(instantsearch_js__WEBPACK_IMPORTED_MODULE_2__["default"])({
     indexName: "apartments",
     searchClient: searchClient
-  }); // Create a render function
+  }); //===========================================
 
-  var renderSearchBox = function renderSearchBox(renderOptions, isFirstRender) {
-    var query = renderOptions.query,
-        refine = renderOptions.refine,
-        clear = renderOptions.clear,
-        isSearchStalled = renderOptions.isSearchStalled,
-        widgetParams = renderOptions.widgetParams;
+  var getParams = function getParams(url) {
+    var params = {};
+    var parser = document.createElement("a");
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split("&");
 
-    if (isFirstRender) {
-      var input = document.createElement('input');
-      var loadingIndicator = document.createElement('span');
-      loadingIndicator.textContent = 'Loading...';
-      var button = document.createElement('button');
-      button.textContent = 'X';
-      input.addEventListener('input', function (event) {
-        refine(event.target.value);
-      });
-      button.addEventListener('click', function () {
-        clear();
-      });
-      widgetParams.container.appendChild(input);
-      widgetParams.container.appendChild(loadingIndicator);
-      widgetParams.container.appendChild(button);
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      params[pair[0]] = decodeURIComponent(pair[1]);
     }
 
-    widgetParams.container.querySelector('input').value = query;
-    widgetParams.container.querySelector('span').hidden = !isSearchStalled;
-  }; // create custom widget
+    return params;
+  };
 
+  var myparams = getParams(window.location.href); // console.log(myparams);
 
-  var customSearchBox = Object(instantsearch_js_es_connectors__WEBPACK_IMPORTED_MODULE_4__["connectAutocomplete"])(renderSearchBox); // const customSearchBox = instantsearch.connectors.connectSearchBox(
+  var lat = myparams.lat;
+  var lng = myparams.lng;
+  var address = myparams.address; //============================================
+  // // Create a render function
+  // const renderSearchBox = (renderOptions, isFirstRender) => {
+  //     const {
+  //         query,
+  //         refine,
+  //         clear,
+  //         isSearchStalled,
+  //         widgetParams
+  //     } = renderOptions;
+  //     if (isFirstRender) {
+  //         const input = document.createElement("input");
+  //         const loadingIndicator = document.createElement("span");
+  //         loadingIndicator.textContent = "Loading...";
+  //         const button = document.createElement("button");
+  //         button.textContent = "X";
+  //         input.addEventListener("input", event => {
+  //             refine(event.target.value);
+  //         });
+  //         button.addEventListener("click", () => {
+  //             clear();
+  //         });
+  //         //widgetParams.container.appendChild(input);
+  //         widgetParams.container.appendChild(loadingIndicator);
+  //         widgetParams.container.appendChild(button);
+  //     }
+  //     widgetParams.container.querySelector("#lat").value = lat;
+  //     widgetParams.container.querySelector("#lng").value = lng;
+  //     widgetParams.container.querySelector("#address").value = address;
+  //     //widgetParams.container.querySelector("span").hidden = !isSearchStalled;
+  // };
+  // create custom widget
+  // const customSearchBox = connectAutocomplete(renderSearchBox);
+  // const customSearchBox = instantsearch.connectors.connectSearchBox(
   //   renderSearchBox
   // );
   // instantiate custom widget
-
-  search.addWidgets([customSearchBox({
-    container: document.querySelector('#searchbox')
-  })]); // search.addWidgets([
-  //     searchBox({
-  //         container: ".instantsearch"
+  // search.addWidgets([
+  //     customSearchBox({
+  //         container: document.getElementById("instantsearch")
   //     }),
-  //
   //     hits({
   //         container: "#hits",
-  //         // templates: {
-  //         //     item(item) {
-  //         //         return `👉 ${item.address}`;
-  //         //     }
-  //         // }
+  // templates: {
+  //     item(item) {
+  //         return `👉 ${item.address}`;
+  //     }
+  // }
   //         templates: {
   //             item: `
-  //
-  //             <div>
-  //               <h4>
-  //               <a href="/user/apartments/{{id}}">
-  //                 {{ title }}
-  //                 </a>
-  //               </h4>
-  //               <p>{{ address }}</p>
-  //               <img src="{{ img_path }}" alt="" width=100px>
-  //              </div>
-  //
-  //             `
+  //                     <div>
+  //                       <h4>
+  //                       <a href="/user/apartments/{{id}}">
+  //                         {{ title }}
+  //                         </a>
+  //                       </h4>
+  //                       <p>{{ address }}</p>
+  //                       <img src="{{ img_path }}" alt="" width=100px>
+  //                      </div>
+  //                     `
   //         }
   //     })
   // ]);
 
+  search.addWidgets([Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["searchBox"])({
+    container: "#instantsearch"
+  }), Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["hits"])({
+    container: "#hits",
+    // templates: {
+    //     item(item) {
+    //         return `👉 ${item.address}`;
+    //     }
+    // }
+    templates: {
+      item: "\n\n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n\n                "
+    }
+  })]);
   search.start();
+  $(".ais-SearchBox-input").val(address);
 });
 
 /***/ }),
