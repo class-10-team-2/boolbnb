@@ -48,12 +48,12 @@ Route::namespace('User')
 Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
 
 // Algolia
-Route::get('search', function() {
-    $query = 'BEST'; // <-- Change the query for testing.
+Route::get('search', function () {
+    $query = 'hill'; // <-- Change the query for testing.
 
     $apartments = App\Apartment::search($query)
-                                ->where('baths', '>=', 10)
-                                ->get();
+        ->where('baths', '>', 3)
+        ->get();
 
     return $apartments;
 });
