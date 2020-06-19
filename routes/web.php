@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-})->name('guest.index');
+// Route::get('/', function () {
+//     return view('guest.index');
+// })->name('guest.index');
+
+Route::get('/', 'Guest\IndexController@index')->name('guest.index');
 
 Auth::routes();
 
@@ -49,11 +51,12 @@ Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('gu
 
 // Algolia
 Route::get('search', function() {
-    $query = 'BEST'; // <-- Change the query for testing.
+
+    $query = ''; // <-- Change the query for testing.
 
     $apartments = App\Apartment::search($query)
-                                ->where('baths', '>=', 10)
+                                // ->where('rooms', '>=', 9)
                                 ->get();
 
     return $apartments;
-});
+})->name('search');
