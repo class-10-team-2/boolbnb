@@ -8,12 +8,12 @@ class Session extends Model
 {
 
     protected $fillable = [
-        'user_id', 'ip_address', 'user_agent', 'payload', 'last_activity'
+        'user_id', 'apartment_id', 'ip_address', 'last_activity'
     ];
 
     public function apartments()
     {
-        return $this->belongsToMany('App\Apartment');
+        return $this->belongsTo('App\Apartment');
     }
 
     public function user()
