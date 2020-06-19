@@ -29,6 +29,7 @@ Route::namespace('User')
     ->middleware('auth')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
+        Route::get('apartments/{apartment}/stats', 'ApartmentController@stats')->name('apartments.stats');
     });
 
 

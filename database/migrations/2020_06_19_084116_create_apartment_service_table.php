@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class CreateApartmentSessionTable extends Migration
+class CreateApartmentServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +11,12 @@ class CreateApartmentSessionTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_session', function (Blueprint $table) {
+        Schema::create('apartment_service', function (Blueprint $table) {
             $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('session_id')->constrained();
+            $table->foreignId('service_id')->constrained();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -27,6 +24,6 @@ class CreateApartmentSessionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_session');
+        Schema::dropIfExists('apartment_service');
     }
 }
