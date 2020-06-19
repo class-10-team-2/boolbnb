@@ -14,8 +14,8 @@
                 <input class="btn btn-primary" type="submit" name="" value="Cerca">
 
             </form> --}}
-            <form class="" action="/search" method="GET">
-                @method('GET')
+            <form class="" action="{{route('guest.apartment.search')}}" method="POST">
+                @method('POST')
                 @csrf
                 <input type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
                 <input type="text" class="lat-input" name="lat">
