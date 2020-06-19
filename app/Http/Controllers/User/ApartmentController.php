@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Session;
 use App\Service;
 use App\Message;
 use App\Sponsorship;
@@ -69,8 +70,6 @@ class ApartmentController extends Controller
         ]);
 
 
-
-
         if ($validator->fails()) {
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)
@@ -106,8 +105,25 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        $ip = $request->ip();
+        $today = Carbon::now()->format('Y-m-d');
+
+        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
+
+
+        if ($apart_visited_today_by_user->isEmpty()) {
+            $session = new Session;
+            $session->ip_address = $ip;
+            $session->apartment_id = $id;
+            $session->last_activity = $today;
+            $session->user_id = Auth::id();
+
+            $session->save();
+        }
+
+        //=======================
         $apartment = Apartment::findOrFail($id);
         $sponsorship_packs = Sponsorship_pack::all();
 

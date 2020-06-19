@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApartmentServiceTable extends Migration
+class CreateApartmentSessionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateApartmentServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_service', function (Blueprint $table) {
+        Schema::create('apartment_session', function (Blueprint $table) {
             $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('service_id')->constrained();
+            $table->foreignId('session_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateApartmentServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_service');
+        Schema::dropIfExists('apartment_session');
     }
 }

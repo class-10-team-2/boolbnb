@@ -2,38 +2,38 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <div class="card" style="width: 18rem;">
-              <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
-              <div class="card-body">
+    <div class="col-12">
+        <div class="card" style="width: 18rem;">
+            {{-- immagine caricata come file --}}
+            {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
+            {{-- immagine caricata con la factory --}}
+            <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
+            <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <div class="">
                     <span>{{$apartment->rooms}}</span>
-
                 </div>
+
                 <div class="">
                     <span>{{$apartment->baths}}</span>
-
                 </div>
+
                 <div class="">
                     <span>{{$apartment->beds}}</span>
-
                 </div>
+
                 <div class="">
                     <span>{{$apartment->mq}}</span>
-
                 </div>
+
                 <div class="">
                     <p>{{$apartment->address}}</p>
-
                 </div>
+
                 @foreach ($apartment->services as $service)
-
-                    <div class="">
-                        <p> {{$service->name}}</p>
-
-                    </div>
-
+                <div class="">
+                    <p> {{$service->name}}</p>
+                </div>
                 @endforeach
 
                 <a href="{{route('user.apartments.edit', $apartment->id)}}" class="btn btn-primary">Modifica</a>
@@ -41,12 +41,12 @@
                     @method('DELETE')
                     @csrf
                     <input class="btn btn-danger" type="submit" name="" value="ELIMINA">
-
                 </form>
-              </div>
+
             </div>
         </div>
     </div>
+</div>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -75,7 +75,10 @@
     <script>
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
-            authorization: "sandbox_zjfh858v_q3x76bj5z6dt98t9",
+            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+            authorization: "sandbox_9q9gxqn3_2t648jjr84vjjvf4", 
+            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+
             container: '#dropin-container'
         }, function (createErr, instance) {
             button.addEventListener('click', function () {

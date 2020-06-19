@@ -32,16 +32,28 @@ Route::namespace('User')
     });
 
 
-Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
-Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
+// Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
+// Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
 
 // Braintree
 Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
-
 Route::namespace('User')
-        ->prefix('user')
-        ->middleware('auth')
-        ->group(function () {
-            Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
-            // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
-        });
+    ->prefix('user')
+    ->middleware('auth')
+    ->group(function () {
+        Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
+        // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
+    });
+
+Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
+
+// Algolia
+Route::get('search', function () {
+    $query = 'hill'; // <-- Change the query for testing.
+
+    $apartments = App\Apartment::search($query)
+        ->where('baths', '>', 3)
+        ->get();
+
+    return $apartments;
+});
