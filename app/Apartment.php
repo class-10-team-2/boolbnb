@@ -39,7 +39,15 @@ class Apartment extends Model
 
         $array = $this->transform($array);
 
-        $array['first_name'] = $this->user->first_name;
+        // $array['_geoloc'] = [
+        //     'lat' => $this->select('latitude')->get(),
+        //     'lng' => $this->select('longitude')->get()
+        // ];
+        $array['_geoloc'] = [
+            'lat' => $array['latitude'],
+            'lng' => $array['longitude']
+        ];
+        // $array['first_name'] = $this->user->first_name;
         // $array['sponsorship_'] = $this->author->email;
 
         return $array;
