@@ -32,12 +32,11 @@ Route::namespace('User')
     });
 
 
-Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
-Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
+// Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
+// Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
 
 // Braintree
 Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
-
 Route::namespace('User')
     ->prefix('user')
     ->middleware('auth')
@@ -46,10 +45,15 @@ Route::namespace('User')
         // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
     });
 
-Route::get('search', function () {
-    $query = 'new'; // <-- Change the query for testing.
+Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
 
-    $apartments = App\Apartment::search($query)->get();
+// Algolia
+Route::get('search', function() {
+    $query = 'BEST'; // <-- Change the query for testing.
+
+    $apartments = App\Apartment::search($query)
+                                ->where('baths', '>=', 10)
+                                ->get();
 
     return $apartments;
 });
