@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Apartment;
+use App\Service;
 
 class SearchController extends Controller
 {
@@ -16,9 +17,11 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
+        $services = Service::all();
         // $form_data = $request->all(); // Request object
 
-        // return view('guest.search', compact('form_data'));
+        // return view('guest.apartment.search', compact('form_data'));
+        return view('guest.apartments.search', compact('services'));
     }
 
     public function search(Request $request)
@@ -40,11 +43,10 @@ class SearchController extends Controller
         $apartments = Apartment::search($query)
                                     ->aroundLatLng($latitude, $logitude)
                                     ->with([
-                                        // 'aroundLatLng' => $latitude, $logitude,
                                         'aroundRadius' => $radius*1000
                                     ])
                                     ->where('rooms', '>=', $rooms)
-                                    ->where('rooms', '>=', $beds)
+                                    ->where('beds', '>=', $beds)
                                     // ->where([
                                     //     ['rooms', '>=', $rooms],
                                     //     ['beds', '>=', $beds]

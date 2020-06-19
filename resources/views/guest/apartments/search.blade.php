@@ -35,25 +35,24 @@
                 @endforeach
             </div>
 
-            <input id="latitude" type="hidden" class="lat-input" name="lat">
-            <input id="longitude" type="hidden" class="lng-input" name="lng">
+            <input id="latitude" type="hidden" class="lat-input" name="latitude">
+            <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
-            <input id="search-button" class="btn btn-primary" type="submit" name="" value="Cerca">
-
+            <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
         </form>
+
+        {{-- <button type="button" name="button"></button> --}}
+
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
 
             $(document).on('click', '#search-button', function () {
                 $('#search-input').val('');
-
-                sendInputValues();
-
                 getSearchResults();
             });
 
-            function sendInputValues() {
+            function getSearchResults() {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
@@ -61,20 +60,20 @@
                 });
 
                 $.ajax({
-                    url: 'guest/apartment/search',
-                    type: 'post',
+                    url: '/search',
+                    type: 'get',
                     // async:false,
                     // dataType: "json",
                     data: {
-                        radius: $('#radius'),
-                        minRooms: $('#rooms'),
-                        minBeds: $('#beds'),
-                        lat: $('#latitude'),
-                        lng: $('#longitude'),
+                        radius: $('#radius').val(),
+                        beds: $('#rooms').val(),
+                        rooms: $('#beds').val(),
+                        latitude: $('#latitude').val(),
+                        longitude: $('#longitude').val(),
 
                     },
-                    success: function (data) {
-                        console.log('data: ',  data);
+                    success: function (response) {
+                        console.log('data: ', response);
                     },
                     error: function (data) {
                         console.log('Error:', data);

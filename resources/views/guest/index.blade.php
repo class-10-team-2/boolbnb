@@ -14,7 +14,7 @@
                 <input class="btn btn-primary" type="submit" name="" value="Cerca">
 
             </form> --}}
-            <form class="" action="{{route('guest.apartment.search')}}" method="POST">
+            <form class="" action="{{route('search.post')}}" method="POST">
                 @method('POST')
                 @csrf
                 <div class="form-group">

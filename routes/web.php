@@ -47,7 +47,13 @@ Route::namespace('User')
             // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
         });
 
-Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
+// Search
+Route::get('guest/apartments/search', 'Guest\SearchController@index')->name('guest.apartment.search');
+
+Route::post('/search', 'Guest\SearchController@search')->name('search.post');
+Route::get('/search', 'Guest\SearchController@search')->name('search.get');
+
+
 
 
 // Algolia
