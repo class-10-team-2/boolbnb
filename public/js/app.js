@@ -72965,7 +72965,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var instantsearch_js_es_connectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! instantsearch.js/es/connectors */ "./node_modules/instantsearch.js/es/connectors/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
- // const algoliasearch = require("algoliasearch/lite");
+ // const Handlebars = require("handlebars");
+// const algoliasearch = require("algoliasearch/lite");
 // const instantsearch = require("instantsearch.js").default;
 
 
@@ -72973,33 +72974,34 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-$(document).ready(function () {
-  var searchClient = algoliasearch_lite__WEBPACK_IMPORTED_MODULE_1___default()("F3UGQY8R3Q", "361561dc5b21da9217e367f936aaa509");
-  var search = Object(instantsearch_js__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    indexName: "apartments",
-    searchClient: searchClient
-  }); //===========================================
-
-  var getParams = function getParams(url) {
-    var params = {};
-    var parser = document.createElement("a");
-    parser.href = url;
-    var query = parser.search.substring(1);
-    var vars = query.split("&");
-
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split("=");
-      params[pair[0]] = decodeURIComponent(pair[1]);
-    }
-
-    return params;
-  };
-
-  var myparams = getParams(window.location.href); // console.log(myparams);
-
-  var lat = myparams.lat;
-  var lng = myparams.lng;
-  var address = myparams.address; //============================================
+$(document).ready(function () {// const searchClient = algoliasearch(
+  //     "F3UGQY8R3Q",
+  //     "361561dc5b21da9217e367f936aaa509"
+  // );
+  //
+  // const search = instantsearch({
+  //     indexName: "apartments",
+  //     searchClient
+  // });
+  //===========================================
+  // var getParams = function(url) {
+  //     var params = {};
+  //     var parser = document.createElement("a");
+  //     parser.href = url;
+  //     var query = parser.search.substring(1);
+  //     var vars = query.split("&");
+  //     for (var i = 0; i < vars.length; i++) {
+  //         var pair = vars[i].split("=");
+  //         params[pair[0]] = decodeURIComponent(pair[1]);
+  //     }
+  //     return params;
+  // };
+  // var myparams = getParams(window.location.href);
+  // console.log(myparams);
+  // var lat = myparams.lat;
+  // var lng = myparams.lng;
+  // var address = myparams.address;
+  //============================================
   // // Create a render function
   // const renderSearchBox = (renderOptions, isFirstRender) => {
   //     const {
@@ -73062,22 +73064,39 @@ $(document).ready(function () {
   //         }
   //     })
   // ]);
-
-  search.addWidgets([Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["searchBox"])({
-    container: "#instantsearch"
-  }), Object(instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["hits"])({
-    container: "#hits",
-    // templates: {
-    //     item(item) {
-    //         return `👉 ${item.address}`;
-    //     }
-    // }
-    templates: {
-      item: "\n\n                <div>\n                  <h4>\n                  <a href=\"/user/apartments/{{id}}\">\n                    {{ title }}\n                    </a>\n                  </h4>\n                  <p>{{ address }}</p>\n                  <img src=\"{{ img_path }}\" alt=\"\" width=100px>\n                 </div>\n\n                "
-    }
-  })]);
-  search.start();
-  $(".ais-SearchBox-input").val(address);
+  // search.addWidgets([
+  //     searchBox({
+  //         container: "#instantsearch",
+  //
+  //     }),
+  //
+  //     hits({
+  //         container: "#hits",
+  //         // templates: {
+  //         //     item(item) {
+  //         //         return `👉 ${item.address}`;
+  //         //     }
+  //         // }
+  //         templates: {
+  //             item: `
+  //
+  //             <div>
+  //               <h4>
+  //               <a href="/user/apartments/{{id}}">
+  //                 {{ title }}
+  //                 </a>
+  //               </h4>
+  //               <p>{{ address }}</p>
+  //               <img src="{{ img_path }}" alt="" width=100px>
+  //              </div>
+  //
+  //             `
+  //         }
+  //     })
+  // ]);
+  //
+  // search.start();
+  // $(".ais-SearchBox-input").val(address);
 });
 
 /***/ }),

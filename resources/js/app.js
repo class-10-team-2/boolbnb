@@ -1,5 +1,6 @@
 require("./bootstrap");
 import "places.js";
+// const Handlebars = require("handlebars");
 
 // const algoliasearch = require("algoliasearch/lite");
 // const instantsearch = require("instantsearch.js").default;
@@ -11,37 +12,38 @@ import { connectAutocomplete } from "instantsearch.js/es/connectors";
 import { connectSearchBox } from "instantsearch.js/es/connectors";
 
 $(document).ready(function() {
-    const searchClient = algoliasearch(
-        "F3UGQY8R3Q",
-        "361561dc5b21da9217e367f936aaa509"
-    );
 
-    const search = instantsearch({
-        indexName: "apartments",
-        searchClient
-    });
+    // const searchClient = algoliasearch(
+    //     "F3UGQY8R3Q",
+    //     "361561dc5b21da9217e367f936aaa509"
+    // );
+    //
+    // const search = instantsearch({
+    //     indexName: "apartments",
+    //     searchClient
+    // });
     //===========================================
 
-    var getParams = function(url) {
-        var params = {};
-        var parser = document.createElement("a");
-        parser.href = url;
-        var query = parser.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            params[pair[0]] = decodeURIComponent(pair[1]);
-        }
-        return params;
-    };
+    // var getParams = function(url) {
+    //     var params = {};
+    //     var parser = document.createElement("a");
+    //     parser.href = url;
+    //     var query = parser.search.substring(1);
+    //     var vars = query.split("&");
+    //     for (var i = 0; i < vars.length; i++) {
+    //         var pair = vars[i].split("=");
+    //         params[pair[0]] = decodeURIComponent(pair[1]);
+    //     }
+    //     return params;
+    // };
 
-    var myparams = getParams(window.location.href);
+    // var myparams = getParams(window.location.href);
 
     // console.log(myparams);
 
-    var lat = myparams.lat;
-    var lng = myparams.lng;
-    var address = myparams.address;
+    // var lat = myparams.lat;
+    // var lng = myparams.lng;
+    // var address = myparams.address;
     //============================================
 
     // // Create a render function
@@ -119,37 +121,37 @@ $(document).ready(function() {
     //     })
     // ]);
 
-    search.addWidgets([
-        searchBox({
-            container: "#instantsearch",
-
-        }),
-
-        hits({
-            container: "#hits",
-            // templates: {
-            //     item(item) {
-            //         return `👉 ${item.address}`;
-            //     }
-            // }
-            templates: {
-                item: `
-
-                <div>
-                  <h4>
-                  <a href="/user/apartments/{{id}}">
-                    {{ title }}
-                    </a>
-                  </h4>
-                  <p>{{ address }}</p>
-                  <img src="{{ img_path }}" alt="" width=100px>
-                 </div>
-
-                `
-            }
-        })
-    ]);
-
-    search.start();
-    $(".ais-SearchBox-input").val(address);
+    // search.addWidgets([
+    //     searchBox({
+    //         container: "#instantsearch",
+    //
+    //     }),
+    //
+    //     hits({
+    //         container: "#hits",
+    //         // templates: {
+    //         //     item(item) {
+    //         //         return `👉 ${item.address}`;
+    //         //     }
+    //         // }
+    //         templates: {
+    //             item: `
+    //
+    //             <div>
+    //               <h4>
+    //               <a href="/user/apartments/{{id}}">
+    //                 {{ title }}
+    //                 </a>
+    //               </h4>
+    //               <p>{{ address }}</p>
+    //               <img src="{{ img_path }}" alt="" width=100px>
+    //              </div>
+    //
+    //             `
+    //         }
+    //     })
+    // ]);
+    //
+    // search.start();
+    // $(".ais-SearchBox-input").val(address);
 });

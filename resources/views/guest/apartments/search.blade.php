@@ -41,17 +41,101 @@
             <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
         </form>
 
-        {{-- <button type="button" name="button"></button> --}}
+    </div>
 
+    <div class="results-container">
+
+    </div>
+
+    @include('layouts.apartment-result-handlebars')
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
+
+
+            getJsonFromIndex();
 
             $(document).on('click', '#search-button', function () {
                 $('#search-input').val('');
                 getSearchResults();
             });
 
+            console.log(localStorage.getItem("latitude"));
+            console.log(localStorage.getItem("longitude"));
+            console.log(localStorage.getItem("beds"));
+            console.log(localStorage.getItem("rooms"));
+            console.log(localStorage.getItem("radius"));
+
+
+            // console.log('latitude:', parseFloat(lsLatitude));
+            // lsLatitude = parseFloat(lsLatitude);
+            // console.log(typeof(lsLatitude));
+            //
+            // console.log('longitude:', parseFloat(lsLongitude));
+
+            ///////////////////// FUNZIONI /////////////////////
+
+            /**
+             * Nel 'data' prende valori degli input del form di ricerca della home page
+             * che sono stati salvati nel local storage.
+             * Chiama il metodo search() di Algolia nel SearchController.
+             * Restituisce un json
+             */
+            function getJsonFromIndex() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
+
+                var lsRadius = parseInt(localStorage.getItem("radius"));
+                var lsBeds = parseInt(localStorage.getItem("beds"));
+                var lsRooms = parseInt(localStorage.getItem("rooms"));
+                var lsLatitude = parseFloat(localStorage.getItem("latitude"));
+                var lsLongitude = parseFloat(localStorage.getItem("longitude"));
+
+                // Handlebars
+                var source = $("#apartment-result-template").html();
+                var apartmentTamplate = Handlebars.compile(source);
+
+                $.ajax({
+                    url: '/search/get-json-with-algolia-results',
+                    type: 'get',
+                    // async:false,
+                    // dataType: "json",
+                    data: {
+                        radius: lsRadius,
+                        beds: lsBeds,
+                        rooms: lsRooms,
+                        latitude: lsLatitude,
+                        longitude: lsLongitude,
+
+                    },
+                    success: function (response) {
+                        console.log('getJsonFromIndex: ', response);
+
+                        for (var i = 0; i < response.length; i++){
+                            var apartment = response[i];
+                            console.log(apartment);
+                            var apartmentData = {
+                                title: apartment.title,
+                                // aggiungere altri campi
+                            };
+
+                            var apartmentHTML = apartmentTamplate(apartmentData);
+                            $('.results-container').append(apartmentHTML);
+                        }
+
+
+                    },
+                    error: function (response) {
+                        console.log('getJsonFromIndex Error:', response);
+                    }
+                });
+            }
+
+
+            // restituisce un json con i risultati filtrati da algolia
             function getSearchResults() {
                 $.ajaxSetup({
                     headers: {
@@ -60,7 +144,7 @@
                 });
 
                 $.ajax({
-                    url: '/search',
+                    url: '/search/get-json-with-algolia-results',
                     type: 'get',
                     // async:false,
                     // dataType: "json",
@@ -73,10 +157,10 @@
 
                     },
                     success: function (response) {
-                        console.log('data: ', response);
+                        console.log('getSearchResults: ', response);
                     },
-                    error: function (data) {
-                        console.log('Error:', data);
+                    error: function (response) {
+                        console.log('getSearchResults Error:', response);
                     }
                 });
             }
@@ -91,7 +175,7 @@
         <div id="hits">
 
         </div> --}}
-    </div>
+
 </div>
 
 
