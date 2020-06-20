@@ -31,7 +31,6 @@ class SearchController extends Controller
         // Intercetto il dati inviati dal form di ricerca nella home
         // e li uso per filtrare gli appartamenti usando
         // il metodo search() di Scout Extended
-        // $query = $request->all();
         $query = '';
 
         $rooms = $request->input('rooms');
@@ -39,7 +38,7 @@ class SearchController extends Controller
         $radius = $request->input('radius');
         $latitude = $request->input('latitude');
         $logitude = $request->input('longitude');
-
+        // var_dump($latitude);
         $apartments = Apartment::search($query)
                                     ->aroundLatLng($latitude, $logitude)
                                     ->with([
@@ -47,13 +46,9 @@ class SearchController extends Controller
                                     ])
                                     ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
-                                    // ->where([
-                                    //     ['rooms', '>=', $rooms],
-                                    //     ['beds', '>=', $beds]
-                                    // ])
                                     ->get();
 
-        // return response()->json($apartments);
+        // Ritorna un json con i risultati filtrati
         return $apartments;
 
         // VECCHIO CODICE
@@ -61,4 +56,12 @@ class SearchController extends Controller
         //
         // return redirect()->route('search', $query);
     }
+
+
+
+    // public function fromIndexToSearch(Request $request)
+    // {
+    //     $form_data = $request->all();
+    //     return response()->json($request);
+    // }
 }
