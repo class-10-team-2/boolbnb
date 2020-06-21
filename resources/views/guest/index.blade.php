@@ -7,10 +7,11 @@
         <div class="col-12">
 
             {{-- <form class="" action="{{route('search.get.json.from.index')}}" method="POST"> --}}
-            <form class="" action="{{route('guest.apartments.search')}}" method="GET">
+            <form action="{{route('guest.apartments.search')}}" method="GET">
+            {{-- </form> --}}
                 {{-- @method('POST') --}}
-                @method('GET')
-                @csrf
+                {{-- @method('GET')
+                @csrf --}}
                 <div class="form-group">
                     <input id="index-search" type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
                 </div>
@@ -57,6 +58,21 @@
             localStorage.setItem("radius", $('#index-radius').val());
             localStorage.setItem("latitude", $('#index-latitude').val());
             localStorage.setItem("longitude", $('#index-longitude').val());
+
+            // pusho in un array tutti i valori dei checkbox checked
+            var checked = [];
+            $('input').each(function(){
+                if ($(this).is(':checked')) {
+                    checked.push($(this).val());
+                }
+            });
+
+            console.log(checked);
+
+            // trasformo l'array in una stringa
+            var jsonChecked = JSON.stringify(checked);
+            localStorage.setItem("checked", jsonChecked);
+            // localStorage.setItem("services", $('#index-longitude').val()); // da fare
         });
 
 
