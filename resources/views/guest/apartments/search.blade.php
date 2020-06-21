@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <form>
-            @method('POST')
-            @csrf
+            {{-- @method('POST')
+            @csrf --}}
 
             <div class="form-group">
                 <input id="search-input" type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
@@ -65,7 +65,7 @@
             console.log(localStorage.getItem("beds"));
             console.log(localStorage.getItem("rooms"));
             console.log(localStorage.getItem("radius"));
-
+            console.log(JSON.parse(localStorage.getItem("checked")));
 
             // console.log('latitude:', parseFloat(lsLatitude));
             // lsLatitude = parseFloat(lsLatitude);
@@ -93,6 +93,9 @@
                 var lsRooms = parseInt(localStorage.getItem("rooms"));
                 var lsLatitude = parseFloat(localStorage.getItem("latitude"));
                 var lsLongitude = parseFloat(localStorage.getItem("longitude"));
+                // ri trasformo la stringa in un array
+                var lsServicesId = JSON.parse(localStorage.getItem("checked"));
+
 
                 // Handlebars
                 var source = $("#apartment-result-template").html();
@@ -109,7 +112,7 @@
                         rooms: lsRooms,
                         latitude: lsLatitude,
                         longitude: lsLongitude,
-
+                        services: lsServicesId
                     },
                     success: function (response) {
                         console.log('getJsonFromIndex: ', response);
