@@ -38,14 +38,17 @@ class SearchController extends Controller
         $radius = $request->input('radius');
         $latitude = $request->input('latitude');
         $logitude = $request->input('longitude');
+        $services = $request->input('services');
         // var_dump($latitude);
         $apartments = Apartment::search($query)
                                     ->aroundLatLng($latitude, $logitude)
                                     ->with([
-                                        'aroundRadius' => $radius*1000
+                                        'aroundRadius' => $radius*1000,
+                                        'hitsPerPage' => 30,
                                     ])
                                     ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
+                                    ->whereIn('services', $services)
                                     ->get();
 
         // Ritorna un json con i risultati filtrati
