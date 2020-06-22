@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <form>
-            @method('POST')
-            @csrf
+            {{-- @method('POST')
+            @csrf --}}
 
             <div class="form-group">
                 <input id="search-input" type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
@@ -49,32 +49,29 @@
 
     @include('layouts.apartment-result-handlebars')
 
+
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
+
+        var querystring = window.location.search;
+        console.log(querystring);
+        var urlParams = new URLSearchParams(querystring);
+        console.log(querystring);
 
 
             getJsonFromIndex();
 
             $(document).on('click', '#search-button', function () {
+                $('.results-container').empty();
                 $('#search-input').val('');
                 getSearchResults();
             });
 
-            console.log(localStorage.getItem("latitude"));
-            console.log(localStorage.getItem("longitude"));
-            console.log(localStorage.getItem("beds"));
-            console.log(localStorage.getItem("rooms"));
-            console.log(localStorage.getItem("radius"));
-
-
-            // console.log('latitude:', parseFloat(lsLatitude));
-            // lsLatitude = parseFloat(lsLatitude);
-            // console.log(typeof(lsLatitude));
-            //
-            // console.log('longitude:', parseFloat(lsLongitude));
 
             ///////////////////// FUNZIONI /////////////////////
-
+            // Handlebars
+            var source = $("#apartment-result-template").html();
+            var apartmentTamplate = Handlebars.compile(source);
             /**
              * Nel 'data' prende valori degli input del form di ricerca della home page
              * che sono stati salvati nel local storage.
@@ -93,15 +90,12 @@
                 var lsRooms = parseInt(localStorage.getItem("rooms"));
                 var lsLatitude = parseFloat(localStorage.getItem("latitude"));
                 var lsLongitude = parseFloat(localStorage.getItem("longitude"));
-
-                // Handlebars
-                var source = $("#apartment-result-template").html();
-                var apartmentTamplate = Handlebars.compile(source);
+                // ri trasformo la stringa in un array
+                var lsServicesId = JSON.parse(localStorage.getItem("checked"));
 
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
                     type: 'get',
-                    // async:false,
                     // dataType: "json",
                     data: {
                         radius: lsRadius,
@@ -109,7 +103,7 @@
                         rooms: lsRooms,
                         latitude: lsLatitude,
                         longitude: lsLongitude,
-
+                        services: lsServicesId
                     },
                     success: function (response) {
                         console.log('getJsonFromIndex: ', response);
@@ -125,8 +119,6 @@
                             var apartmentHTML = apartmentTamplate(apartmentData);
                             $('.results-container').append(apartmentHTML);
                         }
-
-
                     },
                     error: function (response) {
                         console.log('getJsonFromIndex Error:', response);
@@ -146,7 +138,6 @@
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
                     type: 'get',
-                    // async:false,
                     // dataType: "json",
                     data: {
                         radius: $('#radius').val(),
@@ -158,6 +149,18 @@
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);
+
+                        for (var i = 0; i < response.length; i++){
+                            var apartment = response[i];
+                            console.log(apartment);
+                            var apartmentData = {
+                                title: apartment.title,
+                                // aggiungere altri campi
+                            };
+
+                            var apartmentHTML = apartmentTamplate(apartmentData);
+                            $('.results-container').append(apartmentHTML);
+                        }
                     },
                     error: function (response) {
                         console.log('getSearchResults Error:', response);
@@ -165,18 +168,7 @@
                 });
             }
         </script>
-        {{-- <div class="col-12" id="instantsearch">
-            <input type="text" id="searchbox" name="" value="">
-            <input type="text" id="lat" name="" value="">
-            <input type="text" id="lng" name="" value="">
-            <input type="text" id="address" name="" value="">
-        </div>
-
-        <div id="hits">
-
-        </div> --}}
 
 </div>
-
 
 @endsection

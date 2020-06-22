@@ -61,9 +61,6 @@ Route::namespace('User')
 // Pagina di ricerca
 Route::get('guest/apartments/search', 'Guest\SearchController@index')->name('guest.apartments.search');
 
-// Invio dati dal form di ricerca della index e restituisco un json
-// Route::post('/search/get-json-with-input-values-from-index', 'Guest\SearchController@fromIndexToSearch')->name('search.get.json.from.index');
-
 // Ricevi json con risultati filtrati da Algolia
 Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
 
