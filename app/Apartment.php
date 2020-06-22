@@ -33,7 +33,7 @@ class Apartment extends Model
     // INDICIZZAZIONE DELLE RELAZIONI PER ALGOLIA
     public function toSearchableArray()
     {
-        $this->services;
+        // $this->services;
 
         $array = $this->toArray();
 
@@ -47,6 +47,10 @@ class Apartment extends Model
             'lat' => $array['latitude'],
             'lng' => $array['longitude']
         ];
+
+        $array['services'] = $this->services->map(function($data) {
+            return $data['id'];
+        })->toArray();
         // $array['first_name'] = $this->user->first_name;
         // $array['sponsorship_'] = $this->author->email;
 
