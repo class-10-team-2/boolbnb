@@ -5,10 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Session;
 use App\Service;
 use App\Message;
 use App\Sponsorship;
 use App\Apartment;
+use App\Sponsorship_pack;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -27,6 +29,7 @@ class ApartmentController extends Controller
     {
         $userLogged = Auth::id();
         $apartments = Apartment::where('user_id', '=', $userLogged)->get();
+
         return view('user.apartments.index', compact('apartments'));
     }
 
@@ -54,6 +57,7 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($data, [
             'title' => 'required|max:100',
+            'description' => 'required|max:2500',
             'rooms' => 'required|numeric|max:10|min:0',
             'beds' => 'required|numeric|max:20|min:0',
             'baths' => 'required|numeric|max:10|min:0',
@@ -65,15 +69,14 @@ class ApartmentController extends Controller
 
         ]);
 
-        $path = Storage::disk('public')->put('images', $data['img_path']);
-        $data['img_path'] = $path;
-
-
         if ($validator->fails()) {
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $path = Storage::disk('public')->put('images', $data['img_path']);
+        $data['img_path'] = $path;
 
 
         $now = Carbon::now()->format('Y-m-d-H-i-s');
@@ -92,7 +95,7 @@ class ApartmentController extends Controller
             $apartment->services()->attach($data['services']);
         }
 
-        return redirect()->route('user.apartments.index');
+        return redirect()->route('user.apartments.show', $apartment->id);
     }
 
     /**
@@ -101,9 +104,29 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $ip = $request->ip();
+        $today = Carbon::now()->format('Y-m-d');
+
+        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
+
+
+        if ($apart_visited_today_by_user->isEmpty()) {
+            $session = new Session;
+            $session->ip_address = $ip;
+            $session->apartment_id = $id;
+            $session->last_activity = $today;
+            $session->user_id = Auth::id();
+
+            $session->save();
+        }
+
+        //=======================
+        $apartment = Apartment::findOrFail($id);
+        $sponsorship_packs = Sponsorship_pack::all();
+
+        return view('user.apartments.show', compact('apartment', 'sponsorship_packs'));
     }
 
     /**
@@ -114,7 +137,13 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $services = Service::all();
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+        return view('user.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -126,7 +155,56 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] = Str::slug($data['title'], '-') . '-' . $now;
+        $user_id = Auth::id();
+        $apartment = Apartment::findOrFail($id);
+        $author = $apartment->user->id;
+
+
+
+        if ($user_id != $author) {
+            abort('404');
+        }
+
+        $validator = Validator::make($data, [
+            'title' => 'required|max:100',
+            'rooms' => 'required|numeric|max:10|min:0',
+            'beds' => 'required|numeric|max:20|min:0',
+            'baths' => 'required|numeric|max:10|min:0',
+            'mq' => 'required|numeric|max:1000|min:10',
+            'services' => 'array',
+            'services.*' => 'exists:services,id',
+            'address' => 'required',
+            'img_path' => 'required'
+
+        ]);
+
+
+        if (empty($data['img_path'])) {
+            unset($data['img_path']);
+        } else {
+            $path = Storage::disk('public')->put('images', $data['img_path']);
+            $data['img_path'] = $path;
+        }
+
+        $apartment->fill($data);
+        $updated = $apartment->update();
+
+        if (!$updated) {
+            return redirect()->back();
+        }
+
+        if (empty($data['services'])) {
+            unset($data['services']);
+            $apartment->services()->detach();
+        } else {
+            $apartment->services()->sync($data['services']);
+        }
+
+
+        return redirect()->route('user.apartments.show', $apartment->id);
     }
 
     /**
@@ -137,6 +215,78 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+        $apartment->services()->detach();
+        $deleted = $apartment->delete();
+
+        if (!$deleted) {
+            return redirect()->back();
+        }
+        return redirect()->route('user.apartments.index');
     }
+
+    public function store_sponsorship(Request $request)
+    {
+
+        $data = $request->all();
+
+        $new_sponsorship = new Sponsorship;
+        $new_sponsorship->apartment_id = $data['apartId'];
+        $new_sponsorship->sponsorship_pack_id = $data['radioVal'];
+        $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
+        $duration = $sponsorship_checked->duration;
+        $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
+        $new_sponsorship->expiration_date = $exp_date;
+        $new_sponsorship->save();
+
+
+        // $data = $request->input('id');
+
+        // var_dump($request->all());
+        // dd($request->all());
+
+
+        // return view('user.apartments.show', 4);
+        // return view('user.apartments.sponsorships');
+    }
+
+
+    public function stats(Request $request)
+    {
+        $apt_id = $request->input('apt_id');
+        $sessions = Session::where([['apartment_id', '=', $apt_id]])->whereYear('last_activity', '=', Carbon::now('y'))->get();
+
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $month = Session::where('apartment_id', '=', $apt_id)->whereMonth('last_activity', '=', $i)->whereYear('last_activity', '=', Carbon::now('y'))->get();
+            $month = $month->count();
+            $months[] = $month;
+        }
+        //$feb = Session::where([['apartment_id', '=', $id],['last_activity', '=', Carbon::()]])->get();
+
+
+        return response()->json($months);
+    }
+
+    public function view_stats($id)
+    {
+        $apartment = Apartment::findOrFail($id);
+
+        return view('user.apartments.stats', compact('apartment'));
+    }
+
+    // public function view_sponsorship(Request $request)
+    // {
+    //     // $data = $request->input('id');
+    //
+    //     dd($request->all());
+    //
+    //
+    //     // return view('user.apartments.show', 4);
+    //     // return view('user.apartments.sponsorships');
+    // }
 }
