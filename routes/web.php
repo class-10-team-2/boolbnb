@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-})->name('guest.index');
+// Route::get('/', function () {
+//     return view('guest.index');
+// })->name('guest.index');
+
+Route::get('/', 'Guest\IndexController@index')->name('guest.index');
 
 Auth::routes();
 
@@ -46,15 +48,26 @@ Route::namespace('User')
         // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
     });
 
-Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
+// Pagina di ricerca
+Route::get('guest/apartments/search', 'Guest\SearchController@index')->name('guest.apartments.search');
+
+// Invio dati dal form di ricerca della index e restituisco un json
+// Route::post('/search/get-json-with-input-values-from-index', 'Guest\SearchController@fromIndexToSearch')->name('search.get.json.from.index');
+
+// Ricevi json con risultati filtrati da Algolia
+Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
+
+
+
 
 // Algolia
-Route::get('search', function () {
-    $query = 'hill'; // <-- Change the query for testing.
-
-    $apartments = App\Apartment::search($query)
-        ->where('baths', '>', 3)
-        ->get();
-
-    return $apartments;
-});
+// Route::get('search', function() {
+//
+//     $query = ''; // <-- Change the query for testing.
+//
+//     $apartments = App\Apartment::search($query)
+//                                 // ->where('rooms', '>=', 9)
+//                                 ->get();
+//
+//     return $apartments;
+// })->name('search');

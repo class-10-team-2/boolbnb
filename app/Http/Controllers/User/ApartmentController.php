@@ -69,7 +69,6 @@ class ApartmentController extends Controller
 
         ]);
 
-
         if ($validator->fails()) {
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)

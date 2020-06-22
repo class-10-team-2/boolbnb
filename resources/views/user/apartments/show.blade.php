@@ -106,7 +106,6 @@
 
                             $.ajax({
                                 url: '/user/store_sponsoship',
-                                // url: '{{ route('user.apartments.store_sponsoship') }}',
                                 type: 'post',
                                 // async:false,
                                 // dataType: "json",
