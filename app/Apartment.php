@@ -33,7 +33,6 @@ class Apartment extends Model
     // INDICIZZAZIONE DELLE RELAZIONI PER ALGOLIA
     public function toSearchableArray()
     {
-        // $this->services()->pluck('id');
         // $this->services;
 
         $array = $this->toArray();

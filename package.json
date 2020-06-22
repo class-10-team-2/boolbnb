@@ -23,7 +23,6 @@
     },
     "dependencies": {
         "algoliasearch": "^4.3.0",
-        "handlebars": "^4.7.6",
         "instantsearch.js": "^4.7.0",
         "jquery": "^3.5.1",
         "places.js": "^1.19.0"
