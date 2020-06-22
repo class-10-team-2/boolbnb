@@ -34,6 +34,14 @@ Route::namespace('User')
         Route::get('apartments/{apartment}/stats', 'ApartmentController@stats')->name('apartments.stats');
     });
 
+Route::namespace('Guest')
+    ->name('guest.')
+    ->prefix('guest')
+    ->group(function () {
+        Route::resource('apartments', 'ApartmentController');
+        // Route::post('apartments/{apartment}', 'ApartmentController@message');
+    });
+
 
 // Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
 // Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???

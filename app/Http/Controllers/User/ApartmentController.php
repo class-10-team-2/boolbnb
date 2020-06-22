@@ -254,15 +254,13 @@ class ApartmentController extends Controller
         // return view('user.apartments.sponsorships');
     }
 
+
     public function stats($id)
     {
         $apartment = Apartment::findOrFail($id);
         $sessions = Session::where('apartment_id', '=', $id)->get();
 
         return view('user.apartments.stats', compact('apartment', 'sessions'));
-
-
-
     }
 
     // public function view_sponsorship(Request $request)
