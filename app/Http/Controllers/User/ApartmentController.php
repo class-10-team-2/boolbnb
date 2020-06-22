@@ -255,12 +255,28 @@ class ApartmentController extends Controller
     }
 
 
-    public function stats($id)
+    public function stats(Request $request)
+    {
+        $apt_id = $request->input('apt_id');
+        $sessions = Session::where([['apartment_id', '=', $apt_id]])->whereYear('last_activity', '=', Carbon::now('y'))->get();
+
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $month = Session::where('apartment_id', '=', $apt_id)->whereMonth('last_activity', '=', $i)->whereYear('last_activity', '=', Carbon::now('y'))->get();
+            $month = $month->count();
+            $months[] = $month;
+        }
+        //$feb = Session::where([['apartment_id', '=', $id],['last_activity', '=', Carbon::()]])->get();
+
+
+        return response()->json($months);
+    }
+
+    public function view_stats($id)
     {
         $apartment = Apartment::findOrFail($id);
-        $sessions = Session::where('apartment_id', '=', $id)->get();
 
-        return view('user.apartments.stats', compact('apartment', 'sessions'));
+        return view('user.apartments.stats', compact('apartment'));
     }
 
     // public function view_sponsorship(Request $request)
