@@ -123,8 +123,12 @@
                             var apartment = response[i];
                             console.log(apartment);
                             var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
                                 title: apartment.title,
-                                // aggiungere altri campi
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths
                             };
 
                             var apartmentHTML = apartmentTamplate(apartmentData);
@@ -165,8 +169,12 @@
                             var apartment = response[i];
                             console.log(apartment);
                             var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
                                 title: apartment.title,
-                                // aggiungere altri campi
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths
                             };
 
                             var apartmentHTML = apartmentTamplate(apartmentData);
