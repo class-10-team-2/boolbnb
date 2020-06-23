@@ -54,6 +54,10 @@ class Apartment extends Model
         // $array['first_name'] = $this->user->first_name;
         // $array['sponsorship_'] = $this->author->email;
 
+        $array['expiration_date'] = $this->sponsorships->map(function($data) {
+            return $data['expiration_date'];
+        })->toArray();
+
         return $array;
     }
 
