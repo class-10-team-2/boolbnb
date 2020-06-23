@@ -37,7 +37,7 @@
 
                 @endforeach
 
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{route('user.apartments.show', $apartment->id)}}" class="btn btn-primary">Gestisci</a>
               </div>
 
             </div>

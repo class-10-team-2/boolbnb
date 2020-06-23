@@ -53,12 +53,6 @@
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
 
-        var querystring = window.location.search;
-        console.log(querystring);
-        var urlParams = new URLSearchParams(querystring);
-        console.log(querystring);
-
-
             getJsonFromIndex();
 
             $(document).on('click', '#search-button', function () {
@@ -151,7 +145,8 @@
                 });
 
                 $.ajax({
-                    url: '/search/get-json-with-algolia-results',
+                    // url: '/search/get-json-with-algolia-results',
+                    url: '/search-highlights',
                     type: 'get',
                     // dataType: "json",
                     data: {
