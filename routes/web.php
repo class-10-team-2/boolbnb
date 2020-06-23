@@ -59,7 +59,7 @@ Route::namespace('User')
     });
 
 // Pagina di ricerca
-Route::get('guest/apartments/search', 'Guest\SearchController@index')->name('guest.apartments.search');
+Route::get('search', 'Guest\SearchController@index')->name('guest.apartments.search');
 
 // Ricevi json con risultati filtrati da Algolia
 Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
