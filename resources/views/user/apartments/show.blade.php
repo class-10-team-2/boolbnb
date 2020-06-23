@@ -5,9 +5,9 @@
     <div class="col-12">
         <div class="card" style="width: 18rem;">
             {{-- immagine caricata come file --}}
-            {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
+            <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
             {{-- immagine caricata con la factory --}}
-            <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
+            {{-- <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
             <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <div class="">
@@ -76,7 +76,7 @@
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
             //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
-            authorization: "sandbox_9q9gxqn3_2t648jjr84vjjvf4", 
+            authorization: "sandbox_9q9gxqn3_2t648jjr84vjjvf4",
             //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
 
             container: '#dropin-container'
@@ -106,7 +106,6 @@
 
                             $.ajax({
                                 url: '/user/store_sponsoship',
-                                // url: '{{ route('user.apartments.store_sponsoship') }}',
                                 type: 'post',
                                 // async:false,
                                 // dataType: "json",

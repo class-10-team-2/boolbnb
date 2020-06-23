@@ -10793,8 +10793,7 @@ $(document).ready(function () {
         return _suggestion.value;
       }
     }
-  }).configure({
-    getRankingInfo: true
+  }).configure({// getRankingInfo: true
   });
   placesAutocomplete.on("change", function resultSelected(e) {
     document.querySelector(".lat-input").value = e.suggestion.latlng.lat || "";

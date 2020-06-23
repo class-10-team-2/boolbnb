@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-})->name('guest.index');
+// Route::get('/', function () {
+//     return view('guest.index');
+// })->name('guest.index');
+
+Route::get('/', 'Guest\IndexController@index')->name('guest.index');
 
 Auth::routes();
 
@@ -29,7 +31,18 @@ Route::namespace('User')
     ->middleware('auth')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
-        Route::get('apartments/{apartment}/stats', 'ApartmentController@stats')->name('apartments.stats');
+        Route::get('apartments/{apartment}/stats', 'ApartmentController@view_stats')->name('apartments.stats');
+        Route::get('apartments/{apartment}/messages', 'ApartmentController@view_messages')->name('apartments.messages');
+    });
+
+Route::get('json-stats', 'User\ApartmentController@stats');
+
+Route::namespace('Guest')
+    ->name('guest.')
+    ->prefix('guest')
+    ->group(function () {
+        Route::resource('apartments', 'ApartmentController');
+        // Route::post('apartments/{apartment}', 'ApartmentController@message');
     });
 
 
@@ -46,15 +59,23 @@ Route::namespace('User')
         // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
     });
 
-Route::post('guest/apartment/search', 'Guest\SearchController@search')->name('guest.apartment.search');
+// Pagina di ricerca
+Route::get('search', 'Guest\SearchController@index')->name('guest.apartments.search');
+
+// Ricevi json con risultati filtrati da Algolia
+Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
+
+
+
 
 // Algolia
-Route::get('search', function () {
-    $query = 'hill'; // <-- Change the query for testing.
-
-    $apartments = App\Apartment::search($query)
-        ->where('baths', '>', 3)
-        ->get();
-
-    return $apartments;
-});
+// Route::get('search', function() {
+//
+//     $query = ''; // <-- Change the query for testing.
+//
+//     $apartments = App\Apartment::search($query)
+//                                 // ->where('rooms', '>=', 9)
+//                                 ->get();
+//
+//     return $apartments;
+// })->name('search');

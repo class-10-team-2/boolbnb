@@ -50,8 +50,8 @@
         <div class="form-group">
           <label for="address-input">Indirizzo</label>
           <input type="text" class="form-control address-input" id="address-input" name="address" value="{{old('address')}}">
-          <input type="text" class="form-control lat-input" name="latitude">
-          <input type="text" class="form-control lng-input" name="longitude">
+          <input type="text" class="form-control lat-input" name="latitude" value="{{old('latitude')}}">
+          <input type="text" class="form-control lng-input" name="longitude" value="{{old('longitude')}}">
 
           @error('address')
             <small class="form-text">{{$message}}</small>

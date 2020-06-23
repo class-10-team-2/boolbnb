@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class ApartmentController extends Controller
@@ -69,7 +70,6 @@ class ApartmentController extends Controller
 
         ]);
 
-
         if ($validator->fails()) {
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)
@@ -107,21 +107,7 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
-        $ip = $request->ip();
-        $today = Carbon::now()->format('Y-m-d');
 
-        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
-
-
-        if ($apart_visited_today_by_user->isEmpty()) {
-            $session = new Session;
-            $session->ip_address = $ip;
-            $session->apartment_id = $id;
-            $session->last_activity = $today;
-            $session->user_id = Auth::id();
-
-            $session->save();
-        }
 
         //=======================
         $apartment = Apartment::findOrFail($id);
@@ -255,15 +241,38 @@ class ApartmentController extends Controller
         // return view('user.apartments.sponsorships');
     }
 
-    public function stats($id)
+
+    public function stats(Request $request)
+    {
+        $apt_id = $request->input('apt_id');
+        $sessions = Session::where([['apartment_id', '=', $apt_id]])->whereYear('last_activity', '=', Carbon::now('y'))->get();
+
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $month = Session::where('apartment_id', '=', $apt_id)->whereMonth('last_activity', '=', $i)->whereYear('last_activity', '=', Carbon::now('y'))->get();
+            $month = $month->count();
+            $months[] = $month;
+        }
+        //$feb = Session::where([['apartment_id', '=', $id],['last_activity', '=', Carbon::()]])->get();
+
+
+        return response()->json($months);
+    }
+
+    public function view_stats($id)
     {
         $apartment = Apartment::findOrFail($id);
-        $sessions = Session::where('apartment_id', '=', $id)->get();
 
-        return view('user.apartments.stats', compact('apartment', 'sessions'));
+        $messages_count = DB::table('messages')->where('apartment_id', '=', $id)->count();
 
+        return view('user.apartments.stats', compact('apartment', 'messages_count'));
+    }
 
-
+    public function view_messages($id, Request $request)
+    {
+        $apartment = Apartment::findOrFail($id);
+        $messages = DB::table('messages')->where('apartment_id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        return view('user.apartments.messages', ['messages' => $messages], compact('apartment'));
     }
 
     // public function view_sponsorship(Request $request)
