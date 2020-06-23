@@ -29,7 +29,7 @@
             <div class="form-group">
                 @foreach ($services as $service)
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
+                        <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
                         <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
                     </div>
                 @endforeach
@@ -62,7 +62,8 @@
             getJsonFromIndex();
 
             $(document).on('click', '#search-button', function () {
-                $('.results-container').empty();
+                sessionStorage.clear();
+                $('.results-container').empty(); // svuoto div con gli appartamenti
                 $('#search-input').val('');
                 getSearchResults();
             });
@@ -85,13 +86,13 @@
                     }
                 });
 
-                var lsRadius = parseInt(localStorage.getItem("radius"));
-                var lsBeds = parseInt(localStorage.getItem("beds"));
-                var lsRooms = parseInt(localStorage.getItem("rooms"));
-                var lsLatitude = parseFloat(localStorage.getItem("latitude"));
-                var lsLongitude = parseFloat(localStorage.getItem("longitude"));
+                var lsRadius = parseInt(sessionStorage.getItem("radius"));
+                var lsBeds = parseInt(sessionStorage.getItem("beds"));
+                var lsRooms = parseInt(sessionStorage.getItem("rooms"));
+                var lsLatitude = parseFloat(sessionStorage.getItem("latitude"));
+                var lsLongitude = parseFloat(sessionStorage.getItem("longitude"));
                 // ri trasformo la stringa in un array
-                var lsServicesId = JSON.parse(localStorage.getItem("checked"));
+                var lsServicesId = JSON.parse(sessionStorage.getItem("checked"));
 
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
@@ -108,12 +109,26 @@
                     success: function (response) {
                         console.log('getJsonFromIndex: ', response);
 
+                        // compilo gli input con i valori passati della index
+                        $('#radius').val(lsRadius);
+                        $('#rooms').val(lsRooms);
+                        $('#beds').val(lsBeds);
+                        lsServicesId.forEach((serviceId, i) => { // i -> indice dell'array
+                            $('input[data-service-id=' + serviceId + ']').prop('checked', true);
+                        });
+
+
+                        // rendering dei risultati con handlebars
                         for (var i = 0; i < response.length; i++){
                             var apartment = response[i];
                             console.log(apartment);
                             var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
                                 title: apartment.title,
-                                // aggiungere altri campi
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths
                             };
 
                             var apartmentHTML = apartmentTamplate(apartmentData);
@@ -154,8 +169,12 @@
                             var apartment = response[i];
                             console.log(apartment);
                             var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
                                 title: apartment.title,
-                                // aggiungere altri campi
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths
                             };
 
                             var apartmentHTML = apartmentTamplate(apartmentData);

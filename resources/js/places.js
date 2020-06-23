@@ -11,7 +11,7 @@ $(document).ready(function() {
             }
         }
     }).configure({
-        getRankingInfo: true
+        // getRankingInfo: true
     });
 
     placesAutocomplete.on("change", function resultSelected(e) {

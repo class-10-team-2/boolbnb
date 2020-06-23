@@ -15,7 +15,7 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $services = Service::all();
 
@@ -34,8 +34,12 @@ class SearchController extends Controller
         $radius = $request->input('radius');
         $latitude = $request->input('latitude');
         $logitude = $request->input('longitude');
-        $services = $request->input('services');
-        // var_dump($latitude);
+        if (!empty($request->input('services'))) {
+            $services = $request->input('services');
+        } else {
+            $services = [];
+        }
+
         $apartments = Apartment::search($query)
                                     ->aroundLatLng($latitude, $logitude)
                                     ->with([
@@ -44,10 +48,11 @@ class SearchController extends Controller
                                     ])
                                     ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
-                                    // ->whereIn('services', $services)
+                                    ->whereIn('services', $services)
                                     ->get();
 
         // Ritorna un json con i risultati filtrati
+        // dd($apartments);
         return $apartments;
     }
 

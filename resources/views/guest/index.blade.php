@@ -48,11 +48,11 @@
         <script type="text/javascript">
 
             $(document).on('click', '#index-search-button', function () {
-                localStorage.setItem("rooms", $('#index-rooms').val());
-                localStorage.setItem("beds", $('#index-beds').val());
-                localStorage.setItem("radius", $('#index-radius').val());
-                localStorage.setItem("latitude", $('#index-latitude').val());
-                localStorage.setItem("longitude", $('#index-longitude').val());
+                sessionStorage.setItem("rooms", $('#index-rooms').val());
+                sessionStorage.setItem("beds", $('#index-beds').val());
+                sessionStorage.setItem("radius", $('#index-radius').val());
+                sessionStorage.setItem("latitude", $('#index-latitude').val());
+                sessionStorage.setItem("longitude", $('#index-longitude').val());
 
                 // pusho in un array tutti i valori dei checkbox checked
                 var checked = [];
@@ -66,7 +66,7 @@
 
                 // trasformo l'array in una stringa
                 var jsonChecked = JSON.stringify(checked);
-                localStorage.setItem("checked", jsonChecked);
+                sessionStorage.setItem("checked", jsonChecked);
             });
 
         </script>
