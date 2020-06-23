@@ -1,12 +1,28 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="">
-        <canvas id="chart_mensile"></canvas>
+    <div class="container">
+        <h3>Statistiche per <strong>{{$apartment->title}}</strong></h3>
+        <div class="row">
+            
+            <div class="col-4">
+                @if ($messages_count > 1)
+                    <h1>Hai ricevuto in totale {{$messages_count}} messaggi per questo appartmento.</h1>
+                @elseif ($messages_count == 1)
+                    <h1>Per ora hai ricevuto 1 messaggio per questo appartmento.</h1>
+                @else
+                    <h1>Non hai ancora ricevuto messaggi per questo appartmento.</h1>
+                @endif
+                
+            </div>
+            <div class="col-8">
+                <canvas id="chart_mensile"></canvas>
 
+            </div>
+        </div>
+    
+        <input type="text" name="apt_id" value="{{$apartment->id}}" hidden>
     </div>
-    <input type="text" name="apt_id" value="{{$apartment->id}}" hidden>
-
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
