@@ -107,10 +107,12 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
-
-
-        //=======================
         $apartment = Apartment::findOrFail($id);
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+
         $sponsorship_packs = Sponsorship_pack::all();
 
         return view('user.apartments.show', compact('apartment', 'sponsorship_packs'));
