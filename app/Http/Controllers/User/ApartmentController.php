@@ -107,21 +107,7 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
-        $ip = $request->ip();
-        $today = Carbon::now()->format('Y-m-d');
 
-        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
-
-
-        if ($apart_visited_today_by_user->isEmpty()) {
-            $session = new Session;
-            $session->ip_address = $ip;
-            $session->apartment_id = $id;
-            $session->last_activity = $today;
-            $session->user_id = Auth::id();
-
-            $session->save();
-        }
 
         //=======================
         $apartment = Apartment::findOrFail($id);
