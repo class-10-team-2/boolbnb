@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Session;
 use App\Service;
 use App\Message;
 use App\Sponsorship;
@@ -103,8 +104,25 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        $ip = $request->ip();
+        $today = Carbon::now()->format('Y-m-d');
+
+        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
+
+
+        if ($apart_visited_today_by_user->isEmpty()) {
+            $session = new Session;
+            $session->ip_address = $ip;
+            $session->apartment_id = $id;
+            $session->last_activity = $today;
+            $session->user_id = Auth::id();
+
+            $session->save();
+        }
+
+        //=======================
         $apartment = Apartment::findOrFail($id);
         $sponsorship_packs = Sponsorship_pack::all();
 
@@ -234,6 +252,31 @@ class ApartmentController extends Controller
 
         // return view('user.apartments.show', 4);
         // return view('user.apartments.sponsorships');
+    }
+
+
+    public function stats(Request $request)
+    {
+        $apt_id = $request->input('apt_id');
+        $sessions = Session::where([['apartment_id', '=', $apt_id]])->whereYear('last_activity', '=', Carbon::now('y'))->get();
+
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $month = Session::where('apartment_id', '=', $apt_id)->whereMonth('last_activity', '=', $i)->whereYear('last_activity', '=', Carbon::now('y'))->get();
+            $month = $month->count();
+            $months[] = $month;
+        }
+        //$feb = Session::where([['apartment_id', '=', $id],['last_activity', '=', Carbon::()]])->get();
+
+
+        return response()->json($months);
+    }
+
+    public function view_stats($id)
+    {
+        $apartment = Apartment::findOrFail($id);
+
+        return view('user.apartments.stats', compact('apartment'));
     }
 
     // public function view_sponsorship(Request $request)

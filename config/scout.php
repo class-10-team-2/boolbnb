@@ -88,6 +88,4 @@ return [
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
 
-
-
 ];

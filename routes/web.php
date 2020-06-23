@@ -31,6 +31,17 @@ Route::namespace('User')
     ->middleware('auth')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
+        Route::get('apartments/{apartment}/stats', 'ApartmentController@view_stats')->name('apartments.stats');
+    });
+
+Route::get('json-stats', 'User\ApartmentController@stats');
+
+Route::namespace('Guest')
+    ->name('guest.')
+    ->prefix('guest')
+    ->group(function () {
+        Route::resource('apartments', 'ApartmentController');
+        // Route::post('apartments/{apartment}', 'ApartmentController@message');
     });
 
 
@@ -40,12 +51,12 @@ Route::namespace('User')
 // Braintree
 Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 Route::namespace('User')
-        ->prefix('user')
-        ->middleware('auth')
-        ->group(function () {
-            Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
-            // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
-        });
+    ->prefix('user')
+    ->middleware('auth')
+    ->group(function () {
+        Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
+        // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
+    });
 
 // Pagina di ricerca
 Route::get('guest/apartments/search', 'Guest\SearchController@index')->name('guest.apartments.search');
