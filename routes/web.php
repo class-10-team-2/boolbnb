@@ -32,6 +32,7 @@ Route::namespace('User')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
         Route::get('apartments/{apartment}/stats', 'ApartmentController@view_stats')->name('apartments.stats');
+        Route::get('apartments/{apartment}/messages', 'ApartmentController@view_messages')->name('apartments.messages');
     });
 
 Route::get('json-stats', 'User\ApartmentController@stats');
