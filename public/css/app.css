@@ -11019,3 +11019,59 @@ main ::placeholder {
   color: lightgrey;
 }
 
+main .controls {
+  display: flex;
+  margin-top: 20px;
+}
+
+main .controls .btn {
+  margin-right: 15px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+main .controls .btn:hover {
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+main .controls .btn-edit:hover {
+  background-color: green;
+}
+
+main .payment {
+  margin-top: 30px;
+}
+
+main .payment .options {
+  padding: 15px;
+  border: 2px solid lightgrey;
+  background-color: white;
+  border-radius: 5px;
+}
+
+main .payment p {
+  color: black;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+}
+
+main .payment p i {
+  padding-right: 5px;
+}
+
+main .paypal button {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .paypal button:hover {
+  border: none;
+  color: white;
+  background-color: blue;
+}
+

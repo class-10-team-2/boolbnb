@@ -55,6 +55,66 @@ main {
         color: lightgrey;
     }
 
+    .controls{
+        display: flex;
+        margin-top: 20px;
+        .btn{
+            margin-right: 15px;
+            color:black;
+            background-color: white;
+            border: 1px solid black;
+            &:hover{
+                background-color: red;
+                color: white;
+                border: none;
+            }
+        }
+        .btn-edit{
+            &:hover{
+                background-color: green;
+            }
+        }
+
+
+    }
+
+    .payment{
+
+        margin-top: 30px;
+        .options{
+            padding: 15px;
+            border: 2px solid lightgrey;
+            background-color: white;
+            border-radius: 5px;
+
+        }
+
+        p{
+            color: black;
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 10px;
+            i{
+                padding-right: 5px;
+            }
+        }
+
+    }
+
+    .paypal{
+        button{
+            padding: 10px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            &:hover{
+                border: none;
+                color: white;
+                background-color: blue;
+            }
+        }
+
+    }
+
 
 
 
