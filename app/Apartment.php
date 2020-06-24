@@ -55,7 +55,11 @@ class Apartment extends Model
             return $data['id'];
         })->toArray();
 
-        $array['exp_date'] = $this->activesponsorship->expiration_date;
+        if (isset($this->activesponsorship->expiration_date)) {
+            $array['exp_date'] = $this->activesponsorship->expiration_date;
+        }
+
+        // $array['exp_date'] = $this->activesponsorship->expiration_date;
 
         return $array;
     }

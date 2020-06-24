@@ -38,6 +38,13 @@ class SponsorshipController extends Controller
         $new_active_sponsorship->expiration_date = $exp_date;
         $new_active_sponsorship->save();
 
+        // attivo un evento di laravel per aggiornare la colonna updated_at
+        // in questo modo Scout Extended che resta sempre in ascolto, capta l'evento
+        // e aggiorna l'index di Algolia con il record 'exp_date'
+        $apartment_to_touch = Apartment::find($request->input('apartId'));
+        sleep(1);
+        $apartment_to_touch->touch();
+
         return response('Success', 200)->header('Content-Type', 'text/plain');
         // $data = $request->input('id');
 
