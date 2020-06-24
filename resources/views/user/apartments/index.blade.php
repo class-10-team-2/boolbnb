@@ -2,6 +2,10 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if ($apartments->count() == 0)
+            <p>Non hai ancora registrato nessun appartamento</p>
+            <a class="btn btn-primary" href="{{route('user.apartments.create')}}">Inserisci il tuo appartmento</a>
+        @endif
         @foreach ($apartments as $apartment)
         <div class="col-4">
             <div class="card" style="width: 18rem;">
