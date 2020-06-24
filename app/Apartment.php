@@ -37,12 +37,8 @@ class Apartment extends Model
     // INDICIZZAZIONE DELLE RELAZIONI PER ALGOLIA
     public function toSearchableArray()
     {
-        // $this->services;
 
         $array = $this->toArray();
-
-
-
 
         $array = $this->transform($array);
 
@@ -58,12 +54,8 @@ class Apartment extends Model
         $array['services'] = $this->services->map(function($data) {
             return $data['id'];
         })->toArray();
-        // $array['first_name'] = $this->user->first_name;
-        $array['exp_date'] = $this->activesponsorship->expiration_date;
 
-        // $array['exp_date'] = $this->sponsorships->map(function($data) {
-        //     return $data['expiration_date'];
-        // });
+        $array['exp_date'] = $this->activesponsorship->expiration_date;
 
         return $array;
     }
