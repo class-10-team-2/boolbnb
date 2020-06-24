@@ -9,7 +9,7 @@
 
         <div class="row">
 
-            {{-- <div class="col-4">
+            <div class="col-4">
                 @if ($messages_count > 1)
                     <h1>Hai ricevuto in totale {{$messages_count}} messaggi per questo appartmento.</h1>
                 @elseif ($messages_count == 1)
@@ -18,7 +18,7 @@
                     <h1>Non hai ancora ricevuto messaggi per questo appartmento.</h1>
                 @endif
 
-            </div> --}}
+            </div>
             <div class="col-8 ">
                 <div class="chart-views ">
                     <p>Visualizzazioni</p>
