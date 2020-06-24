@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class ApartmentController extends Controller
@@ -277,7 +278,16 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
-        return view('user.apartments.stats', compact('apartment'));
+        $messages_count = DB::table('messages')->where('apartment_id', '=', $id)->count();
+
+        return view('user.apartments.stats', compact('apartment', 'messages_count'));
+    }
+
+    public function view_messages($id, Request $request)
+    {
+        $apartment = Apartment::findOrFail($id);
+        $messages = DB::table('messages')->where('apartment_id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        return view('user.apartments.messages', ['messages' => $messages], compact('apartment'));
     }
 
     // public function view_sponsorship(Request $request)
