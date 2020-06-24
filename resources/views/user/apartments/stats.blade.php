@@ -1,11 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
-        <h3>Statistiche per <strong>{{$apartment->title}}</strong></h3>
+    <div class="container ">
+        <div class="titolo-stats">
+            <h3> Le statistiche del tuo appartmento <strong>{{$apartment->title}}</strong></h3>
+
+        </div>
+
         <div class="row">
-            
-            <div class="col-4">
+
+            {{-- <div class="col-4">
                 @if ($messages_count > 1)
                     <h1>Hai ricevuto in totale {{$messages_count}} messaggi per questo appartmento.</h1>
                 @elseif ($messages_count == 1)
@@ -13,14 +17,19 @@
                 @else
                     <h1>Non hai ancora ricevuto messaggi per questo appartmento.</h1>
                 @endif
-                
-            </div>
-            <div class="col-8">
-                <canvas id="chart_mensile"></canvas>
+
+            </div> --}}
+            <div class="col-8 ">
+                <div class="chart-views ">
+                    <p>Visualizzazioni</p>
+                    <canvas id="chart_mensile"></canvas>
+
+                </div>
+
 
             </div>
         </div>
-    
+
         <input type="text" name="apt_id" value="{{$apartment->id}}" hidden>
     </div>
 @endsection
@@ -48,9 +57,9 @@ $(document).ready(function() {
                             apt_id: $('input[name=apt_id]').val(),
                         },
                         success: function (response) {
-                            
-                            makeChart(response); 
-                            
+
+                            makeChart(response);
+
                         },
                         error: function (response) {
                             console.log('Error:', response);
@@ -91,7 +100,7 @@ $(document).ready(function() {
         });
     }
 
-    
+
 });
 
 </script>
