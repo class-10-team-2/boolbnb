@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class ApartmentController extends Controller
@@ -114,24 +115,12 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
-        $ip = $request->ip();
-        $today = Carbon::now()->format('Y-m-d');
-
-        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
-
-
-        if ($apart_visited_today_by_user->isEmpty()) {
-            $session = new Session;
-            $session->ip_address = $ip;
-            $session->apartment_id = $id;
-            $session->last_activity = $today;
-            $session->user_id = Auth::id();
-
-            $session->save();
+        $apartment = Apartment::findOrFail($id);
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
         }
 
-        //=======================
-        $apartment = Apartment::findOrFail($id);
         $sponsorship_packs = Sponsorship_pack::all();
 
         return view('user.apartments.show', compact('apartment', 'sponsorship_packs'));
@@ -259,7 +248,16 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
-        return view('user.apartments.stats', compact('apartment'));
+        $messages_count = DB::table('messages')->where('apartment_id', '=', $id)->count();
+
+        return view('user.apartments.stats', compact('apartment', 'messages_count'));
+    }
+
+    public function view_messages($id, Request $request)
+    {
+        $apartment = Apartment::findOrFail($id);
+        $messages = DB::table('messages')->where('apartment_id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        return view('user.apartments.messages', ['messages' => $messages], compact('apartment'));
     }
 
     // public function view_sponsorship(Request $request)

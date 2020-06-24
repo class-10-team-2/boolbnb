@@ -8,7 +8,7 @@
               <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
               <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
-                <div class="">
+                {{-- <div class="">
                     <span>{{$apartment->rooms}}</span>
 
                 </div>
@@ -24,10 +24,7 @@
                     <span>{{$apartment->mq}}</span>
 
                 </div>
-                <div class="">
-                    <p>{{$apartment->address}}</p>
-
-                </div>
+                
                 @foreach ($apartment->services as $service)
 
                     <div class="">
@@ -35,7 +32,11 @@
 
                     </div>
 
-                @endforeach
+                @endforeach --}}
+                <div class="">
+                    <p>{{$apartment->address}}</p>
+
+                </div>
 
                 <a href="{{route('user.apartments.show', $apartment->id)}}" class="btn btn-primary">Gestisci</a>
               </div>
