@@ -48,6 +48,7 @@
     </div>
 
     @include('layouts.apartment-result-handlebars')
+    @include('layouts.apartment-sponsored-result-handlebars')
 
 
         {{-- JAVASCRIPT --}}
@@ -59,14 +60,15 @@
                 sessionStorage.clear();
                 $('.results-container').empty(); // svuoto div con gli appartamenti
                 $('#search-input').val('');
+                getSponsored();
                 getSearchResults();
             });
 
 
             ///////////////////// FUNZIONI /////////////////////
-            // Handlebars
-            var source = $("#apartment-result-template").html();
-            var apartmentTamplate = Handlebars.compile(source);
+            // Template Handlebars per gli appartamenti non sponsorizzati
+            var apartmentSource = $("#apartment-result-template").html();
+            var apartmentTamplate = Handlebars.compile(apartmentSource);
             /**
              * Nel 'data' prende valori degli input del form di ricerca della home page
              * che sono stati salvati nel local storage.
@@ -145,8 +147,7 @@
                 });
 
                 $.ajax({
-                    // url: '/search/get-json-with-algolia-results',
-                    url: '/search-highlights',
+                    url: '/search/get-json-with-algolia-results',
                     type: 'get',
                     // dataType: "json",
                     data: {
@@ -178,6 +179,56 @@
                     },
                     error: function (response) {
                         console.log('getSearchResults Error:', response);
+                    }
+                });
+            }
+
+            // Template Handlebars per gli appartamenti sponsorizzati
+            var sponsoredApartmentSource = $("#apartment-sponsored-result-template").html();
+            var sponsoredApartmentTamplate = Handlebars.compile(sponsoredApartmentSource);
+
+            // restituisce un json con i risultati filtrati da algolia
+            function getSponsored() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    // url: '/search/get-json-with-algolia-results',
+                    url: '/search-sponsored',
+                    type: 'get',
+                    // dataType: "json",
+                    data: {
+                        // radius: $('#radius').val(),
+                        beds: $('#rooms').val(),
+                        rooms: $('#beds').val(),
+                        latitude: $('#latitude').val(),
+                        longitude: $('#longitude').val(),
+
+                    },
+                    success: function (response) {
+                        console.log('getSponsored: ', response);
+
+                        for (var i = 0; i < response.length; i++){
+                            var apartment = response[i];
+                            console.log(apartment);
+                            var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
+                                title: apartment.title,
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths
+                            };
+
+                            var sponsoredApartmentHTML = sponsoredApartmentTamplate(apartmentData);
+                            $('.results-container').append(sponsoredApartmentHTML);
+                        }
+                    },
+                    error: function (response) {
+                        console.log('getSponsored Error:', response);
                     }
                 });
             }
