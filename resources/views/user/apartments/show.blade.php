@@ -2,12 +2,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-    <div class="col-12">
-        <div class="card" style="width: 18rem;">
+        <div class="card col-8" >
+            {{-- style="width: 18rem;" --}}
             {{-- immagine caricata come file --}}
-            <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
+            {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
+            
             {{-- immagine caricata con la factory --}}
-            {{-- <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
+            <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
             <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <div class="">
@@ -42,38 +43,47 @@
                     @csrf
                     <input class="btn btn-danger" type="submit" name="" value="ELIMINA">
                 </form>
-
+                <a href="{{route('user.apartments.messages', $apartment->id)}}" class="btn btn-primary">Vedi i messaggi</a>
+                <a href="{{route('user.apartments.stats', $apartment->id)}}" class="btn btn-primary">Vai alle statistiche</a>
             </div>
         </div>
+   
+
+
+        <div class="sponsorship-card card col-4">
+            {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
+            {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
+                {{-- @csrf
+                @method('POST') --}}
+                
+                <input type="hidden" name="id" value="{{$apartment->id}}">
+                <h3>Sponsorizza il tuo appartamento</h3>
+                <p>Scegli il piano di sponsorizzazione piu adatto alle tue esigenze, e ottieni maggiore visibiltà nei risultati di ricerca.</p>
+                @foreach ($sponsorship_packs as $sponsorship_pack)
+                    <div class="form-check">
+                        <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
+                        <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}">
+                        <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration}} ore</label>
+                    </div>
+                @endforeach
+                    <button class="btn btn-primary active_sponsor_btn">Sponsorizza</button>
+                    <div class="box-payment d-none">
+                        <div id="dropin-container"></div>
+                        <button type="submit" id="submit-button" class="btn btn-primary">Conferma pagamento</button>
+                    </div>
+            {{-- </form> --}}
+        </div>
+
     </div>
-</div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
-                {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
-                    {{-- @csrf
-                    @method('POST') --}}
-
-                    <input type="hidden" name="id" value="{{$apartment->id}}">
-
-
-                    @foreach ($sponsorship_packs as $sponsorship_pack)
-                        <div class="form-check">
-                            <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
-                            <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}">
-                            <label>{{$sponsorship_pack->price}} Euro per {{$sponsorship_pack->duration}} ore</label>
-                        </div>
-                    @endforeach
-
-                    <div id="dropin-container"></div>
-                    <button type="submit" id="submit-button">Conferma metodo di pagamento</button>
-                {{-- </form> --}}
-            </div>
-        </div>
-
     <script>
+        //======= visualizzazione box pagamento
+        $('button.active_sponsor_btn').on('click', function () {
+           
+            $('.box-payment').removeClass("d-none");
+        });
+        //=======
         var button = document.querySelector('#submit-button');
+
         braintree.dropin.create({
             //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
             authorization: "sandbox_zjfh858v_q3x76bj5z6dt98t9",

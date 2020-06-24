@@ -3,9 +3,10 @@
 <div class="container">
     <div class="row">
         @foreach ($apartments as $apartment)
-        <div class="col-6">
+        <div class="col-4">
             <div class="card" style="width: 18rem;">
-              <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}">
+              {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
+              <img src="{{asset($apartment->img_path)}}"" class="card-img-top" alt="{{$apartment->title}}">
               <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 {{-- <div class="">
