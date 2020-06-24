@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-  <div class="row">
+  <div class="row row-img">
     <img class="apt-image" src="{{asset($apartment->img_path)}}" alt="">
   </div>
   <div class="col-12">
