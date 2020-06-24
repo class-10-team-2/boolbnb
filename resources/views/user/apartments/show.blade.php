@@ -60,11 +60,21 @@
                 <h3>Sponsorizza il tuo appartamento</h3>
                 <p>Scegli il piano di sponsorizzazione piu adatto alle tue esigenze, e ottieni maggiore visibiltà nei risultati di ricerca.</p>
                 @foreach ($sponsorship_packs as $sponsorship_pack)
+                    @if ($sponsorship_pack->duration == 24)
+                    <div class="form-check">
+                        <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
+                        <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}" checked>
+                        <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration}} ore</label>
+                    </div>
+                    @else 
                     <div class="form-check">
                         <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
                         <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}">
-                        <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration}} ore</label>
-                    </div>
+                        <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration / 24}} giorni</label>
+                    </div>  
+                    @endif
+                    
+                    
                 @endforeach
                     <button class="btn btn-primary active_sponsor_btn">Sponsorizza</button>
                     <div class="box-payment d-none">
