@@ -169,7 +169,7 @@
                             });
 
                         } else {
-                            alert('Payment failed');
+                            alert('Pagamento fallito');
                         }
                     }, 'json');
                 });
