@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+/* SCSS RGB */
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10930,5 +10932,22 @@ a.text-dark:focus {
 
 .img-in-results {
   width: 200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+nav.navbar {
+  background-color: #fe675d;
+}
+
+main .row-img img.apt-image {
+  width: 100vw;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
