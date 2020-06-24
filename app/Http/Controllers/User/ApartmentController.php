@@ -28,6 +28,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        // $duration = 144;
+        // $exp_date = Carbon::now()->addHour($duration);
+        // dd($exp_date);
         $userLogged = Auth::id();
         $apartments = Apartment::where('user_id', '=', $userLogged)->get();
 
@@ -86,6 +89,7 @@ class ApartmentController extends Controller
         $data['user_id'] = Auth::id();
         $apartment = new Apartment;
         $apartment->fill($data);
+
         $saved = $apartment->save();
 
         if (!$saved) {
@@ -94,7 +98,15 @@ class ApartmentController extends Controller
 
         if (isset($data['services'])) {
             $apartment->services()->attach($data['services']);
+            // $apartment->services()->attach($request->input('services'));
         }
+
+        // $services = [
+        //     'services' => $data['services']
+        // ]
+        //
+        // $apartment->fill($data['services']);
+        // $updated = $apartment->update();
 
         return redirect()->route('user.apartments.show', $apartment->id);
     }
@@ -107,10 +119,12 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
-
-
-        //=======================
         $apartment = Apartment::findOrFail($id);
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+
         $sponsorship_packs = Sponsorship_pack::all();
 
         return view('user.apartments.show', compact('apartment', 'sponsorship_packs'));
@@ -176,20 +190,20 @@ class ApartmentController extends Controller
             $data['img_path'] = $path;
         }
 
+        if (empty($data['services'])) {
+            unset($data['services']);
+            $apartment->services()->detach();
+        } else {
+            // $apartment->services()->sync($data['services']);
+            $apartment->services()->sync($request->input('services'));
+        }
+
         $apartment->fill($data);
         $updated = $apartment->update();
 
         if (!$updated) {
             return redirect()->back();
         }
-
-        if (empty($data['services'])) {
-            unset($data['services']);
-            $apartment->services()->detach();
-        } else {
-            $apartment->services()->sync($data['services']);
-        }
-
 
         return redirect()->route('user.apartments.show', $apartment->id);
     }
@@ -227,6 +241,7 @@ class ApartmentController extends Controller
         $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
         $duration = $sponsorship_checked->duration;
         $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
+        // $exp_date = Carbon::now()->addHour($duration);
         $new_sponsorship->expiration_date = $exp_date;
         $new_sponsorship->save();
 

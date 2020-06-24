@@ -76,7 +76,7 @@
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
             //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
-            authorization: "sandbox_9q9gxqn3_2t648jjr84vjjvf4",
+            authorization: "sandbox_zjfh858v_q3x76bj5z6dt98t9",
             //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
 
             container: '#dropin-container'
