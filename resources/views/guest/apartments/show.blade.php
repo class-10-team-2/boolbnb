@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="row row-img">
-    <img class="apt-image" src="{{asset('storage/' .$apartment->img_path)}}" alt="">
+    <img class="apt-image" src="{{asset($apartment->img_path)}}" alt="{{$apartment->title}}">
   </div>
   <div class="col-12">
     <div class="row container-margin">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSponsorshipsTable extends Migration
+class CreateActiveSponsorshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSponsorshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sponsorships', function (Blueprint $table) {
+        Schema::create('active_sponsorships', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('sponsorship_pack_id')->constrained();
-            // $table->dateTime('expiration_date');
-            $table->unsignedBigInteger('expiration_date');
+            $table->string('expiration_date', 15);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateSponsorshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsorships');
+        Schema::dropIfExists('active_sponsorships');
     }
 }

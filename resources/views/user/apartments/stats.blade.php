@@ -34,9 +34,6 @@ $(document).ready(function() {
 
     getStats();
 
-    
-
-
     function getStats() {
                     $.ajaxSetup({
                         headers: {
@@ -64,25 +61,34 @@ $(document).ready(function() {
     function makeChart(current_year_sessions){
         var ctx = $('#chart_mensile');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+            // The type of chart we want to create
+            type: 'bar',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October','November','December'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: current_year_sessions
-            }]
-    },
+            // The data for our dataset
+            data: {
+                labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio','Agosto', 'Settembre', 'Ottobre','Novembre','Dicembre'],
+                datasets: [{
+                    label: 'Visualizzazioni mensili',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: current_year_sessions
+                }]
+            },
 
-    
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMax: 10,
+                            min: 0,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
 
-    // Configuration options go here
-    options: {}
-    });
+        });
     }
 
     
