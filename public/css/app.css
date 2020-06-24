@@ -11075,3 +11075,49 @@ main .paypal button:hover {
   background-color: blue;
 }
 
+main .titolo-stats {
+  margin: 30px;
+}
+
+main .chart-views {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+main .chart-views p {
+  font-size: 20px;
+}
+
+main .create .apt-name {
+  width: 400px;
+}
+
+main .create .apt-address {
+  width: 720px;
+}
+
+main .create .input-short {
+  width: 50px;
+}
+
+main .input-check {
+  margin-bottom: 0.5rem;
+  margin-right: 10px;
+}
+
+main .button-create input {
+  color: black;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .button-create input:hover {
+  border: none;
+  color: white;
+  background-color: blue;
+}
+
