@@ -10,7 +10,7 @@
             {{-- <img src="{{asset($apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
             <div class="card-body">
                 <h5 class="card-title">{{$apartment->title}}</h5>
-                <div class="">
+                {{-- <div class="">
                     <span>{{$apartment->rooms}}</span>
                 </div>
 
@@ -24,7 +24,7 @@
 
                 <div class="">
                     <span>{{$apartment->mq}}</span>
-                </div>
+                </div> --}}
 
                 <div class="">
                     <p>{{$apartment->address}}</p>
