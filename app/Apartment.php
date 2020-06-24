@@ -29,11 +29,14 @@ class Apartment extends Model
     {
         return $this->belongsToMany('App\Service');
     }
+    public function activesponsorship()
+    {
+        return $this->hasOne('App\ActiveSponsorship');
+    }
 
     // INDICIZZAZIONE DELLE RELAZIONI PER ALGOLIA
     public function toSearchableArray()
     {
-        // $this->services;
 
         $array = $this->toArray();
 
@@ -51,12 +54,8 @@ class Apartment extends Model
         $array['services'] = $this->services->map(function($data) {
             return $data['id'];
         })->toArray();
-        // $array['first_name'] = $this->user->first_name;
-        // $array['sponsorship_'] = $this->author->email;
 
-        $array['expiration_date'] = $this->sponsorships->map(function($data) {
-            return $data['expiration_date'];
-        })->toArray();
+        $array['exp_date'] = $this->activesponsorship->expiration_date;
 
         return $array;
     }
