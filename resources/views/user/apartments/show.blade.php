@@ -119,9 +119,9 @@
         var button = document.querySelector('#submit-button');
 
         braintree.dropin.create({
-            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+            //===============!!!!!!!!! TOKEN !!!!!!!!!==================
             authorization: "sandbox_zjfh858v_q3x76bj5z6dt98t9",
-            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+            //===============!!!!!!!!! BRAINTREE !!!!!!!!!==================
 
             container: '#dropin-container'
         }, function (createErr, instance) {
