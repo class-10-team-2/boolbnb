@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row row-img">
-        <img class="apt-image" src="{{asset('storage/' .$apartment->img_path)}}" alt="">
+        <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
     </div>
     <div class="col-12">
         <div class="row container-margin">
@@ -14,7 +14,7 @@
         <hr>
     </div>
     <div class="row container-margin">
-        <div class="col-8">
+        <div class="col-md-6">
           <div class="apt-info">
             <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
             <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Letti' : '1 Letto'}}</span>
@@ -56,58 +56,65 @@
                   @csrf
                   <input class="btn btn-danger" type="submit" name="" value="Elimina">
               </form>
-
-
           </div>
+
         </div>
 
+        
+        <div class="col-md-5 offset-md-1 payment">
+            {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
+            {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
+                {{-- @csrf
+                @method('POST') --}}
 
 
+                <input type="hidden" name="id" value="{{$apartment->id}}">
 
 
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 payment">
-                {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
-                {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
-                    {{-- @csrf
-                    @method('POST') --}}
-
-
-                    <input type="hidden" name="id" value="{{$apartment->id}}">
-
-
-                    <div class="options">
-                    
-                        <p ><i class="fas fa-chart-line"></i> Highlight your apartment</p>
-
-                        @foreach ($sponsorship_packs as $sponsorship_pack)
-                            <div class="form-check">
+                <div class="options">
+                    <h4><i class="fas fa-chart-line"></i> Metti in evidenza il tuo appartamento</h4>
+                    <p>Scegli il piano di sponsorizzazione piu adatto alle tue esigenze. Otterrai maggiore visibiltà nei risultati di ricerca per il periodo in cui hai attivato la sponsorizzazione.</p>
+                    @foreach ($sponsorship_packs as $sponsorship_pack)
+                        <div class="form-check">
+                            @if ($sponsorship_pack->duration == 24)
+                                <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
+                                <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}" checked>
+                                <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration / 24}} giorno</label>
+                            @else
                                 <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
                                 <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}">
-                                <label>{{$sponsorship_pack->price}} Euro per {{$sponsorship_pack->duration}} ore</label>
-                            </div>
-                        @endforeach
-
-                    </div>
-
+                                <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration / 24}} giorni</label>
+                            @endif  
+                        </div>
+                    @endforeach
+                    <button class="go-to-payment btn btn-primary">Sponsorizza</button>
+                </div>
+                <div class="box-paypal d-none">
                     <div class="paypal">
 
                         <div id="dropin-container"></div>
-                        <button type="submit" id="submit-button">Checkout</button>
+                        <button type="submit" id="submit-button">Conferma pagamento</button>
+                        <button class="back-button">Indietro</button>
 
                     </div>
-                {{-- </form> --}}
-            </div>
+                </div>
+                
+            {{-- </form> --}}
         </div>
     </div>
+</div>
     <script>
         //======= visualizzazione box pagamento
-        $('button.active_sponsor_btn').on('click', function () {
+        $('button.go-to-payment').on('click', function () {
            
-            $('.box-payment').removeClass("d-none");
+            $('.box-paypal').removeClass("d-none");
+            
         });
+        $('button.back-button').on('click', function () {
+           
+           $('.box-paypal').addClass("d-none");
+           
+       });
         //=======
         var button = document.querySelector('#submit-button');
 
@@ -162,7 +169,7 @@
                             });
 
                         } else {
-                            alert('Payment failed');
+                            alert('Pagamento fallito');
                         }
                     }, 'json');
                 });

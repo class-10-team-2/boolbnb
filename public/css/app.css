@@ -11042,6 +11042,7 @@ main .controls .btn-edit:hover {
 }
 
 main .payment {
+  position: static;
   margin-top: 30px;
 }
 
@@ -11062,14 +11063,34 @@ main .payment p i {
   padding-right: 5px;
 }
 
-main .paypal button {
+main .box-paypal {
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .box-paypal .paypal {
+  max-width: 400px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .box-paypal .paypal button {
   padding: 10px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
 }
 
-main .paypal button:hover {
+main .box-paypal .paypal button:hover {
   border: none;
   color: white;
   background-color: blue;
