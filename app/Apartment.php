@@ -40,7 +40,7 @@ class Apartment extends Model
 
         $array = $this->toArray();
 
-        // $array = $this->transform($array);
+        $array = $this->transform($array);
 
         // Creo il record _geoloc da inviare all'indice di Algolia.
         // Algolia ha bisogno che il record con lat e lng abbia questo nome
@@ -51,7 +51,7 @@ class Apartment extends Model
             'lng' => $array['longitude']
         ];
 
-        $array['services'] = $this->services->map(function($data) {
+        $array['services'] = $this->services->map(function ($data) {
             return $data['id'];
         })->toArray();
 
@@ -63,5 +63,4 @@ class Apartment extends Model
 
         return $array;
     }
-
 }
