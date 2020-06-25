@@ -35,7 +35,7 @@ class SearchController extends Controller
         $beds = $request->input('beds');
         $radius = $request->input('radius');
         $latitude = $request->input('latitude');
-        $logitude = $request->input('longitude');
+        $longitude = $request->input('longitude');
         if (!empty($request->input('services'))) {
             $services = $request->input('services');
         } else {
@@ -43,12 +43,12 @@ class SearchController extends Controller
         }
 
         $apartments = Apartment::search($query)
-                                    ->aroundLatLng($latitude, $logitude)
+                                    ->aroundLatLng($latitude, $longitude)
                                     ->with([
                                         'aroundRadius' => $radius*1000,
                                         'hitsPerPage' => 30,
                                     ])
-                                    ->where('rooms', '>=', $rooms)
+                                    ->where('rooms', '=', $rooms)
                                     ->where('beds', '>=', $beds)
                                     ->whereIn('services', $services)
                                     ->get();
