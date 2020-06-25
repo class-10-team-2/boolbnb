@@ -17,16 +17,13 @@ return [
     */
 
     'searchableAttributes' => [
-        'unordered(longitude)',
-        'unordered(latitude)',
+        'rooms',
+        'beds',
         'address',
-        'unordered(beds)',
-        'unordered(rooms)',
-        'title',
-        'unordered(services)',
+        'longitude',
+        'latitude',
         'unordered(_geoloc.lat)',
         'unordered(_geoloc.lng)',
-        'unordered(exp_date)',
     ],
 
     /*
