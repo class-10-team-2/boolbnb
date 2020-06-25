@@ -11171,3 +11171,29 @@ main .card-img-top {
   padding: 20px 0;
 }
 
+main .img-thumbnail {
+  width: 280px;
+  height: 220px;
+}
+
+main .card {
+  width: 280px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+main .card .card-title {
+  font-weight: 800;
+}
+
+main .card-container {
+  margin: 30px 0;
+}
+
+main .btn-show {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
