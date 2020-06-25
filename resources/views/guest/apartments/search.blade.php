@@ -158,7 +158,7 @@
                         rooms: parseInt($('#beds').val()),
                         latitude: parseFloat($('#latitude').val()),
                         longitude: parseFloat($('#longitude').val()),
-                        services: /////////////////////////////////////////////////////////////////////
+                        //services: /////////////////////////////////////////////////////////////////////
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);
