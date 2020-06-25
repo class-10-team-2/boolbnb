@@ -52,7 +52,7 @@ class ApartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Apartment $apartment)
     {
         $data = $request->all();
 
@@ -267,6 +267,11 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+
         $messages_count = DB::table('messages')->where('apartment_id', '=', $id)->count();
 
         return view('user.apartments.stats', compact('apartment', 'messages_count'));
@@ -275,6 +280,11 @@ class ApartmentController extends Controller
     public function view_messages($id, Request $request)
     {
         $apartment = Apartment::findOrFail($id);
+
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
         $messages = DB::table('messages')->where('apartment_id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('user.apartments.messages', ['messages' => $messages], compact('apartment'));
     }
