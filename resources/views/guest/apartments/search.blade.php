@@ -59,7 +59,7 @@
             $(document).on('click', '#search-button', function () {
                 sessionStorage.clear();
                 $('.results-container').empty(); // svuoto div con gli appartamenti
-                $('#search-input').val('');
+                // $('#search-input').val('');
                 getSponsored();
                 getSearchResults();
             });
