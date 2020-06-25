@@ -2,7 +2,12 @@
 @section('content')
 <div class="container">
   <div class="row">
+
     <div class="col-8 create">
+        <div class="title-margin">
+            <h2>Crea il tuo appartamento</h2>
+
+        </div>
       <form action="{{route('user.apartments.store')}}" method="POST" enctype="multipart/form-data">
         @method("POST")
         @csrf
@@ -51,7 +56,7 @@
         </div>
         <div class="form-group">
           <label for="mq">Metri quadri</label>
-          <input class='input-short' type="number" min='0' id="mq" name="mq" value="{{old('mq')}}">
+          <input class='input-short' type="number" min='10' id="mq" name="mq" value="{{old('mq')}}">
           {{-- togliere frecce --}}
           @error('mq')
             <small class="form-text">{{$message}}</small>
@@ -68,16 +73,22 @@
           </div>
         </div>
         <div class="form-group">
-          <h3>Seleziona i servizi disponibili</h3>
-          @foreach ($services as $service)
-            <div class="form-check form-check-inline">
-              <input class="input-check" type="checkbox" id="service-{{$service->id}}" name="services[]" value="{{$service->id}}"
-              {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
-
-              <label for="service-{{$service->id}}">{{$service->name}}</label>
+            <div class="title-margin">
+                <h3>Seleziona i servizi disponibili</h3>
             </div>
+
+
+             @foreach ($services as $service)
+               <div class="form-check form-check-inline ">
+                 <input class="input-check" type="checkbox" id="service-{{$service->id}}" name="services[]" value="{{$service->id}}"
+                 {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+
+                 <label for="service-{{$service->id}}">{{$service->name}}</label>
+               </div>
+
+
           @endforeach
-          <div class="form-group button-create">
+          <div class="form-group button-margin">
             <input class="btn btn-primary" type="submit" value="Inserisci">
           </div>
         </div>

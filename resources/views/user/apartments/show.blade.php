@@ -4,15 +4,29 @@
     <div class="row row-img">
         <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
     </div>
-    <div class="col-12">
-        <div class="row container-margin">
-          <h1 class="apt-title">{{$apartment->title}}</h1>
+    <div class="col-12 flex-dir">
+        <div class="">
+            <div class="row margin-zero ">
+              <h1 class="apt-title">{{$apartment->title}}</h1>
+            </div>
+            <div class="row margin-zero">
+              <h4 class="apt-address"><a href="http://www.google.com/maps/place/{{$apartment->latitude}},{{$apartment->longitude}}" target="_blank"><i class="fas fa-map-marker-alt"></i> {{$apartment->address}}</a></h4>
+            </div>
+            <div class="stats-mess row">
+                <a href="{{route('user.apartments.stats', $apartment->id)}}" class="btn btn-primary btn-space">Statistiche</a>
+                <a href="{{route('user.apartments.messages', $apartment->id)}}" class="btn btn-primary btn-space">Messaggi</a>
+
+            </div>
+
         </div>
-        <div class="row container-margin">
-          <h4 class="apt-address"><a href="http://www.google.com/maps/place/{{$apartment->latitude}},{{$apartment->longitude}}" target="_blank"><i class="fas fa-map-marker-alt"></i> {{$apartment->address}}</a></h4>
-        </div>
-        <hr>
+
+
+
+
+
+
     </div>
+    <hr>
     <div class="row container-margin">
         <div class="col-md-6">
           <div class="apt-info">
@@ -60,8 +74,8 @@
 
         </div>
 
-        
-        <div class="col-md-5 offset-md-1 payment">
+
+        <div class="col-md-3 offset-md-2 payment">
             {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
             {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
                 {{-- @csrf
@@ -84,7 +98,7 @@
                                 <input type="hidden" name="duration" value="{{$sponsorship_pack->duration}}">
                                 <input class="form-check-input" type="radio" name="sponsorship" value="{{$sponsorship_pack->id}}">
                                 <label>{{$sponsorship_pack->price}}€ per {{$sponsorship_pack->duration / 24}} giorni</label>
-                            @endif  
+                            @endif
                         </div>
                     @endforeach
                     <button class="go-to-payment btn btn-primary">Sponsorizza</button>
@@ -98,7 +112,7 @@
 
                     </div>
                 </div>
-                
+
             {{-- </form> --}}
         </div>
     </div>
@@ -106,14 +120,14 @@
     <script>
         //======= visualizzazione box pagamento
         $('button.go-to-payment').on('click', function () {
-           
+
             $('.box-paypal').removeClass("d-none");
-            
+
         });
         $('button.back-button').on('click', function () {
-           
+
            $('.box-paypal').addClass("d-none");
-           
+
        });
         //=======
         var button = document.querySelector('#submit-button');

@@ -1,5 +1,10 @@
 main {
+    .container-fluid{
+        padding-bottom: 100px;
+    }
     .row {
+
+
         h1 {
             margin-top: 20px;
             font-weight: $font-strong;
@@ -26,12 +31,21 @@ main {
         flex-direction: column;
         flex-wrap: wrap;
     }
+    .flex-dir{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+    }
 
     .apt-info {
         margin-bottom: 30px;
     }
     span {
         padding-right: 20px;
+        display: inline-block;
         i {
             color: #8f8e8d;
             font-size: 20px;
@@ -66,34 +80,40 @@ main {
             &:hover {
                 background-color: red;
                 color: white;
-                border: none;
+
+                border: 1px solid red;
             }
         }
         .btn-edit {
             &:hover {
                 background-color: green;
+                border: 1px solid green;
             }
         }
     }
 
     .payment {
-        position: static;
+
         margin-top: 30px;
         .options {
             padding: 15px;
             border: 2px solid lightgrey;
             background-color: white;
             border-radius: 5px;
+            width: 330px;
+            p {
+                color: black;
+                border-bottom: 1px solid lightgrey;
+                padding-bottom: 10px;
+                width: 300px;
+                i {
+                    padding-right: 5px;
+                }
+            }
+
         }
 
-        p {
-            color: black;
-            border-bottom: 1px solid lightgrey;
-            padding-bottom: 10px;
-            i {
-                padding-right: 5px;
-            }
-        }
+
     }
     .box-paypal {
         background-color: rgba(255, 255, 255, 0.9);
@@ -117,7 +137,7 @@ main {
                 border: 1px solid black;
                 border-radius: 5px;
                 &:hover {
-                    border: none;
+
                     color: white;
                     background-color: blue;
                 }
@@ -140,7 +160,7 @@ main {
         }
     }
 
-    .create{
+    .create,.edit{
         .apt-name{
             width: 400px;
         }
@@ -150,6 +170,7 @@ main {
         .input-short{
             width: 50px;
         }
+
     }
 
     .input-check{
@@ -157,7 +178,10 @@ main {
         margin-right: 10px;
     }
 
-    .button-create{
+
+
+    .button-margin{
+        margin: 25px 0 100px;
 
         input{
             color: black;
@@ -175,6 +199,68 @@ main {
 
         }
     }
+
+    .ap-input-icon{
+        display: none;
+    }
+
+    .title-margin{
+        margin: 50px 0 30px;
+    }
+
+    .card-img-top{
+        padding: 20px 0;
+
+    }
+
+    .img-thumbnail{
+        width: 280px;
+        height: 220px;
+
+    }
+    .card{
+        width: 280px;
+        height: 400px;
+        position: relative;
+        margin:0 auto;
+        .card-title{
+            font-weight: 800;
+        }
+
+    }
+
+    .card-container{
+        margin: 30px 0;
+    }
+
+    .btn-show{
+        position: absolute;
+        bottom: 20px;
+        left:20px;
+    }
+
+    .stats-mess{
+        margin: 20px 0;
+    }
+
+    .btn-space{
+        margin-right: 10px;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        &:hover {
+
+            color: white;
+            background-color: #fe675d;
+            border: 1px solid #fe675d;
+        }
+
+    }
+
+    .margin-zero{
+        margin: 0;
+    }
+
 
 
 
