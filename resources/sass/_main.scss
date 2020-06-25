@@ -1,4 +1,7 @@
 main {
+    .container-fluid{
+        padding-bottom: 100px;
+    }
     .row {
         h1 {
             margin-top: 20px;
@@ -32,6 +35,7 @@ main {
     }
     span {
         padding-right: 20px;
+        display: inline-block;
         i {
             color: #8f8e8d;
             font-size: 20px;
@@ -66,12 +70,14 @@ main {
             &:hover {
                 background-color: red;
                 color: white;
-                border: none;
+
+                border: 1px solid red;
             }
         }
         .btn-edit {
             &:hover {
                 background-color: green;
+                border: 1px solid green;
             }
         }
     }
@@ -84,6 +90,7 @@ main {
             border: 2px solid lightgrey;
             background-color: white;
             border-radius: 5px;
+            width: 330px;
         }
 
         p {
@@ -117,7 +124,7 @@ main {
                 border: 1px solid black;
                 border-radius: 5px;
                 &:hover {
-                    border: none;
+
                     color: white;
                     background-color: blue;
                 }
@@ -140,7 +147,7 @@ main {
         }
     }
 
-    .create{
+    .create,.edit{
         .apt-name{
             width: 400px;
         }
@@ -150,6 +157,7 @@ main {
         .input-short{
             width: 50px;
         }
+
     }
 
     .input-check{
@@ -157,7 +165,10 @@ main {
         margin-right: 10px;
     }
 
-    .button-create{
+
+
+    .button-margin{
+        margin: 25px 0 100px;
 
         input{
             color: black;
@@ -174,6 +185,19 @@ main {
 
 
         }
+    }
+
+    .ap-input-icon{
+        display: none;
+    }
+
+    .title-margin{
+        margin: 50px 0 30px;
+    }
+
+    .card-img-top{
+        padding: 20px 0;
+        
     }
 
 

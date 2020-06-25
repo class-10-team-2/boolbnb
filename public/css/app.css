@@ -10944,6 +10944,14 @@ nav.navbar {
   background-color: #fe675d;
 }
 
+main .container-fluid,
+main .container-sm,
+main .container-md,
+main .container-lg,
+main .container-xl {
+  padding-bottom: 100px;
+}
+
 main .row h1 {
   margin-top: 20px;
   font-weight: 800;
@@ -10981,6 +10989,7 @@ main .apt-info {
 
 main span {
   padding-right: 20px;
+  display: inline-block;
 }
 
 main span i {
@@ -11034,11 +11043,12 @@ main .controls .btn {
 main .controls .btn:hover {
   background-color: red;
   color: white;
-  border: none;
+  border: 1px solid red;
 }
 
 main .controls .btn-edit:hover {
   background-color: green;
+  border: 1px solid green;
 }
 
 main .payment {
@@ -11051,6 +11061,7 @@ main .payment .options {
   border: 2px solid lightgrey;
   background-color: white;
   border-radius: 5px;
+  width: 330px;
 }
 
 main .payment p {
@@ -11091,7 +11102,6 @@ main .box-paypal .paypal button {
 }
 
 main .box-paypal .paypal button:hover {
-  border: none;
   color: white;
   background-color: blue;
 }
@@ -11111,15 +11121,18 @@ main .chart-views p {
   font-size: 20px;
 }
 
-main .create .apt-name {
+main .create .apt-name,
+main .edit .apt-name {
   width: 400px;
 }
 
-main .create .apt-address {
+main .create .apt-address,
+main .edit .apt-address {
   width: 720px;
 }
 
-main .create .input-short {
+main .create .input-short,
+main .edit .input-short {
   width: 50px;
 }
 
@@ -11128,7 +11141,11 @@ main .input-check {
   margin-right: 10px;
 }
 
-main .button-create input {
+main .button-margin {
+  margin: 25px 0 100px;
+}
+
+main .button-margin input {
   color: black;
   padding: 10px;
   background-color: white;
@@ -11136,9 +11153,21 @@ main .button-create input {
   border-radius: 5px;
 }
 
-main .button-create input:hover {
+main .button-margin input:hover {
   border: none;
   color: white;
   background-color: blue;
+}
+
+main .ap-input-icon {
+  display: none;
+}
+
+main .title-margin {
+  margin: 50px 0 30px;
+}
+
+main .card-img-top {
+  padding: 20px 0;
 }
 
