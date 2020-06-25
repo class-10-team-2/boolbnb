@@ -24,6 +24,7 @@ return [
         'latitude',
         'unordered(_geoloc.lat)',
         'unordered(_geoloc.lng)',
+        'unordered(services)',
     ],
 
     /*

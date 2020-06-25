@@ -146,17 +146,19 @@
                     }
                 });
 
+                // console.log('lat ' + typeof($('#latitude').val()));
+
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
                     type: 'get',
                     // dataType: "json",
                     data: {
-                        radius: $('#radius').val(),
-                        beds: $('#rooms').val(),
-                        rooms: $('#beds').val(),
-                        latitude: $('#latitude').val(),
-                        longitude: $('#longitude').val(),
-
+                        radius: parseInt($('#radius').val()),
+                        beds: parseInt($('#rooms').val()),
+                        rooms: parseInt($('#beds').val()),
+                        latitude: parseFloat($('#latitude').val()),
+                        longitude: parseFloat($('#longitude').val()),
+                        services: /////////////////////////////////////////////////////////////////////
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);
