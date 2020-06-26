@@ -35,6 +35,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 3,
                 'mq' => 165,
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80'
 
             ],
             [
@@ -50,7 +52,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 10,
                 'baths' => 3,
                 'mq' => 230,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1541515425380-a981179ae37a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Open space in zona Isola",
@@ -63,7 +66,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 6,
                 'baths' => 2,
                 'mq' => 120,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80'
             ],
             [
                 'title' => "Il bilocale di San Siro",
@@ -76,7 +80,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 2,
                 'baths' => 1,
                 'mq' => 60,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80'
             ],
             [
                 'title' => "Appartamento a Torino a pochi passi dalla metro",
@@ -89,10 +94,11 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 6,
                 'baths' => 1,
                 'mq' => 95,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1489171078254-c3365d6e359f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2978&q=80'
             ],
             [
-                'title' => "Loft nel quadrilngero Romano a Torino",
+                'title' => "Loft nel quadrilatero Romano a Torino",
                 'description' => "Il nostro loft è stato recentemente ristrutturato e presenta 10 posti letto divisi in 3 camere (due quadruple e una doppia). Sauna, portineria, posto auto, 4 bagni. Animali ammessi. Per info contattateci.",
                 'address' => "Via San Domenico, 16, 10122 Torino",
                 'lat' => 45.0749,
@@ -102,7 +108,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 10,
                 'baths' => 4,
                 'mq' => 240,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Casa vista mare a Rapallo",
@@ -115,7 +122,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 2,
                 'baths' => 1,
                 'mq' => 55,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1508136329379-d8cc78301c11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Una mansarda sul mare a Recco",
@@ -128,7 +136,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 2,
                 'mq' => 85,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1533423996375-f914ab160932?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2788&q=80'
             ],
             [
                 'title' => "Appartamento storico nel centro di Bologna",
@@ -141,7 +150,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 1,
                 'mq' => 90,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1524061662617-6a29d732e3ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2048&q=80'
             ],
             [
                 'title' => "Appartamento comodo a Modena centro",
@@ -154,7 +164,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 2,
                 'baths' => 1,
                 'mq' => 45,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Roma a due passi dal centro",
@@ -167,7 +178,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 1,
                 'mq' => 55,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1492138645880-160f6a5136fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Appartamento sotto le mura Vaticane",
@@ -180,7 +192,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 1,
                 'mq' => 60,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1484301548518-d0e0a5db0fc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Casa nel cuore di Napoli",
@@ -194,7 +207,8 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 2,
                 'baths' => 1,
                 'mq' => 70,
-
+                'visible' => 1,
+                'img_path' => 'https://images.unsplash.com/photo-1483962550854-480cf765f227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80'
             ],
         ];
 
@@ -218,7 +232,7 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => $seedApt['beds'],
                 'baths' => $seedApt['baths'],
                 'mq' => $seedApt['mq'],
-                'img_path' => 'https://picsum.photos/600/400',
+                'img_path' => $seedApt['img_path'],
                 'visible' => 1,
                 'slug' => trim($seedApt['title'], '-'),
                 'created_at' => Carbon::now(),

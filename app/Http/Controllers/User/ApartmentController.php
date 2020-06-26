@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-use App\ActiveSponsorship; // da cancellare
+use Algolia\ScoutExtended\Facades\Algolia; // lo lascio per ricordarmi che ho fatto dei test
 
 class ApartmentController extends Controller
 {
@@ -74,6 +74,10 @@ class ApartmentController extends Controller
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        if (isset($data['visible'])) {
+            $data['visible'] = 1;
         }
 
         $path = Storage::disk('public')->put('images', $data['img_path']);

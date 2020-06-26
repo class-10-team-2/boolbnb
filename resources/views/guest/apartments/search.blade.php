@@ -173,11 +173,7 @@
                         rooms: parseInt($('#rooms').val()),
                         latitude: parseFloat($('#latitude').val()),
                         longitude: parseFloat($('#longitude').val()),
-<<<<<<< HEAD
-                        //services: /////////////////////////////////////////////////////////////////////
-=======
                         services: checked
->>>>>>> frapgn
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);

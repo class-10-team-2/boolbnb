@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <div class="row row-img">
-        <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
-    </div>
+  @if ($apartment->id <= 13)
+  <div class="row row-img">
+    <img class="apt-image" src="{{$apartment->img_path}}" alt="{{$apartment->title}}">
+  </div> 
+  @else
+  <div class="row row-img">
+    <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
+  </div>    
+  @endif
     <div class="col-12 flex-dir">
         <div class="">
             <div class="row margin-zero ">
