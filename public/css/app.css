@@ -11185,14 +11185,14 @@ main .img-thumbnail {
   height: 220px;
 }
 
-main .card {
+main .apartments-card {
   width: 280px;
   height: 400px;
   position: relative;
   margin: 0 auto;
 }
 
-main .card .card-title {
+main .apartments-card .card-title {
   font-weight: 800;
 }
 
@@ -11225,5 +11225,13 @@ main .btn-space:hover {
 
 main .margin-zero {
   margin: 0;
+}
+
+main .content-center {
+  align-items: center;
+}
+
+main #justify-content-center {
+  justify-content: center;
 }
 

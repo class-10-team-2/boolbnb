@@ -218,7 +218,7 @@ main {
         height: 220px;
 
     }
-    .card{
+    .apartments-card{
         width: 280px;
         height: 400px;
         position: relative;
@@ -259,6 +259,17 @@ main {
 
     .margin-zero{
         margin: 0;
+    }
+
+    .content-center{
+
+            align-items: center;
+
+
+    }
+
+    #justify-content-center{
+        justify-content: center;
     }
 
 
