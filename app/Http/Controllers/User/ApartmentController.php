@@ -17,6 +17,8 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
+use Algolia\ScoutExtended\Facades\Algolia;
+
 use App\ActiveSponsorship; // da cancellare
 
 class ApartmentController extends Controller
