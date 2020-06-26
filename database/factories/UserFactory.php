@@ -28,6 +28,6 @@ $factory->define(User::class, function (Faker $faker) {
         'date_of_birth' => $faker->dateTimeBetween($startDate = '01/01/1950', $endDate = '12/31/2001', $timezone = 'Europe/Rome'),
         'email_verified_at' => now(),
         'password' => Hash::make('12345678'), // password
-        //'remember_token' => Str::random(10),
+        'remember_token' => Str::random(10),
     ];
 });

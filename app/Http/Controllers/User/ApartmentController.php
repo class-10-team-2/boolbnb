@@ -76,6 +76,10 @@ class ApartmentController extends Controller
                 ->withInput();
         }
 
+        if (isset($data['visible'])) {
+            $data['visible'] = 1;
+        }
+
         $path = Storage::disk('public')->put('images', $data['img_path']);
         $data['img_path'] = $path;
 
