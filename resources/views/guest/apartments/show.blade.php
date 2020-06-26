@@ -54,7 +54,7 @@
             width="600"
             height="450"
             frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDDdTa4Rc01xKmqdHC8SOVLoGyJ9mBAYmE&q={{$apartment->address}}&center={{$apartment->latitude}},{{$apartment->longitude}}">
+            src="https://www.google.com/maps/embed/v1/place?key={{config('services.google.key')}}&q={{$apartment->address}}&center={{$apartment->latitude}},{{$apartment->longitude}}">
           </iframe>
         </div>
     </div>
