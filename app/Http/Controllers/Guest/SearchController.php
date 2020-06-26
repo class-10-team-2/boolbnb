@@ -50,8 +50,9 @@ class SearchController extends Controller
                                     ])
                                     ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
-                                    ->where('services', '=', $services)
+                                    // ->where('services', '=', $services)
                                     // ->whereIn('services.id['. 1 .']', $services)
+                                    ->whereIn('services', $services)
                                     ->get();
 
         // Ritorna un json con i risultati filtrati
