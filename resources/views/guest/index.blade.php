@@ -54,17 +54,19 @@
         </section>
         <div class="row">
 
-                @foreach ($sponsorships as $sponsorship)
-                    @if ($sponsorship->expiration_date > $now->toDateTimeString())
+                @foreach ($active_sponsorships as $active_sponsorship)
+                    
+                    @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
+
 
 
 
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
                             <div class="card apartments-card" >
                               {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
-                              <img src="{{asset('storage/' . $sponsorship->apartment->img_path)}}" class="card-img-top img-thumbnail" alt="{{$sponsorship->apartment->title}}">
+                              <img src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" class="card-img-top img-thumbnail" alt="{{$active_sponsorship->apartment->title}}">
                               <div class="card-body">
-                            <h5 class="card-title">{{$sponsorship->apartment->title}}</h5>
+                            <h5 class="card-title">{{$active_sponsorship->apartment->title}}</h5>
                                 {{-- <div class="">
                                     <span>{{$apartment->rooms}}</span>
 
@@ -91,11 +93,11 @@
 
                                 @endforeach --}}
                                 <div class="">
-                                    <p>{{$sponsorship->apartment->address}}</p>
+                                    <p>{{$active_sponsorship->apartment->address}}</p>
 
                                 </div>
 
-                                <a href="{{route('guest.apartments.show', $sponsorship->apartment->id)}}" class="btn btn-primary btn-show">Gestisci</a>
+                                <a href="{{route('guest.apartments.show', $active_sponsorship->apartment->id)}}" class="btn btn-primary btn-show">Gestisci</a>
                               </div>
 
                             </div>

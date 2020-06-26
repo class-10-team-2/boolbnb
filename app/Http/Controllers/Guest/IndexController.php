@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Session;
-use App\Sponsorship;
+use App\ActiveSponsorship;
 use App\Apartment;
 use App\Sponsorship_pack;
 
@@ -34,9 +34,9 @@ class IndexController extends Controller
     {
         $services = Service::all();
         $apartments = Apartment::all();
-        $sponsorships = Sponsorship::all();
+        $active_sponsorships = ActiveSponsorship::all();
         $now = Carbon::now();
 
-        return view('guest.index', compact('services','apartments','sponsorships','now'));
+        return view('guest.index', compact('services','apartments','active_sponsorships','now'));
     }
 }

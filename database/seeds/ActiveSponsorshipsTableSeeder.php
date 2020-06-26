@@ -21,7 +21,7 @@ class ActiveSponsorshipsTableSeeder extends Seeder
         for ($i = 3; $i <= 7; $i++) {
             DB::table('active_sponsorships')->insert([
                 'apartment_id' => $i,
-                'expiration_date' => 1735689600,
+                'expiration_date' => 2025/01/01,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);

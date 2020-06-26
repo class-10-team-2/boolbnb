@@ -71,6 +71,8 @@ class ApartmentController extends Controller
         $message->apartment_id = $data['apt_id'];
 
         $message->save();
+
+        return redirect()->back();
     }
 
     /**
