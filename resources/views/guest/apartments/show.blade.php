@@ -17,7 +17,7 @@
     <div class="col-8">
       <div class="apt-info">
         <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
-        <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Letti' : '1 Letto'}}</span>
+        <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Posti letto' : '1 Posto letto'}}</span>
         <span><i class="fas fa-shower"></i> {{($apartment->baths > 1) ? $apartment->baths . ' Bagni' : '1 Bagno'}}</span>
         <span><i class="fas fa-home"> </i>{{$apartment->mq}}m<sup>2</sup></span>
       </div>
@@ -49,6 +49,14 @@
             @endif
         @endforeach
       </div>
+        <div class="map">
+          <iframe
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key={{config('services.google.key')}}&q={{$apartment->address}}&center={{$apartment->latitude}},{{$apartment->longitude}}">
+          </iframe>
+        </div>
     </div>
 
 

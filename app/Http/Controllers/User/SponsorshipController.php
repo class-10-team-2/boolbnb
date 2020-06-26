@@ -32,17 +32,36 @@ class SponsorshipController extends Controller
         $new_sponsorship->save();
 
         // Sponsorizzazione attiva
-        $new_active_sponsorship = new ActiveSponsorship;
-        $new_active_sponsorship->apartment_id = $request->input('apartId');
-        $exp_date = Carbon::now()->addHour($duration)->timestamp;
-        $new_active_sponsorship->expiration_date = $exp_date;
-        $new_active_sponsorship->save();
+        if(Apartment::find($request->input('apartId'))->activesponsorship()->exists()) { // se esiste
+            $actual_exp_date = Apartment::find($request->input('apartId'))->activesponsorship->expiration_date; // timestamp like 
+
+            // se il timestamp in expiration_date > now(), incremento il timestamp di
+            // un numero di ore pari a $request->input('radioVal')
+            if ($actual_exp_date > now()) {
+                $actual_exp_date = $actual_exp_date->addHour($duration)->timestamp;
+            } else {
+                // sovrascrivo il timestamp con $exp_date
+            }
+        } else {
+            // se non esiste la creo
+            $new_active_sponsorship = new ActiveSponsorship;
+            $new_active_sponsorship->apartment_id = $request->input('apartId');
+            $exp_date = Carbon::now()->addHour($duration)->timestamp;
+            $new_active_sponsorship->expiration_date = $exp_date;
+            $new_active_sponsorship->save();
+        }
+
+
+        // DEVO AGGIUNGERE IL CONTROLLO:
+        // se la sponsorizzazione è già attiva,
+        // aggiornarla sommando al timestamp i giorni della nuova sponsorizzazione
+
 
         // attivo un evento di laravel per aggiornare la colonna updated_at
         // in questo modo Scout Extended che resta sempre in ascolto, capta l'evento
         // e aggiorna l'index di Algolia con il record 'exp_date'
         $apartment_to_touch = Apartment::find($request->input('apartId'));
-        sleep(1);
+        sleep(1); // addormento lo script per un secondo in modo che il save venga completato
         $apartment_to_touch->touch();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

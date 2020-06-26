@@ -10,6 +10,16 @@ class ActiveSponsorship extends Model
         'expiration_date', 'apartment_id'
     ];
 
+    /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['apartment'];
+
+    /**
+     * Get the apartment that the sponsorship belongs to.
+     */
     public function apartment()
     {
         return $this->hasOne('App\Apartment');

@@ -51,7 +51,7 @@ class Apartment extends Model
             'lng' => $array['longitude']
         ];
 
-        $array['services'] = $this->services->map(function($data) {
+        $array['services'] = $this->services->map(function ($data) {
             return $data['id'];
         })->toArray();
 
@@ -63,5 +63,4 @@ class Apartment extends Model
 
         return $array;
     }
-
 }

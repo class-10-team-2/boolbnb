@@ -2,14 +2,15 @@
 @section('content')
 <div class="container">
     <div class="title-margin">
-          <h3>I tuoi messaggi per <strong>{{$apartment->title}}</strong></h3>
+        <a href="{{route('user.apartments.show', $apartment->id)}}"><i class="fas fa-arrow-left"></i> Torna all'appartamento</a>
+
+        <h3>I tuoi messaggi per <strong>"{{$apartment->title}}"</strong></h3>
 
     </div>
 
     <table class="table">
         <thead class="thead-dark">
             <tr>
-
                 <th scope="col">Ora</th>
                 <th scope="col">Mittente</th>
                 <th scope="col">Testo</th>
@@ -19,7 +20,7 @@
             {{ $messages->links() }}
             @foreach ($messages  as $message)
                 <tr>
-                    <td>{{Carbon\Carbon::parse($message->created_at)->addHour(2)->format('d-m-Y | H:i')}}</td>
+                    <td>{{Carbon\Carbon::parse($message->created_at)->addHour(2)->format('d-m-Y H:i')}}</td>
                     <td> <a href="mailto:{{$message->sender}}">{{$message->sender}}</td>
                     <td>{{$message->text}}</td>
 
