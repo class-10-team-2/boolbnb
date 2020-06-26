@@ -12,7 +12,7 @@
         @endif
         @foreach ($apartments as $apartment)
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
-            <div class="card" >
+            <div class="card apartments-card" >
               {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
               <img src="{{asset('storage/' . $apartment->img_path)}}"" class="card-img-top img-thumbnail" alt="{{$apartment->title}}">
               <div class="card-body">

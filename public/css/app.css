@@ -10996,12 +10996,12 @@ main .apt-info {
   margin-bottom: 30px;
 }
 
-main span {
+main .apt-info span {
   padding-right: 20px;
   display: inline-block;
 }
 
-main span i {
+main .apt-info span i {
   color: #8f8e8d;
   font-size: 20px;
   padding-right: 10px;
@@ -11185,14 +11185,14 @@ main .img-thumbnail {
   height: 220px;
 }
 
-main .card {
+main .apartments-card {
   width: 280px;
   height: 400px;
   position: relative;
   margin: 0 auto;
 }
 
-main .card .card-title {
+main .apartments-card .card-title {
   font-weight: 800;
 }
 
@@ -11225,5 +11225,63 @@ main .btn-space:hover {
 
 main .margin-zero {
   margin: 0;
+}
+
+main .content-center {
+  align-items: center;
+}
+
+main .search-bar {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  width: 80%;
+  margin: 30px auto;
+}
+
+main .search-bar input {
+  border: 0;
+  outline: 0;
+}
+
+main .search-bar input:focus {
+  outline: none !important;
+}
+
+main .flex {
+  display: flex;
+}
+
+main .search-sec {
+  padding: 2rem;
+  width: 90%;
+  margin: 30px auto;
+  background: rgba(26, 70, 104, 0.51);
+}
+
+main .search-slt {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .wrn-btn {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .service-form {
+  padding-top: 20px;
 }
 
