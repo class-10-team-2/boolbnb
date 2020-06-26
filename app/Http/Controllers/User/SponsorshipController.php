@@ -28,7 +28,7 @@ class SponsorshipController extends Controller
         $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
         $duration = $sponsorship_checked->duration;
         // $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
-        $exp_date = Carbon::now()->addHour($duration)->timestamp;
+        $exp_date = Carbon::now()->addHour($duration);
         $new_sponsorship->expiration_date = $exp_date;
         $new_sponsorship->save();
 

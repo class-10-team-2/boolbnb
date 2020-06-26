@@ -7,36 +7,36 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-4 col-md-8  col-sm-12 p-0">
+                            <div class="col-lg-4 col-md-12  col-sm-12 col-12 p-0">
 
                                 <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?" />
                             </div>
-                            <div class="col-lg-1  col-md-2 col-sm-3 p-0">
+                            <div class="col-lg-1  col-md-3 col-sm-3 col-3 p-0">
 
                                 <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="1" max="50" placeholder="Mq">
                             </div>
-                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
+                            <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
 
                                 <input id="index-rooms" class="form-control search-slt" type="number" name="rooms" min="0" max="10" placeholder="Stanze">
                             </div>
-                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
+                            <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
 
                                 <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20"  placeholder="Letti">
                             </div>
-                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
+                            <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
 
                                 <input id="index-baths" class="form-control search-slt" type="number" name="baths" min="1" max="20" placeholder="Bagni">
                             </div>
                             <input id="index-latitude" type="hidden" class="lat-input" name="latitude">
                             <input id="index-longitude" type="hidden" class="lng-input" name="longitude">
-                            <div class="col-lg-4 col-md-2  col-sm-12 p-0">
+                            <div class="col-lg-4 col-md-12  col-sm-12 col-12 p-0">
 
                                 <button type="submit" class="btn btn-danger wrn-btn">Search</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group service-form">
+                <div class=" service-form">
                     @foreach ($services as $service)
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
@@ -45,7 +45,6 @@
                     @endforeach
                 </div>
             </form>
-
 
 
 
