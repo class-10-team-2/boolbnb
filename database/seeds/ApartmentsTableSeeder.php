@@ -116,7 +116,7 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 2,
                 'baths' => 1,
                 'mq' => 55,
-                'img_path' => 'https://images.unsplash.com/photo-1464288550599-43d5a73451b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2744&q=80'
+                'img_path' => 'https://images.unsplash.com/photo-1508136329379-d8cc78301c11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
             [
                 'title' => "Una mansarda sul mare a Recco",
@@ -129,7 +129,7 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => 4,
                 'baths' => 2,
                 'mq' => 85,
-                'img_path' => 'https://images.unsplash.com/photo-1514814309075-1f08d9a71f4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60'
+                'img_path' => 'https://images.unsplash.com/photo-1533423996375-f914ab160932?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2788&q=80'
             ],
             [
                 'title' => "Appartamento storico nel centro di Bologna",
@@ -219,7 +219,7 @@ class ApartmentsTableSeeder extends Seeder
                 'beds' => $seedApt['beds'],
                 'baths' => $seedApt['baths'],
                 'mq' => $seedApt['mq'],
-                'img_path' => 'https://picsum.photos/600/400',
+                'img_path' => $seedApt['img_path'],
                 'visible' => 1,
                 'slug' => trim($seedApt['title'], '-'),
                 'created_at' => Carbon::now(),
