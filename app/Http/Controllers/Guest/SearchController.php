@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Apartment;
 use App\Service;
+use App\Sponsorship;
 
 class SearchController extends Controller
 {
@@ -57,16 +58,14 @@ class SearchController extends Controller
         return $apartments;
     }
 
-    public function searchHighlights(Request $request)
+    public function searchSponsored(Request $request)
     {
-        // Intercetto il dati inviati dal form di ricerca nella home
-        // e li uso per filtrare gli appartamenti usando
-        // il metodo search() di Scout Extended
+        // Ritorna un json con gli appartamenti sponsorizzati
         $query = ''; // usare questa variabile non è obbligatorio
 
         $rooms = $request->input('rooms');
         $beds = $request->input('beds');
-        $radius = $request->input('radius');
+        // $radius = $request->input('radius');
         $latitude = $request->input('latitude');
         $logitude = $request->input('longitude');
         if (!empty($request->input('services'))) {
@@ -75,22 +74,18 @@ class SearchController extends Controller
             $services = [];
         }
 
-        // $now = Carbon::now();
-
         $apartments = Apartment::search($query)
                                     ->aroundLatLng($latitude, $logitude)
                                     ->with([
-                                        'aroundRadius' => 50000,
-                                        'hitsPerPage' => 30,
+                                        'aroundRadius' => 50000, // grande raggio di default
+                                        'hitsPerPage' => 5,
                                     ])
                                     ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
                                     ->whereIn('services', $services)
-                                    ->where('expiration_date', '>', now())
+                                    ->where('exp_date', '>', now())
                                     ->get();
 
-        // Ritorna un json con i risultati filtrati
-        // dd($apartments);
         return $apartments;
     }
 

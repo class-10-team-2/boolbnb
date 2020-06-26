@@ -1,10 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
-        <h3>Statistiche per <strong>{{$apartment->title}}</strong></h3>
+    <div class="container ">
+        <div class="titolo-stats">
+            <h3> Le statistiche del tuo appartmento <strong>{{$apartment->title}}</strong></h3>
+
+        </div>
+
         <div class="row">
-            
+
             <div class="col-4">
                 @if ($messages_count > 1)
                     <h1>Hai ricevuto in totale {{$messages_count}} messaggi per questo appartmento.</h1>
@@ -13,14 +17,19 @@
                 @else
                     <h1>Non hai ancora ricevuto messaggi per questo appartmento.</h1>
                 @endif
-                
+
             </div>
-            <div class="col-8">
-                <canvas id="chart_mensile"></canvas>
+            <div class="col-8 ">
+                <div class="chart-views ">
+                    <p>Visualizzazioni</p>
+                    <canvas id="chart_mensile"></canvas>
+
+                </div>
+
 
             </div>
         </div>
-    
+
         <input type="text" name="apt_id" value="{{$apartment->id}}" hidden>
     </div>
 @endsection
@@ -33,9 +42,6 @@
 $(document).ready(function() {
 
     getStats();
-
-    
-
 
     function getStats() {
                     $.ajaxSetup({
@@ -51,9 +57,9 @@ $(document).ready(function() {
                             apt_id: $('input[name=apt_id]').val(),
                         },
                         success: function (response) {
-                            
-                            makeChart(response); 
-                            
+
+                            makeChart(response);
+
                         },
                         error: function (response) {
                             console.log('Error:', response);
@@ -64,28 +70,37 @@ $(document).ready(function() {
     function makeChart(current_year_sessions){
         var ctx = $('#chart_mensile');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+            // The type of chart we want to create
+            type: 'bar',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October','November','December'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: current_year_sessions
-            }]
-    },
+            // The data for our dataset
+            data: {
+                labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio','Agosto', 'Settembre', 'Ottobre','Novembre','Dicembre'],
+                datasets: [{
+                    label: 'Visualizzazioni mensili',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: current_year_sessions
+                }]
+            },
 
-    
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMax: 10,
+                            min: 0,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
 
-    // Configuration options go here
-    options: {}
-    });
+        });
     }
 
-    
+
 });
 
 </script>

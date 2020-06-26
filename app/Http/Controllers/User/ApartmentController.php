@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Session;
 use App\Service;
-use App\Message;
-use App\Sponsorship;
 use App\Apartment;
 use App\Sponsorship_pack;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -18,6 +17,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
+use App\ActiveSponsorship; // da cancellare
 
 class ApartmentController extends Controller
 {
@@ -28,9 +28,6 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        // $duration = 144;
-        // $exp_date = Carbon::now()->addHour($duration);
-        // dd($exp_date);
         $userLogged = Auth::id();
         $apartments = Apartment::where('user_id', '=', $userLogged)->get();
 
@@ -55,7 +52,7 @@ class ApartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Apartment $apartment)
     {
         $data = $request->all();
 
@@ -101,6 +98,8 @@ class ApartmentController extends Controller
             // $apartment->services()->attach($request->input('services'));
         }
 
+        sleep(1);
+        Apartment::find($apartment->id)->touch();
         // $services = [
         //     'services' => $data['services']
         // ]
@@ -108,6 +107,8 @@ class ApartmentController extends Controller
         // $apartment->fill($data['services']);
         // $updated = $apartment->update();
 
+        // SOLUZIONE TEMPORANEA
+        // return route('user.apartments.update',$apartment->id);
         return redirect()->route('user.apartments.show', $apartment->id);
     }
 
@@ -119,6 +120,20 @@ class ApartmentController extends Controller
      */
     public function show($id, Request $request)
     {
+        // if(Apartment::find($id)->activesponsorship()->exists()) {
+        //     echo 'ESISTE <br>';
+        //     $timestamp = Apartment::find($id)->activesponsorship->expiration_date;
+        //     echo 'sponsorship timestamp ' . $timestamp . gettype($timestamp) . '<br>';
+        //     $now_timestamp = Carbon::now()->timestamp;
+        //     echo 'now timestamp ' . $now_timestamp . gettype($now_timestamp) . '<br>';
+        //     // $new_exp = $timestamp
+        //     echo date("Y-m-d H:i:s", $timestamp);
+        //     // echo Apartment::find($id)->activesponsorship->expiration_date->addHour(24);
+        // } else {
+        //     echo 'NON ESISTE';
+        // }
+        // dd(Apartment::find($request->input('apartId'))->activesponsorship);
+
         $apartment = Apartment::findOrFail($id);
         $user_id = Auth::id();
         if ($user_id != $apartment->user_id) {
@@ -230,32 +245,6 @@ class ApartmentController extends Controller
         return redirect()->route('user.apartments.index');
     }
 
-    public function store_sponsorship(Request $request)
-    {
-
-        $data = $request->all();
-
-        $new_sponsorship = new Sponsorship;
-        $new_sponsorship->apartment_id = $data['apartId'];
-        $new_sponsorship->sponsorship_pack_id = $data['radioVal'];
-        $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
-        $duration = $sponsorship_checked->duration;
-        $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
-        // $exp_date = Carbon::now()->addHour($duration);
-        $new_sponsorship->expiration_date = $exp_date;
-        $new_sponsorship->save();
-
-
-        // $data = $request->input('id');
-
-        // var_dump($request->all());
-        // dd($request->all());
-
-
-        // return view('user.apartments.show', 4);
-        // return view('user.apartments.sponsorships');
-    }
-
 
     public function stats(Request $request)
     {
@@ -278,6 +267,11 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
+
         $messages_count = DB::table('messages')->where('apartment_id', '=', $id)->count();
 
         return view('user.apartments.stats', compact('apartment', 'messages_count'));
@@ -286,6 +280,11 @@ class ApartmentController extends Controller
     public function view_messages($id, Request $request)
     {
         $apartment = Apartment::findOrFail($id);
+
+        $user_id = Auth::id();
+        if ($user_id != $apartment->user_id) {
+            abort('404');
+        }
         $messages = DB::table('messages')->where('apartment_id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('user.apartments.messages', ['messages' => $messages], compact('apartment'));
     }
