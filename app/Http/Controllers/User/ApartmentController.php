@@ -17,9 +17,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-use Algolia\ScoutExtended\Facades\Algolia;
-
-use App\ActiveSponsorship; // da cancellare
+use Algolia\ScoutExtended\Facades\Algolia; // lo lascio per ricordarmi che ho fatto dei test
 
 class ApartmentController extends Controller
 {
