@@ -98,7 +98,7 @@ class ApartmentsTableSeeder extends Seeder
                 'img_path' => 'https://images.unsplash.com/photo-1489171078254-c3365d6e359f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2978&q=80'
             ],
             [
-                'title' => "Loft nel quadrilngero Romano a Torino",
+                'title' => "Loft nel quadrilatero Romano a Torino",
                 'description' => "Il nostro loft è stato recentemente ristrutturato e presenta 10 posti letto divisi in 3 camere (due quadruple e una doppia). Sauna, portineria, posto auto, 4 bagni. Animali ammessi. Per info contattateci.",
                 'address' => "Via San Domenico, 16, 10122 Torino",
                 'lat' => 45.0749,
