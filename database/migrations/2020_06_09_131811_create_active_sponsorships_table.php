@@ -16,7 +16,7 @@ class CreateActiveSponsorshipsTable extends Migration
         Schema::create('active_sponsorships', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apartment_id')->constrained();
-            $table->string('expiration_date', 15);
+            $table->dateTime('expiration_date');
             $table->timestamps();
         });
     }

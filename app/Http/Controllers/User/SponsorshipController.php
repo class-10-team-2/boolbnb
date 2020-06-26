@@ -28,14 +28,14 @@ class SponsorshipController extends Controller
         $sponsorship_checked = Sponsorship_pack::findOrFail($data['radioVal']);
         $duration = $sponsorship_checked->duration;
         // $exp_date = Carbon::now()->addHour($duration)->format('Y-m-d-H-i-s');
-        $exp_date = Carbon::now()->addHour($duration)->timestamp;
+        $exp_date = Carbon::now()->addHour($duration);
         $new_sponsorship->expiration_date = $exp_date;
         $new_sponsorship->save();
 
         // Sponsorizzazione attiva
         if(Apartment::find($data['apartId'])->activesponsorship()->exists()) { // se esiste
-            $actual_exp_date = Apartment::find($data['apartId'])->activesponsorship->expiration_date; // stringa con il timestamp like 1593196142
-            $actual_exp_date = intval($actual_exp_date); // parsing della stringa in intero
+            $actual_exp_date = Apartment::find($data['apartId'])->activesponsorship->expiration_date; // stringa con il datetime
+            // $actual_exp_date = intval($actual_exp_date); // parsing della stringa in intero
 
             $new_from_actual_exp_date = new Carbon($actual_exp_date); // nuova istanza di Carbon a partire da un timestamp
 
@@ -43,18 +43,18 @@ class SponsorshipController extends Controller
             // se il timestamp in expiration_date > now(), cioè se ancora la sponsorizzazione
             // è attiva, incremento il timestamp di un numero di ore pari a $request->input('radioVal')
             if ($new_from_actual_exp_date > now()) {
-                $updated_exp_date = $new_from_actual_exp_date->addHour($duration)->timestamp; // aggiungo le ore della nuova sponsorizzazione
+                $updated_exp_date = $new_from_actual_exp_date->addHour($duration); // aggiungo le ore della nuova sponsorizzazione
                 $active_sponsorship->update(['expiration_date' => $updated_exp_date]);
             } else {
                 // se la sponsorizzazione è scaduta sovrascrivo il timestamp con $exp_date (il timestamp di questo istante) e sommo le ore
-                $new_exp_date = Carbon::now()->addHour($duration)->timestamp;
+                $new_exp_date = Carbon::now()->addHour($duration);
                 $active_sponsorship->update(['expiration_date' => $new_exp_date]);
             }
         } else {
             // se non esiste la creo
             $new_active_sponsorship = new ActiveSponsorship;
             $new_active_sponsorship->apartment_id = $request->input('apartId');
-            $exp_date = Carbon::now()->addHour($duration)->timestamp;
+            $exp_date = Carbon::now()->addHour($duration);
             $new_active_sponsorship->expiration_date = $exp_date;
             $new_active_sponsorship->save();
         }

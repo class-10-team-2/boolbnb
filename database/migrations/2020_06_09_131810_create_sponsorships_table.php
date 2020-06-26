@@ -18,7 +18,7 @@ class CreateSponsorshipsTable extends Migration
             $table->foreignId('apartment_id')->constrained();
             $table->foreignId('sponsorship_pack_id')->constrained();
             // $table->dateTime('expiration_date');
-            $table->unsignedBigInteger('expiration_date');
+            $table->dateTime('expiration_date');
             $table->timestamps();
         });
     }
