@@ -42,16 +42,17 @@ main {
 
     .apt-info {
         margin-bottom: 30px;
-    }
-    span {
-        padding-right: 20px;
-        display: inline-block;
-        i {
-            color: #8f8e8d;
-            font-size: 20px;
-            padding-right: 10px;
+        span {
+            padding-right: 20px;
+            display: inline-block;
+            i {
+                color: #8f8e8d;
+                font-size: 20px;
+                padding-right: 10px;
+            }
         }
     }
+
 
     .apt-services {
         height: 120px;
@@ -268,10 +269,65 @@ main {
 
     }
 
-    #justify-content-center{
-        justify-content: center;
+    .search-bar{
+        display: flex;
+        background-color: white;
+        border: 1px solid black;
+        width: 80%;
+        margin: 30px auto;
+        input {border:0;outline:0;}
+        input:focus {outline:none!important;}
     }
 
+    .flex{
+        display: flex;
+    }
+
+    .search-sec{
+    padding: 2rem;
+    width: 90%;
+    margin: 30px auto;
+    background: rgba(26, 70, 104, 0.51);
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+// @media (min-width: 992px){
+//     .search-sec{
+//
+//
+//         background: rgba(26, 70, 104, 0.51);
+//     }
+// }
+//
+// @media (max-width: 992px){
+//     .search-sec{
+//         background: #1A4668;
+//     }
+// }
+.service-form{
+    padding-top: 20px;
+}
+// .form-group{
+//     margin: 0;
+// }
 
 
 

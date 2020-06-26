@@ -1,47 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <form>
-            {{-- @method('POST')
-            @csrf --}}
+    <section class="search-sec">
+        <div class="container">
+            <form action="{{route('guest.apartments.search')}}" method="GET">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-8  col-sm-12 p-0">
 
-            <div class="form-group">
-                <input id="search-input" type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
-            </div>
+                                <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?" />
+                            </div>
+                            <div class="col-lg-1  col-md-2 col-sm-3 p-0">
 
-            <div class="form-row">
-                <div class="col">
-                    <label for="radius">Raggio di ricerca</label>
-                    <input id="radius" class="form-control" type="number" name="radius" min="1" max="50" value="20">
-                </div>
-                <div class="col">
-                    <label for="rooms">Minimo di stanze</label>
-                    <input id="rooms" class="form-control" type="number" name="rooms" min="0" max="10" value="1">
-                </div>
-                <div class="col">
-                    <label for="beds">Minimo posti letto</label>
-                    <input id="beds" class="form-control" type="number" name="beds" min="1" max="20" value="1">
-                </div>
-            </div>
+                                <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="1" max="50" placeholder="Mq">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
 
-            <div class="form-group">
-                @foreach ($services as $service)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
-                        <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                                <input id="index-rooms" class="form-control search-slt" type="number" name="rooms" min="0" max="10" placeholder="Stanze">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
+
+                                <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20"  placeholder="Letti">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 p-0">
+
+                                <input id="index-baths" class="form-control search-slt" type="number" name="baths" min="1" max="20" placeholder="Bagni">
+                            </div>
+                            <input id="index-latitude" type="hidden" class="lat-input" name="latitude">
+                            <input id="index-longitude" type="hidden" class="lng-input" name="longitude">
+                            <div class="col-lg-4 col-md-2  col-sm-12 p-0">
+
+                                <button type="submit" class="btn btn-danger wrn-btn">Search</button>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+                <div class="form-group service-form">
+                    @foreach ($services as $service)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
+                            <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                        </div>
+                    @endforeach
+                </div>
+            </form>
 
-            <input id="latitude" type="hidden" class="lat-input" name="latitude">
-            <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
-            <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
-        </form>
 
-    </div>
+
+    </section>
 
     <div class="results-container">
 
