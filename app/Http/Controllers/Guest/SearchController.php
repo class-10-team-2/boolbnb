@@ -43,18 +43,18 @@ class SearchController extends Controller
         }
 
         $apartments = Apartment::search($query)
-                                    ->aroundLatLng($latitude, $longitude)
-                                    ->with([
-                                        'aroundRadius' => $radius*1000,
-                                        'hitsPerPage' => 30,
-                                    ])
-                                    ->where('rooms', '>=', $rooms)
-                                    ->where('beds', '>=', $beds)
-                                    // ->where('services', '=', $services)
-                                    // ->whereIn('services.id['. 1 .']', $services)
-                                    ->whereIn('services', $services)
-                                    ->where('visible', 1)
-                                    ->get();
+            ->aroundLatLng($latitude, $longitude)
+            ->with([
+                'aroundRadius' => $radius * 1000,
+                'hitsPerPage' => 30,
+            ])
+            ->where('rooms', '>=', $rooms)
+            ->where('beds', '>=', $beds)
+            // ->where('services', '=', $services)
+            // ->whereIn('services.id['. 1 .']', $services)
+            //->whereIn('services', $services)
+            ->where('visible', 1)
+            ->get();
 
         // Ritorna un json con i risultati filtrati
         // dd($apartments);
@@ -78,19 +78,18 @@ class SearchController extends Controller
         }
 
         $apartments = Apartment::search($query)
-                                    ->aroundLatLng($latitude, $logitude)
-                                    ->with([
-                                        'aroundRadius' => 50000, // grande raggio di default
-                                        'hitsPerPage' => 5,
-                                    ])
-                                    ->where('rooms', '>=', $rooms)
-                                    ->where('beds', '>=', $beds)
-                                    ->whereIn('services', $services)
-                                    ->where('exp_date', '>', now())
-                                    ->where('visible', 1)
-                                    ->get();
+            ->aroundLatLng($latitude, $logitude)
+            ->with([
+                'aroundRadius' => 50000, // grande raggio di default
+                'hitsPerPage' => 5,
+            ])
+            ->where('rooms', '>=', $rooms)
+            ->where('beds', '>=', $beds)
+            //->whereIn('services', $services)
+            ->where('exp_date', '>', now())
+            ->where('visible', 1)
+            ->get();
 
         return $apartments;
     }
-
 }
