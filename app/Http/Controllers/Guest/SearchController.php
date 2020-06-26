@@ -48,9 +48,10 @@ class SearchController extends Controller
                                         'aroundRadius' => $radius*1000,
                                         'hitsPerPage' => 30,
                                     ])
-                                    ->where('rooms', '=', $rooms)
+                                    ->where('rooms', '>=', $rooms)
                                     ->where('beds', '>=', $beds)
-                                    ->whereIn('services', $services)
+                                    ->where('services', '=', $services)
+                                    // ->whereIn('services.id['. 1 .']', $services)
                                     ->get();
 
         // Ritorna un json con i risultati filtrati

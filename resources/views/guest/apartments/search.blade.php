@@ -89,7 +89,7 @@
                 var lsLongitude = parseFloat(sessionStorage.getItem("longitude"));
                 // ri trasformo la stringa in un array
                 var lsServicesId = JSON.parse(sessionStorage.getItem("checked"));
-
+                console.log(lsServicesId);
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
                     type: 'get',
@@ -112,7 +112,6 @@
                         lsServicesId.forEach((serviceId, i) => { // i -> indice dell'array
                             $('input[data-service-id=' + serviceId + ']').prop('checked', true);
                         });
-
 
                         // rendering dei risultati con handlebars
                         for (var i = 0; i < response.length; i++){
@@ -146,7 +145,15 @@
                     }
                 });
 
-                // console.log('lat ' + typeof($('#latitude').val()));
+                // pusho in un array tutti i valori (cioè gli id dei servizi) dei checkbox checked
+                var checked = [];
+                $('input[data-service-id]').each(function(){
+                    if ($(this).is(':checked')) {
+                        checked.push($(this).val());
+                    }
+                });
+
+                console.log('checked:', checked);
 
                 $.ajax({
                     url: '/search/get-json-with-algolia-results',
@@ -154,11 +161,11 @@
                     // dataType: "json",
                     data: {
                         radius: parseInt($('#radius').val()),
-                        beds: parseInt($('#rooms').val()),
-                        rooms: parseInt($('#beds').val()),
+                        beds: parseInt($('#beds').val()),
+                        rooms: parseInt($('#rooms').val()),
                         latitude: parseFloat($('#latitude').val()),
                         longitude: parseFloat($('#longitude').val()),
-                        services: /////////////////////////////////////////////////////////////////////
+                        services: checked
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);

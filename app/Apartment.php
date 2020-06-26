@@ -37,10 +37,11 @@ class Apartment extends Model
     // INDICIZZAZIONE DELLE RELAZIONI PER ALGOLIA
     public function toSearchableArray()
     {
+        // $this->services;
 
         $array = $this->toArray();
 
-        // $array = $this->transform($array);
+        $array = $this->transform($array);
 
         // Creo il record _geoloc da inviare all'indice di Algolia.
         // Algolia ha bisogno che il record con lat e lng abbia questo nome

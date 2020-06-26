@@ -54,7 +54,7 @@
                 sessionStorage.setItem("latitude", $('#index-latitude').val());
                 sessionStorage.setItem("longitude", $('#index-longitude').val());
 
-                // pusho in un array tutti i valori dei checkbox checked
+                // pusho in un array tutti i valori (gli id dei servizi) dei checkbox checked
                 var checked = [];
                 $('input').each(function(){
                     if ($(this).is(':checked')) {
