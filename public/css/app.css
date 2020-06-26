@@ -10944,6 +10944,14 @@ nav.navbar {
   background-color: #fe675d;
 }
 
+main .container-fluid,
+main .container-sm,
+main .container-md,
+main .container-lg,
+main .container-xl {
+  padding-bottom: 100px;
+}
+
 main .row h1 {
   margin-top: 20px;
   font-weight: 800;
@@ -10975,15 +10983,25 @@ main .flex-info {
   flex-wrap: wrap;
 }
 
+main .flex-dir {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
 main .apt-info {
   margin-bottom: 30px;
 }
 
-main span {
+main .apt-info span {
   padding-right: 20px;
+  display: inline-block;
 }
 
-main span i {
+main .apt-info span i {
   color: #8f8e8d;
   font-size: 20px;
   padding-right: 10px;
@@ -11034,15 +11052,15 @@ main .controls .btn {
 main .controls .btn:hover {
   background-color: red;
   color: white;
-  border: none;
+  border: 1px solid red;
 }
 
 main .controls .btn-edit:hover {
   background-color: green;
+  border: 1px solid green;
 }
 
 main .payment {
-  position: static;
   margin-top: 30px;
 }
 
@@ -11051,15 +11069,17 @@ main .payment .options {
   border: 2px solid lightgrey;
   background-color: white;
   border-radius: 5px;
+  width: 330px;
 }
 
-main .payment p {
+main .payment .options p {
   color: black;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 10px;
+  width: 300px;
 }
 
-main .payment p i {
+main .payment .options p i {
   padding-right: 5px;
 }
 
@@ -11091,7 +11111,6 @@ main .box-paypal .paypal button {
 }
 
 main .box-paypal .paypal button:hover {
-  border: none;
   color: white;
   background-color: blue;
 }
@@ -11111,15 +11130,18 @@ main .chart-views p {
   font-size: 20px;
 }
 
-main .create .apt-name {
+main .create .apt-name,
+main .edit .apt-name {
   width: 400px;
 }
 
-main .create .apt-address {
+main .create .apt-address,
+main .edit .apt-address {
   width: 720px;
 }
 
-main .create .input-short {
+main .create .input-short,
+main .edit .input-short {
   width: 50px;
 }
 
@@ -11128,7 +11150,11 @@ main .input-check {
   margin-right: 10px;
 }
 
-main .button-create input {
+main .button-margin {
+  margin: 25px 0 100px;
+}
+
+main .button-margin input {
   color: black;
   padding: 10px;
   background-color: white;
@@ -11136,9 +11162,126 @@ main .button-create input {
   border-radius: 5px;
 }
 
-main .button-create input:hover {
+main .button-margin input:hover {
   border: none;
   color: white;
   background-color: blue;
+}
+
+main .ap-input-icon {
+  display: none;
+}
+
+main .title-margin {
+  margin: 50px 0 30px;
+}
+
+main .card-img-top {
+  padding: 20px 0;
+}
+
+main .img-thumbnail {
+  width: 280px;
+  height: 220px;
+}
+
+main .apartments-card {
+  width: 280px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+main .apartments-card .card-title {
+  font-weight: 800;
+}
+
+main .card-container {
+  margin: 30px 0;
+}
+
+main .btn-show {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+main .stats-mess {
+  margin: 20px 0;
+}
+
+main .btn-space {
+  margin-right: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+main .btn-space:hover {
+  color: white;
+  background-color: #fe675d;
+  border: 1px solid #fe675d;
+}
+
+main .margin-zero {
+  margin: 0;
+}
+
+main .content-center {
+  align-items: center;
+}
+
+main .search-bar {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  width: 80%;
+  margin: 30px auto;
+}
+
+main .search-bar input {
+  border: 0;
+  outline: 0;
+}
+
+main .search-bar input:focus {
+  outline: none !important;
+}
+
+main .flex {
+  display: flex;
+}
+
+main .search-sec {
+  padding: 2rem;
+  width: 90%;
+  margin: 30px auto;
+  background: rgba(26, 70, 104, 0.51);
+}
+
+main .search-slt {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .wrn-btn {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .service-form {
+  padding-top: 20px;
 }
 

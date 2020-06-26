@@ -2,7 +2,12 @@
 @section('content')
 <div class="container">
   <div class="row">
+
     <div class="col-8 create">
+        <div class="title-margin">
+            <h2>Crea il tuo appartamento</h2>
+
+        </div>
       <form action="{{route('user.apartments.store')}}" method="POST" enctype="multipart/form-data">
         @method("POST")
         @csrf
@@ -36,7 +41,7 @@
 
         </div>
         <div class="form-group">
-          <label for="beds">Numero di letti</label>
+          <label for="beds">Numero di posti letto</label>
           <input class='input-short' type="number" min="0" max="20" id="beds" name="beds" value="{{old('beds')}}">
           @error('beds')
             <small class="form-text">{{$message}}</small>
@@ -51,7 +56,7 @@
         </div>
         <div class="form-group">
           <label for="mq">Metri quadri</label>
-          <input class='input-short' type="number" min='0' id="mq" name="mq" value="{{old('mq')}}">
+          <input class='input-short' type="number" min='10' id="mq" name="mq" value="{{old('mq')}}">
           {{-- togliere frecce --}}
           @error('mq')
             <small class="form-text">{{$message}}</small>
@@ -68,16 +73,31 @@
           </div>
         </div>
         <div class="form-group">
-          <h3>Seleziona i servizi disponibili</h3>
-          @foreach ($services as $service)
-            <div class="form-check form-check-inline">
-              <input class="input-check" type="checkbox" id="service-{{$service->id}}" name="services[]" value="{{$service->id}}"
-              {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
-
-              <label for="service-{{$service->id}}">{{$service->name}}</label>
+            <div class="title-margin">
+                <h3>Seleziona i servizi disponibili</h3>
             </div>
-          @endforeach
-          <div class="form-group button-create">
+
+
+             @foreach ($services as $service)
+               <div class="form-check form-check-inline ">
+                 <input class="input-check" type="checkbox" id="service-{{$service->id}}" name="services[]" value="{{$service->id}}"
+                 {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+
+                 <label for="service-{{$service->id}}">{{$service->name}}</label>
+               </div>
+            @endforeach
+          
+            <div class="form-group">
+              <div class="title-margin">
+                <label for="visible">Visibile al pubblico </label>
+                <input type="checkbox" data-toggle="toggle" id="visible" name="visible">
+                
+                @error('visible')
+                <small class="form-text">{{$message}}</small>
+                @enderror
+              </div>
+            </div> 
+            <div class="form-group">
             <input class="btn btn-primary" type="submit" value="Inserisci">
           </div>
         </div>

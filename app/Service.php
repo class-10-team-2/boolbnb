@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    // use Searchable;
+    //use Searchable;
 
     protected $fillable = [
         'name'
