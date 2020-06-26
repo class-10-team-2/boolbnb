@@ -28,6 +28,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
+        dd(gettype($apt_services));
+
         // $boh = DB::table('active_sponsorships')->where('apartment_id', 13)->get();
         //
         // $actual_exp_date = Apartment::find(13)->activesponsorship->expiration_date;
