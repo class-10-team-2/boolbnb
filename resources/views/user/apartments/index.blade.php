@@ -5,16 +5,23 @@
         <h2>Gestisci i tuoi appartmenti</h2>
 
     </div>
-    <div class="row">
-        @if ($apartments->count() == 0)
+    @if ($apartments->count() == 0)
+        <div class="">
             <p>Non hai ancora registrato nessun appartamento</p>
-            <a class="btn btn-primary" href="{{route('user.apartments.create')}}">Inserisci il tuo appartmento</a>
-        @endif
+
+        </div>
+        <div class="">
+            <a class="btn btn-primary btn-space" href="{{route('user.apartments.create')}}">Inserisci il tuo appartmento</a>
+
+        </div>
+    @endif
+    <div class="row">
+
         @foreach ($apartments as $apartment)
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
             <div class="card apartments-card" >
               {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
-              <img src="{{asset('storage/' . $apartment->img_path)}}"" class="card-img-top img-thumbnail" alt="{{$apartment->title}}">
+              <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top img-thumbnail" alt="{{$apartment->title}}">
               <div class="card-body">
             <h5 class="card-title">{{$apartment->title}}</h5>
                 {{-- <div class="">
