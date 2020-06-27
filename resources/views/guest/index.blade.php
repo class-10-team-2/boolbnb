@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="col-lg-1  col-md-3 col-sm-3 col-3 p-0">
 
-                                    <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="1" max="50" placeholder="Mq">
+                                    <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="0" max="50" value="20" step="5" placeholder="Km">
                                 </div>
                                 <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
 
@@ -31,7 +31,7 @@
                                 <input id="index-longitude" type="hidden" class="lng-input" name="longitude">
                                 <div class="col-lg-4 col-md-12  col-sm-12 col-12 p-0">
 
-                                    <button type="submit" class="btn btn-danger wrn-btn">Search</button>
+                                    <button id="index-search-button" type="submit" class="btn btn-danger wrn-btn">Search</button>
                                 </div>
                             </div>
                         </div>
@@ -51,9 +51,9 @@
 
         </section>
         <div class="row">
-               
+
                 @foreach ($active_sponsorships as $active_sponsorship)
-                    
+
                     @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
 
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
@@ -62,11 +62,11 @@
                               @if ($active_sponsorship->apartment_id <= 13)
                               <div class="row row-img">
                                 <img class="card-img-top img-thumbnail" src="{{$active_sponsorship->apartment->img_path}}" alt="{{$active_sponsorship->apartment->title}}">
-                              </div> 
+                              </div>
                               @else
                               <div class="row row-img">
                                 <img class="card-img-top img-thumbnail" src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" alt="{{$active_sponsorship->apartment->title}}">
-                              </div>    
+                              </div>
                               @endif
                               <div class="card-body">
                             <h5 class="card-title">{{$active_sponsorship->apartment->title}}</h5>
@@ -119,7 +119,8 @@
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
 
-            $(document).on('click', '#index-search-button', function () {
+            $('#index-search-button').click(function () {
+                sessionStorage.setItem("address", $('#index-search').val());
                 sessionStorage.setItem("rooms", $('#index-rooms').val());
                 sessionStorage.setItem("beds", $('#index-beds').val());
                 sessionStorage.setItem("radius", $('#index-radius').val());

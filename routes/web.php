@@ -57,7 +57,7 @@ Route::post('/user/store_sponsoship', 'User\SponsorshipController@store_sponsors
 Route::get('search', 'Guest\SearchController@index')->name('guest.apartments.search');
 
 // Ricevi json con risultati filtrati da Algolia
-Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
+Route::get('/search/get-json-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
 Route::get('/search-sponsored', 'Guest\SearchController@searchSponsored')->name('search.sponsored');
 
 
