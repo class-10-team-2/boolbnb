@@ -124,6 +124,8 @@
 
                         // compilo gli input con i valori passati della index
                         $('#search-input').val(lsAddress);
+                        $('#latitude').val(lsLatitude);
+                        $('#longitude').val(lsLongitude);
                         $('#radius').val(lsRadius);
                         $('#rooms').val(lsRooms);
                         $('#beds').val(lsBeds);
