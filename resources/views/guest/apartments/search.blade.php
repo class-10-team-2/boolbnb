@@ -50,12 +50,13 @@
     @include('layouts.apartment-result-handlebars')
     @include('layouts.apartment-result-handlebars-seed')
     @include('layouts.apartment-sponsored-result-handlebars')
+    @include('layouts.apartment-sponsored-result-handlebars-seed')
 
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
 
-            // getJsonFromIndex();
+            getJsonFromIndex();
 
             $(document).on('click', '#search-button', function () {
                 sessionStorage.clear();
@@ -79,66 +80,79 @@
              * Chiama il metodo search() di Algolia nel SearchController.
              * Restituisce un json
              */
-            // function getJsonFromIndex() {
-            //     $.ajaxSetup({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-            //         }
-            //     });
+            function getJsonFromIndex() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
 
-            //     var lsRadius = parseInt(sessionStorage.getItem("radius"));
-            //     var lsBeds = parseInt(sessionStorage.getItem("beds"));
-            //     var lsRooms = parseInt(sessionStorage.getItem("rooms"));
-            //     var lsLatitude = parseFloat(sessionStorage.getItem("latitude"));
-            //     var lsLongitude = parseFloat(sessionStorage.getItem("longitude"));
-            //     // ri trasformo la stringa in un array
-            //     var lsServicesId = JSON.parse(sessionStorage.getItem("checked"));
-            //     console.log(lsServicesId);
-            //     $.ajax({
-            //         url: '/search/get-json-with-algolia-results',
-            //         type: 'get',
-            //         // dataType: "json",
-            //         data: {
-            //             radius: lsRadius,
-            //             beds: lsBeds,
-            //             rooms: lsRooms,
-            //             latitude: lsLatitude,
-            //             longitude: lsLongitude,
-            //             services: lsServicesId
-            //         },
-            //         success: function (response) {
-            //             console.log('getJsonFromIndex: ', response);
+                var lsAddress = sessionStorage.getItem("address");
+                var lsRadius = parseInt(sessionStorage.getItem("radius"));
+                var lsBeds = parseInt(sessionStorage.getItem("beds"));
+                var lsRooms = parseInt(sessionStorage.getItem("rooms"));
+                var lsLatitude = parseFloat(sessionStorage.getItem("latitude"));
+                var lsLongitude = parseFloat(sessionStorage.getItem("longitude"));
+                // ri trasformo la stringa in un array
+                var lsServicesId = JSON.parse(sessionStorage.getItem("checked"));
+                console.log(lsServicesId);
+                $.ajax({
+                    url: '/search/get-json-results',
+                    type: 'get',
+                    // dataType: "json",
+                    data: {
+                        radius: lsRadius,
+                        beds: lsBeds,
+                        rooms: lsRooms,
+                        latitude: lsLatitude,
+                        longitude: lsLongitude,
+                        services: lsServicesId
+                    },
+                    success: function (response) {
+                        console.log('getJsonFromIndex: ', response);
 
-            //             // compilo gli input con i valori passati della index
-            //             $('#radius').val(lsRadius);
-            //             $('#rooms').val(lsRooms);
-            //             $('#beds').val(lsBeds);
-            //             lsServicesId.forEach((serviceId, i) => { // i -> indice dell'array
-            //                 $('input[data-service-id=' + serviceId + ']').prop('checked', true);
-            //             });
+                        // compilo gli input con i valori passati della index
+                        $('#search-input').val(lsAddress);
+                        $('#radius').val(lsRadius);
+                        $('#rooms').val(lsRooms);
+                        $('#beds').val(lsBeds);
+                        lsServicesId.forEach((serviceId, i) => { // i -> indice dell'array
+                            $('input[data-service-id=' + serviceId + ']').prop('checked', true);
+                        });
 
-            //             // rendering dei risultati con handlebars
-            //             for (var i = 0; i < response.length; i++){
-            //                 var apartment = response[i];
-            //                 console.log(apartment);
-            //                 var apartmentData = {
-            //                     img_path: apartment.img_path,
-            //                     address: apartment.address,
-            //                     title: apartment.title,
-            //                     rooms: apartment.rooms,
-            //                     beds: apartment.beds,
-            //                     baths: apartment.baths
-            //                 };
+                        // rendering dei risultati con handlebars
+                        for (var i = 0; i < response.length; i++){
+                            var apartment = response[i];
+                            console.log(apartment);
+                            var apartmentData = {
+                                img_path: apartment.img_path,
+                                address: apartment.address,
+                                title: apartment.title,
+                                rooms: apartment.rooms,
+                                beds: apartment.beds,
+                                baths: apartment.baths,
+                                id: apartment.id
+                            };
 
-            //                 var apartmentHTML = apartmentTamplate(apartmentData);
-            //                 $('.results-container').append(apartmentHTML);
-            //             }
-            //         },
-            //         error: function (response) {
-            //             console.log('getJsonFromIndex Error:', response);
-            //         }
-            //     });
-            // }
+                            if (apartment.id <= 13) {
+                                var apartmentHTMLSeed = apartmentTamplateSeed(apartmentData);
+                                $('.results-container').append(apartmentHTMLSeed);
+
+                            } else {
+                                var apartmentHTML = apartmentTamplate(apartmentData);
+                                $('.results-container').append(apartmentHTML);
+
+                            }
+
+                            // var apartmentHTML = apartmentTamplate(apartmentData);
+                            // $('.results-container').append(apartmentHTML);
+                        }
+                    },
+                    error: function (response) {
+                        console.log('getJsonFromIndex Error:', response);
+                    }
+                });
+            }
 
 
             // restituisce un json con i risultati filtrati da algolia
@@ -160,7 +174,7 @@
                 console.log('checked:', checked);
 
                 $.ajax({
-                    url: '/search/get-json-with-algolia-results',
+                    url: '/search/get-json-results',
                     type: 'get',
                     // dataType: "json",
                     data: {
@@ -180,7 +194,7 @@
                                 return a.distance - b.distance;
                             });
                         }
-                        
+
                         console.log('ordered: ', response);
 
                         for (var i = 0; i < response.length; i++){
@@ -197,16 +211,14 @@
                             };
                             if (apartment.id <= 13) {
                                 var apartmentHTMLSeed = apartmentTamplateSeed(apartmentData);
-                            $('.results-container').append(apartmentHTMLSeed);
+                                $('.results-container').append(apartmentHTMLSeed);
 
                             } else {
                                 var apartmentHTML = apartmentTamplate(apartmentData);
-                            $('.results-container').append(apartmentHTML);
+                                $('.results-container').append(apartmentHTML);
 
                             }
-                            
-                            
-                            
+
                         }
                     },
                     error: function (response) {
@@ -267,7 +279,7 @@
                             $('.results-container').append(sponsoredApartmentHTML);
                             }
 
-                            
+
                         }
                     },
                     error: function (response) {
