@@ -48,6 +48,7 @@
     </div>
 
     @include('layouts.apartment-result-handlebars')
+    @include('layouts.apartment-result-handlebars-seed')
     @include('layouts.apartment-sponsored-result-handlebars')
 
 
@@ -69,6 +70,9 @@
             // Template Handlebars per gli appartamenti non sponsorizzati
             var apartmentSource = $("#apartment-result-template").html();
             var apartmentTamplate = Handlebars.compile(apartmentSource);
+
+            var apartmentSourceSeed = $("#apartment-result-template-seed").html();
+            var apartmentTamplateSeed = Handlebars.compile(apartmentSourceSeed);
             /**
              * Nel 'data' prende valori degli input del form di ricerca della home page
              * che sono stati salvati nel local storage.
@@ -165,7 +169,7 @@
                         rooms: parseInt($('#rooms').val()),
                         latitude: parseFloat($('#latitude').val()),
                         longitude: parseFloat($('#longitude').val()),
-                        services: checked
+                        services: checked,
                     },
                     success: function (response) {
                         console.log('getSearchResults: ', response);
@@ -188,11 +192,21 @@
                                 title: apartment.title,
                                 rooms: apartment.rooms,
                                 beds: apartment.beds,
-                                baths: apartment.baths
+                                baths: apartment.baths,
+                                id: apartment.id
                             };
+                            if (apartment.id <= 13) {
+                                var apartmentHTMLSeed = apartmentTamplateSeed(apartmentData);
+                            $('.results-container').append(apartmentHTMLSeed);
 
-                            var apartmentHTML = apartmentTamplate(apartmentData);
+                            } else {
+                                var apartmentHTML = apartmentTamplate(apartmentData);
                             $('.results-container').append(apartmentHTML);
+
+                            }
+                            
+                            
+                            
                         }
                     },
                     error: function (response) {
