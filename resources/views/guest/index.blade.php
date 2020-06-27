@@ -51,12 +51,9 @@
 
         </section>
         <div class="row">
-
+           
                 @foreach ($active_sponsorships as $active_sponsorship)
-
-                    @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
-
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
+                    @if ($active_sponsorship->expiration_date > $now->toDateTimeString())                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
                             <div class="card apartments-card" >
                               {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
                               @if ($active_sponsorship->apartment_id <= 13)
