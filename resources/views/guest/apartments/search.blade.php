@@ -219,6 +219,9 @@
             var sponsoredApartmentSource = $("#apartment-sponsored-result-template").html();
             var sponsoredApartmentTamplate = Handlebars.compile(sponsoredApartmentSource);
 
+            var sponsoredApartmentSourceSeed = $("#apartment-sponsored-result-template-seed").html();
+            var sponsoredApartmentTamplateSeed = Handlebars.compile(sponsoredApartmentSourceSeed);
+
             // restituisce un json con i risultati filtrati da algolia
             function getSponsored() {
                 $.ajaxSetup({
@@ -252,11 +255,19 @@
                                 title: apartment.title,
                                 rooms: apartment.rooms,
                                 beds: apartment.beds,
-                                baths: apartment.baths
+                                baths: apartment.baths,
+                                id: apartment.id
                             };
 
-                            var sponsoredApartmentHTML = sponsoredApartmentTamplate(apartmentData);
+                            if (apartment.id <= 13) {
+                                var sponsoredApartmentHTMLSeed = sponsoredApartmentTamplateSeed(apartmentData);
+                            $('.results-container').append(sponsoredApartmentHTMLSeed);
+                            } else {
+                                var sponsoredApartmentHTML = sponsoredApartmentTamplate(apartmentData);
                             $('.results-container').append(sponsoredApartmentHTML);
+                            }
+
+                            
                         }
                     },
                     error: function (response) {
