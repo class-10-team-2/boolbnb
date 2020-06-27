@@ -28,6 +28,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        // dd(Apartment::has('activesponsorship')->where('beds', '>', 4)->get()->toArray());
+        
         // $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
 
 
