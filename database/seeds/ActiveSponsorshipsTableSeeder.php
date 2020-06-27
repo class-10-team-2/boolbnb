@@ -18,7 +18,7 @@ class ActiveSponsorshipsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 3; $i <= 7; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             DB::table('active_sponsorships')->insert([
                 'apartment_id' => $i,
                 'expiration_date' => '2025-05-02 16:32:15',

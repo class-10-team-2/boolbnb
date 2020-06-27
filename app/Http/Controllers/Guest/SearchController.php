@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 use App\Apartment;
 use App\Service;
@@ -52,12 +53,13 @@ class SearchController extends Controller
         $lon1 = $longitude;
 
         $unfiltered_apartments = Apartment::where('rooms', '>=', $rooms)
-                                ->where('beds', '>=', $beds)
-                                ->where('visible', 1)
-                                ->get()->toArray();
+            ->where('beds', '>=', $beds)
+            ->where('beds', '<', ($beds + 6))
+            ->where('visible', 1)
+            ->get()->toArray();
 
-                                // dd($apartments);
-
+        // dd($apartments);
+        $filtered = []; // definisco l'array vuoto prima per evitare errori undefined quando richiamo json
         // cicliamo gli appartamenti filtrandoli per $radius
         foreach ($unfiltered_apartments as $apartment) {
             $lat2 = $apartment['latitude'];
@@ -69,10 +71,11 @@ class SearchController extends Controller
             $Δφ = (($lat2 - $lat1) * pi()) / 180;
             $Δλ = (($lon2 - $lon1) * pi()) / 180;
             $a =
-               sin($Δφ / 2) * sin($Δφ / 2) +
-               cos($φ1) * cos($φ2) * sin($Δλ / 2) * sin($Δλ / 2);
+                sin($Δφ / 2) * sin($Δφ / 2) +
+                cos($φ1) * cos($φ2) * sin($Δλ / 2) * sin($Δλ / 2);
             $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
             $d = ($R * $c) / 1000; // distanza fra coordinate iniziali e coordinate degli appartamenti
+
 
             if ($d <= $radius) {
                 $apartment['distance'] = $d;
@@ -81,19 +84,34 @@ class SearchController extends Controller
         }
 
         if (!empty($services)) {
-            $n_services = count($services);
-
-            foreach ($filtered as $apt_result) {
-                $apt_services = Apartment::find($apt_result['id'])->services->pluck('id')->toArray();
-                // dd(gettype($apt_services));
-                $apts_results = [];
-                // dd($apt_services);
-                if (count(array_intersect($apt_services, $services)) == $n_services) {
-                    $apts_results[] = $apt_result;
-                };
+            foreach ($services as $service) {
+                foreach ($filtered as $key => $apt_result) {
+                    $apt_services = DB::table('apartment_service')->where('apartment_id', $apt_result['id'])->pluck('service_id')->toArray();
+                    if (!in_array($service, $apt_services)) {
+                        unset($filtered[$key]);
+                    }
+                }
             }
 
-            return response()->json($apts_results);
+            /////////////////////////////////////////////////////////////////
+            // $n_services = count($services);
+
+            // foreach ($filtered as $apt_result) {
+
+            //     //$apt_services = Apartment::find($apt_result['id'])->services->pluck('id')->toArray();
+            //     //$apt_services = DB::table('apartments')->find($apt_result['id'])->services->pluck('id')->toArray();
+            //     $apt_services = DB::table('apartment_service')->where('apartment_id', $apt_result['id'])->pluck('service_id')->toArray();
+            //     //dd(gettype($apt_services));
+            //     $apts_results = [];
+            //     // dd($apt_services);
+            //     if (count(array_intersect($apt_services, $services)) == $n_services) {
+            //         $apts_results[] = $apt_result;
+            //     };
+            // }
+
+            // return response()->json($apts_results);
+            //////////////////////////////////////////////////////////////////
+            return response()->json($filtered);
         } else {
             return response()->json($filtered);
         }
@@ -151,5 +169,4 @@ class SearchController extends Controller
         //
         // return $apartments;
     }
-
 }
