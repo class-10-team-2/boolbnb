@@ -51,18 +51,23 @@
 
         </section>
         <div class="row">
-
+               
                 @foreach ($active_sponsorships as $active_sponsorship)
                     
                     @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
 
-
-
-
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
                             <div class="card apartments-card" >
                               {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
-                              <img src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" class="card-img-top img-thumbnail" alt="{{$active_sponsorship->apartment->title}}">
+                              @if ($active_sponsorship->apartment_id <= 13)
+                              <div class="row row-img">
+                                <img class="card-img-top img-thumbnail" src="{{$active_sponsorship->apartment->img_path}}" alt="{{$active_sponsorship->apartment->title}}">
+                              </div> 
+                              @else
+                              <div class="row row-img">
+                                <img class="card-img-top img-thumbnail" src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" alt="{{$active_sponsorship->apartment->title}}">
+                              </div>    
+                              @endif
                               <div class="card-body">
                             <h5 class="card-title">{{$active_sponsorship->apartment->title}}</h5>
                                 {{-- <div class="">

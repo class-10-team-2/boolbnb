@@ -1,18 +1,18 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    @if ($apartments->count() != 0)
     <div class="title-margin">
         <h2>Gestisci i tuoi appartmenti</h2>
-
+        <a class="btn btn-ptimary btn-space" href="{{'user.apartments.create'}}">Inserisci un nuovo appartamento</a>
     </div>
-    @if ($apartments->count() == 0)
+    @else
         <div class="">
             <p>Non hai ancora registrato nessun appartamento</p>
 
         </div>
         <div class="">
             <a class="btn btn-primary btn-space" href="{{route('user.apartments.create')}}">Inserisci il tuo appartmento</a>
-
         </div>
     @endif
     <div class="row">
@@ -20,8 +20,15 @@
         @foreach ($apartments as $apartment)
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
             <div class="card apartments-card" >
-              {{-- <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top" alt="{{$apartment->title}}"> --}}
-              <img src="{{asset('storage/' . $apartment->img_path)}}" class="card-img-top img-thumbnail" alt="{{$apartment->title}}">
+                @if ($apartment->id <= 13)
+                <div class="row row-img">
+                  <img class="apt-image" src="{{$apartment->img_path}}" alt="{{$apartment->title}}">
+                </div> 
+                @else
+                <div class="row row-img">
+                  <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
+                </div>    
+                @endif
               <div class="card-body">
             <h5 class="card-title">{{$apartment->title}}</h5>
                 {{-- <div class="">

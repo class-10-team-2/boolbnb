@@ -54,7 +54,7 @@ class SearchController extends Controller
 
         $unfiltered_apartments = Apartment::where('rooms', '>=', $rooms)
             ->where('beds', '>=', $beds)
-            ->where('beds', '<', ($beds + 6))
+            // ->where('beds', '<', ($beds + 6))
             ->where('visible', 1)
             ->get()->toArray();
 

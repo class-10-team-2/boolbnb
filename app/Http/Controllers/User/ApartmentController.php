@@ -28,7 +28,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
+        // $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
 
 
         // $boh = DB::table('active_sponsorships')->where('apartment_id', 13)->get();

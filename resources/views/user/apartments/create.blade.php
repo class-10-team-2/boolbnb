@@ -90,7 +90,7 @@
             <div class="form-group">
               <div class="title-margin">
                 <label for="visible">Visibile al pubblico </label>
-                <input type="checkbox" data-toggle="toggle" id="visible" name="visible">
+                <input type="checkbox" data-toggle="toggle" id="visible" name="visible" checked>
                 
                 @error('visible')
                 <small class="form-text">{{$message}}</small>
