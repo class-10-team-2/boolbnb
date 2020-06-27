@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
         <section class="search-sec">
             <div class="container">
                 <form action="{{route('guest.apartments.search')}}" method="GET">

@@ -41,7 +41,7 @@ class ApartmentServiceTableSeeder extends Seeder
         $apartments = Apartment::all();
         // $apartments = Apartment::all()->toArray();
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 13; $i++) {
             $services_count = count($services[$i]);
             for ($j = 0; $j < $services_count; $j++) {
                 $apartment_id = $apartments[$i]->id;
