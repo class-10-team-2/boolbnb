@@ -29,7 +29,7 @@ class ApartmentController extends Controller
     public function index()
     {
         // dd(Apartment::has('activesponsorship')->where('beds', '>', 4)->get()->toArray());
-        
+
         // $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
 
 
@@ -92,6 +92,8 @@ class ApartmentController extends Controller
 
         if (isset($data['visible'])) {
             $data['visible'] = 1;
+        } else {
+            $data['visible'] = 0;
         }
 
         $path = Storage::disk('public')->put('images', $data['img_path']);
@@ -214,6 +216,12 @@ class ApartmentController extends Controller
             'img_path' => 'required'
 
         ]);
+
+        if (isset($data['visible'])) {
+            $data['visible'] = 1;
+        } else {
+            $data['visible'] = 0;
+        }
 
 
         if (empty($data['img_path'])) {
