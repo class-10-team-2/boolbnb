@@ -3,7 +3,9 @@
 @section('content')
         <section class="search-sec">
             <div class="container">
-                <form action="{{route('guest.apartments.search')}}" method="GET">
+                <form action="{{route('guest.apartments.search')}}" method="POST">
+                    @method('POST')
+                    @csrf
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
