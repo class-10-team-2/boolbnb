@@ -189,6 +189,7 @@ main {
     .results-container {
         display: flex;
         flex-wrap: wrap;
+        margin-top: 30px;
         .card {
             border-radius: 30px;
             overflow: hidden;
@@ -515,10 +516,10 @@ main {
     ///////MODIFICHE A SEARCH INDEX/////////
 
     .index-search-row {
-        max-width: 1100px;
-        flex-basis: 90vw;
-        flex-shrink: 0;
-        flex-grow: 0;
+        // max-width: 1100px;
+        // flex-basis: 90vw;
+        // flex-shrink: 0;
+        // flex-grow: 0;
         margin: 0 auto;
         margin-top: 30px;
         border-radius: 40px;
@@ -528,8 +529,9 @@ main {
             margin-bottom: 15px;
             .input-box-index {
                 margin: 0 auto;
-                width: 90vw;
-                max-width: 1100px;
+                // width: 90vw;
+                width: 100%;
+                // max-width: 1100px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -546,8 +548,9 @@ main {
         .second-row {
             display: flex;
             flex-direction: row;
-            max-width: 1100px;
-            width: 90vw;
+            // max-width: 1100px;
+            // width: 90vw;
+            width: 100%;
             margin: 0 auto;
             .radius-box,
             .rooms-box,

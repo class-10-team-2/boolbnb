@@ -2,12 +2,13 @@
 
 @section('content')
         {{-- <section class="search-sec"> --}}
-            <div class="container">
+            <div class="custom-container">
+
                 <form action="{{route('guest.apartments.search')}}" method="POST">
                     @method('POST')
                     @csrf
                     <div class="row search-row index-search-row ">
-                        <div class="index-ricerca-row row"> 
+                        <div class="index-ricerca-row row">
                             <div class="input-box-index">
                                 <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?">
                             </div>
@@ -16,26 +17,26 @@
                             <div class="second-row-left">
                                 <div class="input-box-index radius-box">
                                     <div class="label-index">
-                                    <span>Raggio di ricerca (km)</span> 
+                                    <span>Raggio di ricerca (km)</span>
                                     </div>
                                     <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="0" max="50" value="20" step="5" placeholder="Km">
                                 </div>
                                 <div class="input-box-index rooms-box">
                                     <div class="label-index">
-                                        <span>Stanze</span> 
+                                        <span>Stanze</span>
                                     </div>
                                     <input id="index-rooms" class="form-control search-slt" type="number" name="rooms" min="0" max="10" value="0" placeholder="Stanze">
                                 </div>
                                 <div class="input-box-index beds-box">
                                     <div class="label-index">
-                                        <span>Letti</span> 
+                                        <span>Letti</span>
                                         </div>
                                     <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20" value="1" placeholder="Letti">
                                 </div>
                                 <div class="button-box">
                                     <button id="index-search-button" type="submit" class="btn">Cerca</button>
                                 </div>
-                                
+
                             </div>
                             <div class="second-row-right">
                                 <h5>Scegli i servizi</h5>
@@ -51,57 +52,50 @@
                             <input id="index-latitude" type="hidden" class="lat-input" name="latitude">
                             <input id="index-longitude" type="hidden" class="lng-input" name="longitude">
                         </div>
-
-                    </div>  
-                        
-                        
-                    
-                    
+                    </div>
                 </form>
 
+                {{-- <div class="title-vetrina col-12">
+                    <hr>
+                    <h3>Gli appartamenti selezionati</h3>
+                </div> --}}
+                <div class="results-container">
+
+                    @foreach ($active_sponsorships as $active_sponsorship)
+                        @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
+                            <div class="padding-trick">
+                                <div class="card">
+                                    <div class="wrap">
+                                        <a href="{{route('guest.apartments.show', $active_sponsorship->apartment->id)}}" class="card-link"></a>
+
+                                        @if ($active_sponsorship->apartment_id <= 13)
+                                            <img class="card-img-top" src="{{$active_sponsorship->apartment->img_path}}" alt="{{$active_sponsorship->apartment->title}}">
+                                        @else
+                                            <img class="card-img-top" src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" alt="{{$active_sponsorship->apartment->title}}">
+                                        @endif
+
+                                        <div class="card-body">
+                                            <h3 class="card-title">{{$active_sponsorship->apartment->title}}</h3>
+                                            <p class="card-text">{{$active_sponsorship->apartment->address}}</p>
+                                            <span class="info-card"><i class="fas fa-door-open"></i>&nbsp;{{$active_sponsorship->apartment->rooms}}</span>
+                                            <span class="info-card"><i class="fas fa-bed"></i>&nbsp;{{$active_sponsorship->apartment->beds}}</span>
+                                            <span class="info-card"><i class="fas fa-shower"></i>&nbsp;{{$active_sponsorship->apartment->baths}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                    @endforeach
+                </div>
             </div>
 
 
         {{-- </section> --}}
 
 
-        <div class="title-vetrina col-12">
-            <hr>
-            <h3>Gli appartamenti selezionati</h3> 
-        </div>
-        <div class="row sponsor-container-index">
-            
-            @foreach ($active_sponsorships as $active_sponsorship)
-                @if ($active_sponsorship->expiration_date > $now->toDateTimeString())                        
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 card-container">
-                        <div class="card apartments-card">
-                            <a href="{{route('guest.apartments.show', $active_sponsorship->apartment->id)}}" class="link-card"></a>
-                            
-                            @if ($active_sponsorship->apartment_id <= 13)
-                                
-                                    <img class="card-img-top img-thumbnail" src="{{$active_sponsorship->apartment->img_path}}" alt="{{$active_sponsorship->apartment->title}}">
-                                
-                            @else
-                                
-                                    <img class="card-img-top img-thumbnail" src="{{asset('storage/' . $active_sponsorship->apartment->img_path)}}" alt="{{$active_sponsorship->apartment->title}}">
-                                
-                            @endif
-                        
-                            <div class="card-body">
-                                <h5 class="card-title">{{$active_sponsorship->apartment->title}}</h5>
-                                
-                                <div class="">
-                                    <p>{{$active_sponsorship->apartment->address}}</p>
 
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                @endif
 
-            @endforeach
-        </div>        
-        
               {{-- JAVASCRIPT --}}
             <script type="text/javascript">
 
