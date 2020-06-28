@@ -121,7 +121,7 @@
           <div class="form-group">
             <div class="title-margin">
               <label for="visible">Visibile al pubblico </label>
-              <input type="checkbox" data-toggle="toggle" id="visible" name="visible" value="{{ $apartment->visible}}">
+              <input type="checkbox" data-toggle="toggle" id="visible" name="visible" {{($apartment->visible == 1) ? 'checked="true"' : ''}}>
 
               @error('visible')
               <small class="form-text">{{$message}}</small>
