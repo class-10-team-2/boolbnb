@@ -4,7 +4,7 @@
     @if ($apartments->count() != 0)
     <div class="title-margin">
         <h2>Gestisci i tuoi appartmenti</h2>
-        <a class="btn btn-ptimary btn-space" href="{{'user.apartments.create'}}">Inserisci un nuovo appartamento</a>
+        <a class="btn btn-ptimary btn-space" href="/user/apartments/create">Inserisci un nuovo appartamento</a>
     </div>
     @else
         <div class="">
