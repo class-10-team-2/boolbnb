@@ -29,7 +29,7 @@ class ApartmentController extends Controller
     public function index()
     {
         // dd(Apartment::has('activesponsorship')->where('beds', '>', 4)->get()->toArray());
-        
+
         // $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
 
 
@@ -254,11 +254,16 @@ class ApartmentController extends Controller
         if ($user_id != $apartment->user_id) {
             abort('404');
         }
+
         $apartment->services()->detach();
+        $apartment->activesponsorship()->delete();
+        $apartment->request()->delete();
         $deleted = $apartment->delete();
 
+
+
         if (!$deleted) {
-            return redirect()->back();
+            return redirect()->back(); // aggiungere with status
         }
         return redirect()->route('user.apartments.index');
     }
