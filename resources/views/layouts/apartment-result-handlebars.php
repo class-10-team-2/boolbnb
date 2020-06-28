@@ -1,8 +1,17 @@
 <script id="apartment-result-template" type="text/x-handlebars-template">
-    <img class="img-in-results" src="<?php echo e(asset('storage/')) ?>/{{img_path}}" alt="">
-    <h2>{{title}}</h2>
-    <div class="">{{address}}</div>
-    <div class="">Stanze: {{rooms}}</div>
-    <div class="">Letti: {{beds}}</div>
-    <div class="">Bagni: {{baths}}</div>
+    <div class="card">
+        <div class="wrap">
+        <img class="card-img-top" src="<?php echo e(asset('storage/')) ?>/{{img_path}}" alt="">
+
+            <img class="card-img-top" src="{{img_path}}" alt="">
+            <div class="card-body">
+                <!-- <small><i class="fas fa-star"></i> In vetrina</i></small> -->
+                <h3 class="card-title">{{title}}</h3>
+                <p class="card-text">{{address}}</p>
+                <span class="info-card"><i class="fas fa-door-open"></i>&nbsp;{{rooms}}</span>
+                <span class="info-card"><i class="fas fa-bed"></i>&nbsp;{{beds}}</span>
+                <span class="info-card"><i class="fas fa-shower"></i>&nbsp;{{baths}}</span>
+        </div>
+    
+    </div>
 </script>
