@@ -11,10 +11,16 @@
   </div>
   @endif
 
-
+  
   <div class="row title-row">
+   
       <div class="col-12">
+
         <div class="row container-margin">
+          <div class="row col-12">
+            <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
+          </div>
+          
             <h1 class="apt-title">{{$apartment->title}}</h1>
         </div>
         <div class="row container-margin">

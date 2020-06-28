@@ -11523,3 +11523,28 @@ main .title-vetrina h3 {
   margin-top: 40px;
 }
 
+main .form-row.services-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+main .radius-label {
+  display: inline-block;
+}
+
+main .btn-search-page-search {
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid grey;
+  padding: 5px 12px;
+  text-align: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+main .btn-search-page-search:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
+}
+

@@ -25,7 +25,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="radius">Raggio di ricerca |&nbsp;</label><span id="radius-display-km"></span><span> km</span>
+                        <label for="radius">Raggio di ricerca <div class="radius-label">|&nbsp;</label><span id="radius-display-km"></span><span> km</span></div>
                         <input id="radius" class="form-control" type="range" name="radius" min="5" max="50" value="20">
                     </div>
                     <div class="col">
@@ -37,7 +37,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                         <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row services-row">
                     @foreach ($services as $service)
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
@@ -52,7 +52,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
             <input id="latitude" type="hidden" class="lat-input" name="latitude">
             <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
-            <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
+            <button id="search-button" class="btn-search-page-search" type="button">Cerca</button>
         </form>
 
     </div>
