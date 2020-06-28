@@ -10930,6 +10930,10 @@ a.text-dark:focus {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fe675d;
+}
+
 nav.navbar {
   background-color: #fe675d;
 }
@@ -10943,6 +10947,11 @@ nav.navbar {
 .no-gutters > [class*=col-] {
   padding-right: 0;
   padding-left: 0;
+}
+
+main {
+  background: #f5f5f5;
+  padding-top: 30px;
 }
 
 main .container-fluid,
@@ -10988,7 +10997,6 @@ main p {
 }
 
 main .search-box {
-  margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 40px;
@@ -11505,7 +11513,6 @@ main .service-form {
 
 main .index-search-row {
   margin: 0 auto;
-  margin-top: 30px;
   border-radius: 40px;
 }
 
