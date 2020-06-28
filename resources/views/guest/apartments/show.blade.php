@@ -11,22 +11,22 @@
   </div>
   @endif
 
-  
+
   <div class="row title-row">
-   
+
       <div class="col-12">
 
         <div class="row container-margin">
-          <div class="row col-12">
+          {{-- <div class="row col-12">
             <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
-          </div>
-          
+          </div> --}}
+
             <h1 class="apt-title">{{$apartment->title}}</h1>
         </div>
         <div class="row container-margin">
             <h4 class="apt-address"><a href="http://www.google.com/maps/place/{{$apartment->latitude}},{{$apartment->longitude}}" target="_blank"><i class="fas fa-map-marker-alt"></i> {{$apartment->address}}</a></h4>
         </div>
-        {{-- <hr> --}}
+        <hr>
       </div>
   </div>
 
