@@ -1,17 +1,15 @@
 // aggiungi no-gutters per rimuovere il padding automatico di bootstrap
 .no-gutters {
-  margin-right: 0;
-  margin-left: 0;
+    margin-right: 0;
+    margin-left: 0;
 
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
+    > .col,
+    > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 ///////////////////////////////////////////////////////////////////////
-
-
 
 main {
     .container-fluid {
@@ -165,7 +163,6 @@ main {
         }
     }
 
-
     ///// SEARCH PAGE ////////////
     .custom-container {
         width: 90vw;
@@ -312,10 +309,9 @@ main {
                     font-weight: 700;
                     &:hover {
                         color: white;
-                        background-color: green;;
+                        background-color: green;
                     }
                 }
-
             }
         }
     }
@@ -614,6 +610,17 @@ main {
         margin-bottom: 20px;
     }
 
+    .address-input {
+        border-radius: 40px;
+    }
+
+    .form-control {
+        border-radius: 40px;
+    }
+    .search-page-search {
+        border-radius: 40px;
+    }
+
     .radius-label {
         display: inline-block;
     }
@@ -630,5 +637,12 @@ main {
             color: white;
             border: 1px solid $bittersweet;
         }
+    }
+    ////////
+    .no-apt,
+    .no-apt-btn {
+        margin: 0 auto;
+        margin-top: 30px;
+        text-align: center;
     }
 }

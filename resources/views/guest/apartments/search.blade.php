@@ -46,7 +46,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                 <input id="latitude" type="hidden" class="lat-input" name="latitude">
                 <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
-                <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
+                <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button>
             </form>
         </div>
 

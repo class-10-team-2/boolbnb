@@ -11608,6 +11608,18 @@ main .form-row.services-row {
   margin-bottom: 20px;
 }
 
+main .address-input {
+  border-radius: 40px;
+}
+
+main .form-control {
+  border-radius: 40px;
+}
+
+main .search-page-search {
+  border-radius: 40px;
+}
+
 main .radius-label {
   display: inline-block;
 }
@@ -11626,5 +11638,12 @@ main .btn-search-page-search:hover {
   background-color: #fe675d;
   color: white;
   border: 1px solid #fe675d;
+}
+
+main .no-apt,
+main .no-apt-btn {
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
 }
 
