@@ -1,3 +1,18 @@
+// aggiungi no-gutters per rimuovere il padding automatico di bootstrap
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+///////////////////////////////////////////////////////////////////////
+
+
+
 main {
     .container-fluid {
         padding-bottom: 100px;
@@ -150,18 +165,47 @@ main {
         }
     }
 
+
+    ///// SEARCH PAGE ////////////
+    .custom-container {
+        width: 90vw;
+        padding: 10px;
+        margin: 0 auto;
+        @media screen and (max-width: 575px) {
+            width: 95vw;
+        }
+    }
     ///////results container//////////////////////////////////
+    // PADDING TRICK//
+    .padding-trick {
+        padding: 10px;
+        flex: 0 1 50%;
+        @media screen and (max-width: 575px) {
+            padding: 10px 5px;
+            flex: 1 1 100%;
+        }
+    }
 
     .results-container {
+        display: flex;
+        flex-wrap: wrap;
         .card {
-            border-radius: 40px;
+            border-radius: 30px;
             overflow: hidden;
             // display: inline-block;
-            margin: 40px 0;
+            // margin: 10px;
+            height: 277.333px;
+            @media screen and (max-width: 991px) {
+                height: 100%;
+            }
             .wrap {
                 position: relative;
                 display: flex;
                 flex-direction: row;
+                height: 100%;
+                @media screen and (max-width: 991px) {
+                    flex-direction: column;
+                }
                 a.card-link {
                     position: absolute;
                     border-radius: 40px;
@@ -175,16 +219,22 @@ main {
                 .card-img-top {
                     width: 50%;
                     object-fit: cover;
+                    @media screen and (max-width: 991px) {
+                        width: 100%;
+                    }
+                }
+                .card-title {
+                    font-size: 1.3rem;
                 }
                 .info-card {
                     display: block;
-                    font-size: 16px;
+                    font-size: 14px;
                     padding: 4px;
                     margin-right: 5px;
                     i {
                         display: inline-block;
                         color: $icon-color;
-                        font-size: 20px;
+                        font-size: 16px;
                         min-width: 30px;
                     }
                 }
@@ -232,14 +282,39 @@ main {
             top: 50%;
             transform: translate(-50%, -50%);
             button {
-                padding: 10px;
+                padding: 10px 20px;
                 background-color: white;
                 border: 1px solid black;
                 border-radius: 5px;
                 &:hover {
                     color: white;
-                    background-color: blue;
+                    background-color: #3490dc;
+                    border: 1px solid #3490dc;
                 }
+            }
+            .payment-successfull-box {
+                text-align: center;
+                padding: 20px 30px;
+                border: 1px solid green;
+                border-radius: 5px;
+                .payment-successfull-alert {
+                    margin-bottom: 10px;
+                    font-size: 20px;
+                    color: green;
+                    .icon-payment-check {
+                        color: green;
+                    }
+                }
+                .refresh-button {
+                    color: green;
+                    border: 1px solid green;
+                    font-weight: 700;
+                    &:hover {
+                        color: white;
+                        background-color: green;;
+                    }
+                }
+
             }
         }
     }
