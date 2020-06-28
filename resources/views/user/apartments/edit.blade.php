@@ -117,6 +117,17 @@
               @endif
 
           @endforeach
+
+          <div class="form-group">
+            <div class="title-margin">
+              <label for="visible">Visibile al pubblico </label>
+              <input type="checkbox" data-toggle="toggle" id="visible" name="visible" value="{{ $apartment->visible}}">
+
+              @error('visible')
+              <small class="form-text">{{$message}}</small>
+              @enderror
+            </div>
+          </div>
           <div class="form-group button-margin">
             <input class="btn btn-primary" type="submit" value="Modifica">
           </div>

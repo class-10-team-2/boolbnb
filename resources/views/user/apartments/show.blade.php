@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <div class="row row-img">
-        <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
-    </div>
+  @if ($apartment->id <= 13)
+  <div class="row row-img">
+    <img class="apt-image" src="{{$apartment->img_path}}" alt="{{$apartment->title}}">
+  </div> 
+  @else
+  <div class="row row-img">
+    <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
+  </div>    
+  @endif
     <div class="col-12 flex-dir">
         <div class="">
             <div class="row margin-zero ">
@@ -31,7 +37,7 @@
         <div class="col-md-6">
           <div class="apt-info">
             <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
-            <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Letti' : '1 Letto'}}</span>
+            <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Posti letto' : '1 Posto letto'}}</span>
             <span><i class="fas fa-shower"></i> {{($apartment->baths > 1) ? $apartment->baths . ' Bagni' : '1 Bagno'}}</span>
             <span><i class="fas fa-home"> </i>{{$apartment->mq}}m<sup>2</sup></span>
           </div>
@@ -133,9 +139,9 @@
         var button = document.querySelector('#submit-button');
 
         braintree.dropin.create({
-            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+            //===============!!!!!!!!! TOKEN !!!!!!!!!==================
             authorization: "sandbox_zjfh858v_q3x76bj5z6dt98t9",
-            //===============!!!!!!!!! DA GENERARE E CAMBIARE !!!!!!!!!==================
+            //===============!!!!!!!!! BRAINTREE !!!!!!!!!==================
 
             container: '#dropin-container'
         }, function (createErr, instance) {

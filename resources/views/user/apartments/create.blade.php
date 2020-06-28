@@ -41,7 +41,7 @@
 
         </div>
         <div class="form-group">
-          <label for="beds">Numero di letti</label>
+          <label for="beds">Numero di posti letto</label>
           <input class='input-short' type="number" min="0" max="20" id="beds" name="beds" value="{{old('beds')}}">
           @error('beds')
             <small class="form-text">{{$message}}</small>
@@ -85,10 +85,19 @@
 
                  <label for="service-{{$service->id}}">{{$service->name}}</label>
                </div>
-
-
-          @endforeach
-          <div class="form-group button-margin">
+            @endforeach
+          
+            <div class="form-group">
+              <div class="title-margin">
+                <label for="visible">Visibile al pubblico </label>
+                <input type="checkbox" data-toggle="toggle" id="visible" name="visible" checked>
+                
+                @error('visible')
+                <small class="form-text">{{$message}}</small>
+                @enderror
+              </div>
+            </div> 
+            <div class="form-group">
             <input class="btn btn-primary" type="submit" value="Inserisci">
           </div>
         </div>

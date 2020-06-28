@@ -2,8 +2,10 @@
 @section('content')
 
     <div class="container ">
-        <div class="titolo-stats">
-            <h3> Le statistiche del tuo appartmento <strong>{{$apartment->title}}</strong></h3>
+        <div class="titolo-stats title-margin">
+        <a href="{{route('user.apartments.show', $apartment->id)}}"><i class="fas fa-arrow-left"></i> Torna all'appartamento</a>
+
+        <h3>Le tue statistiche per <strong>"{{$apartment->title}}" </strong></h3>
 
         </div>
 
@@ -11,7 +13,7 @@
 
             <div class="col-4">
                 @if ($messages_count > 1)
-                    <h1>Hai ricevuto in totale {{$messages_count}} messaggi per questo appartmento.</h1>
+                    <h1>Hai ricevuto in totale <a href="{{route('user.apartments.messages', $apartment->id)}}">{{$messages_count}} messaggi</a> per questo appartmento.</h1>
                 @elseif ($messages_count == 1)
                     <h1>Per ora hai ricevuto 1 messaggio per questo appartmento.</h1>
                 @else
@@ -21,7 +23,7 @@
             </div>
             <div class="col-8 ">
                 <div class="chart-views ">
-                    <p>Visualizzazioni</p>
+                    <p>Visualizzazioni per l'anno {{Carbon\Carbon::now()->format('Y')}}</p>
                     <canvas id="chart_mensile"></canvas>
 
                 </div>
@@ -91,7 +93,7 @@ $(document).ready(function() {
                         ticks: {
                             suggestedMax: 10,
                             min: 0,
-                            stepSize: 1
+                            stepSize: 20
                         }
                     }]
                 }

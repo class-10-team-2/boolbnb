@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-use App\ActiveSponsorship; // da cancellare
+use Algolia\ScoutExtended\Facades\Algolia; // lo lascio per ricordarmi che ho fatto dei test
 
 class ApartmentController extends Controller
 {
@@ -28,6 +28,20 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        // dd(Apartment::has('activesponsorship')->where('beds', '>', 4)->get()->toArray());
+        
+        // $apt_services = Apartment::find(12)->services->pluck('id')->toArray();
+
+
+        // $boh = DB::table('active_sponsorships')->where('apartment_id', 13)->get();
+        //
+        // $actual_exp_date = Apartment::find(13)->activesponsorship->expiration_date;
+        //
+        // var_dump($actual_exp_date, gettype($actual_exp_date));
+        //
+        // $new_from_actual_exp_date = new Carbon($actual_exp_date);
+        // dd($new_from_actual_exp_date->addHour(24));
+
         $userLogged = Auth::id();
         $apartments = Apartment::where('user_id', '=', $userLogged)->get();
 
@@ -74,6 +88,10 @@ class ApartmentController extends Controller
             return redirect()->route('user.apartments.create')
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        if (isset($data['visible'])) {
+            $data['visible'] = 1;
         }
 
         $path = Storage::disk('public')->put('images', $data['img_path']);

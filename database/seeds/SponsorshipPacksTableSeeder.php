@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Sponsorship_pack;
+use Illuminate\Support\Facades\DB;
 
 class SponsorshipPacksTableSeeder extends Seeder
 {
