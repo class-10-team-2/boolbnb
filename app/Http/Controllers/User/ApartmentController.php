@@ -265,6 +265,7 @@ class ApartmentController extends Controller
 
         $apartment->services()->detach();
         $apartment->activesponsorship()->delete();
+        $apartment->sponsorships()->delete();
         $apartment->request()->delete();
         $deleted = $apartment->delete();
 
