@@ -10953,7 +10953,7 @@ main .container-xl {
   padding-bottom: 100px;
 }
 
-main .row img.bg-search-img {
+main img.bg-search-img {
   position: absolute;
   height: 300px;
   width: 100vw;
@@ -10961,33 +10961,33 @@ main .row img.bg-search-img {
      object-fit: cover;
 }
 
-main .row h1 {
+main h1 {
   margin-top: 20px;
   font-weight: 800;
 }
 
 @media screen and (max-width: 575px) {
-  main .row h1 {
+  main h1 {
     font-size: 1.5rem;
   }
 }
 
-main .row h4 {
+main h4 {
   font-weight: 800;
   padding-bottom: 3px;
 }
 
 @media screen and (max-width: 575px) {
-  main .row h4 {
+  main h4 {
     font-size: 1.05rem;
   }
 }
 
-main .row p {
+main p {
   color: #515151;
 }
 
-main .row .search-box {
+main .search-box {
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
@@ -10995,7 +10995,7 @@ main .row .search-box {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-main .row .search-box .search-input {
+main .search-box .search-input {
   border-radius: 40px;
 }
 
@@ -11645,5 +11645,25 @@ main .no-apt-btn {
   margin: 0 auto;
   margin-top: 30px;
   text-align: center;
+}
+
+footer {
+  height: 300px;
+  background-color: #fe675d;
+}
+
+footer .container {
+  height: 100%;
+}
+
+footer .container .footer-logo-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .container .footer-logo-wrapper img {
+  width: auto;
 }
 

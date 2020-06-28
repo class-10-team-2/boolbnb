@@ -10,7 +10,8 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 @extends('layouts.app')
 
 @section('content')
-    <div class="custom-container">
+    {{-- <div class="custom-container"> --}}
+    <div class="container">
         <div class="search-box">
             <form>
                 {{-- @method('POST')
