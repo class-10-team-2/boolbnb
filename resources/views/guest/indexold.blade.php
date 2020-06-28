@@ -2,7 +2,7 @@
 
 @section('content')
         {{-- <section class="search-sec"> --}}
-            <div class="container-fluid">
+            <div class="container">
                 <form action="{{route('guest.apartments.search')}}" method="POST">
                     @method('POST')
                     @csrf
@@ -14,15 +14,14 @@
                                     <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?">
                                 </div>
                                 <div class="col-lg-1  col-md-4 col-sm-4 col-4 p-0">
-
+                                    
                                     <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="0" max="50" value="20" step="5" placeholder="Km">
                                 </div>
                                 <div class="col-lg-1 col-md-4 col-sm-4 col-4 p-0">
-
+                                    
                                     <input id="index-rooms" class="form-control search-slt" type="number" name="rooms" min="0" max="10" value="0" placeholder="Stanze">
                                 </div>
                                 <div class="col-lg-1 col-md-4 col-sm-4 col-4 p-0">
-
                                     <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20" value="1" placeholder="Letti">
                                 </div>
                                 {{-- <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
