@@ -11605,6 +11605,18 @@ main .form-row.services-row {
   margin-bottom: 20px;
 }
 
+main .address-input {
+  border-radius: 40px;
+}
+
+main .form-control {
+  border-radius: 40px;
+}
+
+main .search-page-search {
+  border-radius: 40px;
+}
+
 main .radius-label {
   display: inline-block;
 }
