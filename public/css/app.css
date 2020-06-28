@@ -10930,10 +10930,6 @@ a.text-dark:focus {
   }
 }
 
-.img-in-results {
-  width: 200px;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -10942,6 +10938,17 @@ a.text-dark:focus {
 
 nav.navbar {
   background-color: #fe675d;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*=col-] {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 main .container-fluid,
@@ -11130,16 +11137,58 @@ main .controls .btn-edit:hover {
   border: 1px solid green;
 }
 
+main .custom-container {
+  width: 90vw;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 575px) {
+  main .custom-container {
+    width: 95vw;
+  }
+}
+
+main .padding-trick {
+  padding: 10px;
+  flex: 0 1 50%;
+}
+
+@media screen and (max-width: 575px) {
+  main .padding-trick {
+    padding: 10px 5px;
+    flex: 1 1 100%;
+  }
+}
+
+main .results-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 main .results-container .card {
-  border-radius: 40px;
+  border-radius: 30px;
   overflow: hidden;
-  margin: 40px 0;
+  height: 277.333px;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card {
+    height: 100%;
+  }
 }
 
 main .results-container .card .wrap {
   position: relative;
   display: flex;
   flex-direction: row;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap {
+    flex-direction: column;
+  }
 }
 
 main .results-container .card .wrap a.card-link {
@@ -11158,9 +11207,19 @@ main .results-container .card .wrap .card-img-top {
      object-fit: cover;
 }
 
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap .card-img-top {
+    width: 100%;
+  }
+}
+
+main .results-container .card .wrap .card-title {
+  font-size: 1.3rem;
+}
+
 main .results-container .card .wrap .info-card {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   padding: 4px;
   margin-right: 5px;
 }
@@ -11168,7 +11227,7 @@ main .results-container .card .wrap .info-card {
 main .results-container .card .wrap .info-card i {
   display: inline-block;
   color: #8f8e8d;
-  font-size: 20px;
+  font-size: 16px;
   min-width: 30px;
 }
 
