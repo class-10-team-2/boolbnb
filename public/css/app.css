@@ -1,13 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;
 
-/* SCSS RGB */
+700;800&display=swap);@charset "UTF-8";
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 
 :root {
   --blue: #3490dc;
@@ -11279,7 +11273,7 @@ main .box-paypal .paypal {
 }
 
 main .box-paypal .paypal button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
@@ -11287,7 +11281,36 @@ main .box-paypal .paypal button {
 
 main .box-paypal .paypal button:hover {
   color: white;
-  background-color: blue;
+  background-color: #3490dc;
+  border: 1px solid #3490dc;
+}
+
+main .box-paypal .paypal .payment-successfull-box {
+  text-align: center;
+  padding: 20px 30px;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert .icon-payment-check {
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button {
+  color: green;
+  border: 1px solid green;
+  font-weight: 700;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button:hover {
+  color: white;
+  background-color: green;
 }
 
 main .titolo-stats {

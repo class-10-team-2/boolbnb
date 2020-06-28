@@ -282,14 +282,39 @@ main {
             top: 50%;
             transform: translate(-50%, -50%);
             button {
-                padding: 10px;
+                padding: 10px 20px;
                 background-color: white;
                 border: 1px solid black;
                 border-radius: 5px;
                 &:hover {
                     color: white;
-                    background-color: blue;
+                    background-color: #3490dc;
+                    border: 1px solid #3490dc;
                 }
+            }
+            .payment-successfull-box {
+                text-align: center;
+                padding: 20px 30px;
+                border: 1px solid green;
+                border-radius: 5px;
+                .payment-successfull-alert {
+                    margin-bottom: 10px;
+                    font-size: 20px;
+                    color: green;
+                    .icon-payment-check {
+                        color: green;
+                    }
+                }
+                .refresh-button {
+                    color: green;
+                    border: 1px solid green;
+                    font-weight: 700;
+                    &:hover {
+                        color: white;
+                        background-color: green;;
+                    }
+                }
+
             }
         }
     }

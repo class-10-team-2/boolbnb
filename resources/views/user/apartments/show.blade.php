@@ -4,11 +4,11 @@
   @if ($apartment->id <= 13)
   <div class="row row-img">
     <img class="apt-image" src="{{$apartment->img_path}}" alt="{{$apartment->title}}">
-  </div> 
+  </div>
   @else
   <div class="row row-img">
     <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
-  </div>    
+  </div>
   @endif
     <div class="col-12 flex-dir">
         <div class="">
@@ -115,7 +115,12 @@
                         <div id="dropin-container"></div>
                         <button type="submit" id="submit-button">Conferma pagamento</button>
                         <button class="back-button">Indietro</button>
-
+                        <div class="payment-successfull-box d-none">
+                            <div class="payment-successfull-alert d-none">
+                                Pagamento andato a buon fine <i class="icon-payment-check fas fa-check-circle"></i>
+                            </div>
+                            <button class="refresh-button d-none">OK</button>
+                        </div>
                     </div>
                 </div>
 
@@ -126,15 +131,17 @@
     <script>
         //======= visualizzazione box pagamento
         $('button.go-to-payment').on('click', function () {
-
             $('.box-paypal').removeClass("d-none");
-
         });
+
         $('button.back-button').on('click', function () {
-
            $('.box-paypal').addClass("d-none");
+        });
 
-       });
+        $('.refresh-button').click(function () {
+           window.location.reload();
+        });
+
         //=======
         var button = document.querySelector('#submit-button');
 
@@ -152,7 +159,6 @@
                 instance.requestPaymentMethod(function (err, payload) {
                     $.get('{{ route('payment.make') }}', {payload}, function (response) {
                         if (response.success) {
-                            alert('Payment successfull!');
 
                             var radioValue = $("input[name='sponsorship']:checked").val();
                             // console.log('radio value: ' + radioValue);
@@ -187,6 +193,13 @@
 
                                 }
                             });
+
+                            $('.payment-successfull-alert').removeClass("d-none");
+                            $('.refresh-button').removeClass("d-none");
+                            $('.payment-successfull-box').removeClass("d-none");
+                            $('#dropin-container').addClass("d-none");
+                            $('#submit-button').addClass("d-none");
+                            $('.back-button').addClass("d-none");
 
                         } else {
                             alert('Pagamento fallito');
