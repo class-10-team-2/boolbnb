@@ -1,9 +1,14 @@
 main {
-    .container-fluid{
+    .container-fluid {
         padding-bottom: 100px;
     }
     .row {
-
+        img.bg-search-img {
+            position: absolute;
+            height: 300px;
+            width: 100vw;
+            object-fit: cover;
+        }
 
         h1 {
             margin-top: 20px;
@@ -14,6 +19,19 @@ main {
         }
         p {
             color: $dark_grey;
+        }
+
+        .search-box {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            // border: 4px solid #fff;
+            padding: 20px;
+            border-radius: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+
+            .search-input {
+                border-radius: 40px;
+            }
         }
     }
     .row-img img.apt-image {
@@ -31,7 +49,7 @@ main {
         flex-direction: column;
         flex-wrap: wrap;
     }
-    .flex-dir{
+    .flex-dir {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -52,7 +70,6 @@ main {
             }
         }
     }
-
 
     .apt-services {
         height: 120px;
@@ -93,8 +110,53 @@ main {
         }
     }
 
-    .payment {
+    ///////results container//////////////////////////////////
 
+    .results-container {
+        .card {
+            border-radius: 40px;
+            overflow: hidden;
+            // display: inline-block;
+            margin: 40px 0;
+            .wrap {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                a.card-link {
+                    position: absolute;
+                    border-radius: 40px;
+                    width: 100%;
+                    height: 100%;
+                    top: 0px;
+                    left: 0px;
+                    cursor: pointer;
+                }
+
+                .card-img-top {
+                    width: 50%;
+                    object-fit: cover;
+                }
+                .info-card {
+                    display: block;
+                    font-size: 16px;
+                    padding: 4px;
+                    margin-right: 5px;
+                    i {
+                        display: inline-block;
+                        color: $icon-color;
+                        font-size: 20px;
+                        min-width: 30px;
+                    }
+                }
+            }
+
+            .list-group-item {
+                padding: 5px;
+            }
+        }
+    }
+    /////////////////////////////////////////////
+    .payment {
         margin-top: 30px;
         .options {
             padding: 15px;
@@ -111,10 +173,7 @@ main {
                     padding-right: 5px;
                 }
             }
-
         }
-
-
     }
     .box-paypal {
         background-color: rgba(255, 255, 255, 0.9);
@@ -138,7 +197,6 @@ main {
                 border: 1px solid black;
                 border-radius: 5px;
                 &:hover {
-
                     color: white;
                     background-color: blue;
                 }
@@ -146,190 +204,196 @@ main {
         }
     }
 
-    .titolo-stats{
+    .titolo-stats {
         margin: 30px;
-
     }
 
-    .chart-views{
+    .chart-views {
         background-color: white;
         border: 1px solid lightgrey;
         border-radius: 5px;
         padding: 10px;
-        p{
+        p {
             font-size: 20px;
         }
     }
 
-    .create,.edit{
-        .apt-name{
+    .create,
+    .edit {
+        .apt-name {
             width: 400px;
         }
-        .apt-address{
+        .apt-address {
             width: 720px;
         }
-        .input-short{
+        .input-short {
             width: 50px;
         }
-
     }
 
-    .input-check{
+    .input-check {
         margin-bottom: 0.5rem;
         margin-right: 10px;
     }
 
-
-
-    .button-margin{
+    .button-margin {
         margin: 25px 0 100px;
 
-        input{
+        input {
             color: black;
             padding: 10px;
             background-color: white;
             border: 1px solid black;
             border-radius: 5px;
-            &:hover{
+            &:hover {
                 border: none;
                 color: white;
                 background-color: blue;
             }
-
-
-
         }
     }
 
-    .ap-input-icon{
+    .ap-input-icon {
         display: none;
     }
 
-    .title-margin{
+    .title-margin {
         margin: 50px 0 30px;
     }
 
-    .card-img-top{
-        padding: 20px 0;
-
+    .card-img-top {
+        padding: 0px 0; //////// TOLTO
     }
 
-    .img-thumbnail{
+    .img-thumbnail {
         width: 280px;
         height: 220px;
-
     }
-    .apartments-card{
-        width: 280px;
-        height: 400px;
+    .apartments-card {
+        display: flex;
+        flex-direction: row;
         position: relative;
-        margin:0 auto;
-        .card-title{
-            font-weight: 800;
+        margin: 30px auto;
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+        border: none;
+        .link-card {
+            overflow: hidden;
+            position: absolute;
+            border-radius: 40px;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            cursor: pointer;
+        }
+        img {
+            width: 50%;
+            object-fit: cover;
         }
 
+        .card-body {
+            display: block;
+            padding-left: 30px;
+        }
+        .card-title {
+            font-weight: 800;
+        }
     }
 
-    .card-container{
-        margin: 30px 0;
-    }
+    // .btn-show {
+    //     position: absolute;
+    //     bottom: 20px;
+    //     left: 20px;
+    // }
 
-    .btn-show{
-        position: absolute;
-        bottom: 20px;
-        left:20px;
-    }
-
-    .stats-mess{
+    .stats-mess {
         margin: 20px 0;
     }
 
-    .btn-space{
+    .btn-space {
         margin-right: 10px;
         background-color: white;
         color: black;
         border: 1px solid black;
         &:hover {
-
             color: white;
             background-color: #fe675d;
             border: 1px solid #fe675d;
         }
-
     }
 
-    .margin-zero{
+    .margin-zero {
         margin: 0;
     }
 
-    .content-center{
-
-            align-items: center;
-
-
+    .content-center {
+        align-items: center;
     }
 
-    .search-bar{
+    .search-bar {
         display: flex;
         background-color: white;
         border: 1px solid black;
         width: 80%;
         margin: 30px auto;
-        input {border:0;outline:0;}
-        input:focus {outline:none!important;}
+        input {
+            border: 0;
+            outline: 0;
+        }
+        input:focus {
+            outline: none !important;
+        }
     }
 
-    .flex{
+    .flex {
         display: flex;
     }
 
-    .search-sec{
-    padding: 2rem;
-    width: 90%;
-    margin: 30px auto;
-    background: rgba(26, 70, 104, 0.51);
-}
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-// @media (min-width: 992px){
-//     .search-sec{
-//
-//
-//         background: rgba(26, 70, 104, 0.51);
-//     }
-// }
-//
-// @media (max-width: 992px){
-//     .search-sec{
-//         background: #1A4668;
-//     }
-// }
-.service-form{
-    padding-top: 20px;
-}
-// .form-group{
-//     margin: 0;
-// }
-
-
-
-
+    .search-sec {
+        padding: 2rem;
+        width: 90%;
+        margin: 30px auto;
+        background: rgba(26, 70, 104, 0.51);
+    }
+    .search-slt {
+        display: block;
+        width: 100%;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #55595c;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        height: calc(3rem + 2px) !important;
+        border-radius: 0;
+    }
+    .wrn-btn {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: capitalize;
+        height: calc(3rem + 2px) !important;
+        border-radius: 0;
+    }
+    // @media (min-width: 992px){
+    //     .search-sec{
+    //
+    //
+    //         background: rgba(26, 70, 104, 0.51);
+    //     }
+    // }
+    //
+    // @media (max-width: 992px){
+    //     .search-sec{
+    //         background: #1A4668;
+    //     }
+    // }
+    .service-form {
+        padding-top: 20px;
+    }
+    // .form-group{
+    //     margin: 0;
+    // }
 }

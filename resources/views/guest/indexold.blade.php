@@ -8,28 +8,23 @@
                     @csrf
                     <div class="row search-row">
                         <div class="col-lg-12">
-                            <div class="col-md-12 col-lg-8 offset-lg-2 search-box">
-                                <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12  col-sm-12 col-12 p-0">
 
-                                    <input id="index-search" type="search search-input" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?">
+                                    <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?">
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="radius">Raggio di ricerca |&nbsp;</label><span id="radius-display-km"></span><span> km</span>
-                                        <input id="index-radius" class="form-control search-input" type="range" name="radius" min="5" max="50" value="20" step="5">
-                                    </div>
-                                    <div class="form-row">
-                                         <label for="rooms">Minimo di stanze</label>
-                                        
-                                        <input id="index-rooms" class="form-control search-input" type="number" name="rooms" min="0" max="10" value="0" placeholder="Stanze">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="beds">Minimo posti letto</label>
-                                        
-                                        <input id="index-beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1" placeholder="Letti">
-                                    </div>
+                                <div class="col-lg-1  col-md-4 col-sm-4 col-4 p-0">
+
+                                    <input id="index-radius" class="form-control search-slt" type="number" name="radius" min="0" max="50" value="20" step="5" placeholder="Km">
                                 </div>
-                                
+                                <div class="col-lg-1 col-md-4 col-sm-4 col-4 p-0">
+
+                                    <input id="index-rooms" class="form-control search-slt" type="number" name="rooms" min="0" max="10" value="0" placeholder="Stanze">
+                                </div>
+                                <div class="col-lg-1 col-md-4 col-sm-4 col-4 p-0">
+
+                                    <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20" value="1" placeholder="Letti">
+                                </div>
                                 {{-- <div class="col-lg-1 col-md-3 col-sm-3 col-3 p-0">
 
                                     <input id="index-baths" class="form-control search-slt" type="number" name="baths" min="1" max="20" placeholder="Bagni">
@@ -43,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class=" service-form">
                         @foreach ($services as $service)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
