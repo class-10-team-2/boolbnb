@@ -10965,8 +10965,21 @@ main .row h1 {
   font-weight: 800;
 }
 
+@media screen and (max-width: 575px) {
+  main .row h1 {
+    font-size: 1.5rem;
+  }
+}
+
 main .row h4 {
   font-weight: 800;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 575px) {
+  main .row h4 {
+    font-size: 1.05rem;
+  }
 }
 
 main .row p {
@@ -10985,11 +10998,27 @@ main .row .search-box .search-input {
   border-radius: 40px;
 }
 
+main .show .underlined-h4 {
+  border-bottom: 1px solid #dfe1e2;
+}
+
+main .show .title-row {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dfe1e2;
+}
+
 main .row-img img.apt-image {
   width: 100%;
   height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media screen and (max-width: 575px) {
+  main .row-img img.apt-image {
+    height: 350px;
+  }
 }
 
 main .container-margin {
@@ -11021,6 +11050,12 @@ main .apt-info span {
   display: inline-block;
 }
 
+@media screen and (max-width: 575px) {
+  main .apt-info span {
+    padding-bottom: 10px;
+  }
+}
+
 main .apt-info span i {
   color: #8f8e8d;
   font-size: 20px;
@@ -11035,26 +11070,41 @@ main .apt-services span {
   padding-bottom: 10px;
 }
 
+main .contact-host-title {
+  font-size: 17px;
+}
+
 main textarea,
 main #email {
+  width: 100%;
+  padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #dfe1e2;
 }
 
 main ::-moz-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main :-ms-input-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main ::-ms-input-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main ::placeholder {
-  color: lightgrey;
+  color: #747371;
+}
+
+main textarea:focus,
+main #email:focus {
+  border: 1px solid #3490dc;
+}
+
+main .map-container {
+  padding-top: 80px;
 }
 
 main .controls {
