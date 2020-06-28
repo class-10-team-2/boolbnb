@@ -10952,6 +10952,14 @@ main .container-xl {
   padding-bottom: 100px;
 }
 
+main .row img.bg-search-img {
+  position: absolute;
+  height: 300px;
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 main .row h1 {
   margin-top: 20px;
   font-weight: 800;
@@ -10963,6 +10971,18 @@ main .row h4 {
 
 main .row p {
   color: #515151;
+}
+
+main .row .search-box {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+main .row .search-box .search-input {
+  border-radius: 40px;
 }
 
 main .row-img img.apt-image {
@@ -11058,6 +11078,52 @@ main .controls .btn:hover {
 main .controls .btn-edit:hover {
   background-color: green;
   border: 1px solid green;
+}
+
+main .results-container .card {
+  border-radius: 40px;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+main .results-container .card .wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+main .results-container .card .wrap a.card-link {
+  position: absolute;
+  border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+main .results-container .card .wrap .card-img-top {
+  width: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .results-container .card .wrap .info-card {
+  display: block;
+  font-size: 16px;
+  padding: 4px;
+  margin-right: 5px;
+}
+
+main .results-container .card .wrap .info-card i {
+  display: inline-block;
+  color: #8f8e8d;
+  font-size: 20px;
+  min-width: 30px;
+}
+
+main .results-container .card .list-group-item {
+  padding: 5px;
 }
 
 main .payment {
@@ -11177,7 +11243,7 @@ main .title-margin {
 }
 
 main .card-img-top {
-  padding: 20px 0;
+  padding: 0px 0;
 }
 
 main .img-thumbnail {
@@ -11186,24 +11252,40 @@ main .img-thumbnail {
 }
 
 main .apartments-card {
-  width: 280px;
-  height: 400px;
+  display: flex;
+  flex-direction: row;
   position: relative;
-  margin: 0 auto;
+  margin: 30px auto;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  border: none;
+}
+
+main .apartments-card .link-card {
+  overflow: hidden;
+  position: absolute;
+  border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+main .apartments-card img {
+  width: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .apartments-card .card-body {
+  display: block;
+  padding-left: 30px;
 }
 
 main .apartments-card .card-title {
   font-weight: 800;
-}
-
-main .card-container {
-  margin: 30px 0;
-}
-
-main .btn-show {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
 }
 
 main .stats-mess {

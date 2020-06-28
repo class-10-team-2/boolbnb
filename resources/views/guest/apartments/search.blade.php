@@ -1,39 +1,53 @@
+@php
+$randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80',
+'https://images.unsplash.com/photo-1496864137062-a12b5defe6be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
+'https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80',
+'https://images.unsplash.com/photo-1484901391461-04c23d9dbb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
+'https://images.unsplash.com/photo-1515859005217-8a1f08870f59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2199&q=80',
+'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2200&q=80'
+];
+@endphp
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <form>
-            {{-- @method('POST')
-            @csrf --}}
+<div class="container-fluid">
+    <div class="row search-row">
+        {{-- <img class="bg-search-img" src="{{$randBgImg[rand(0,5)]}}" alt=""> --}}
+        <div class="col-lg-12">
+            <div class="col-md-12 col-lg-8 offset-lg-2 search-box">
+            <form>
+                {{-- @method('POST')
+                @csrf --}}
 
-            <div class="form-group">
-                <input id="search-input" type="search" class="address-input" name="address" placeholder="Dove vuoi andare?" />
-            </div>
+                <div class="form-group">
+                    <input id="search-input" type="search" class="address-input search-input" name="address" placeholder="Dove vuoi andare?" />
+                </div>
 
-            <div class="form-row">
-                <div class="col">
-                    <label for="radius">Raggio di ricerca</label>
-                    <input id="radius" class="form-control" type="number" name="radius" min="1" max="50" value="20">
-                </div>
-                <div class="col">
-                    <label for="rooms">Minimo di stanze</label>
-                    <input id="rooms" class="form-control" type="number" name="rooms" min="0" max="10" value="1">
-                </div>
-                <div class="col">
-                    <label for="beds">Minimo posti letto</label>
-                    <input id="beds" class="form-control" type="number" name="beds" min="1" max="20" value="1">
-                </div>
-            </div>
-
-            <div class="form-group">
-                @foreach ($services as $service)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
-                        <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="radius">Raggio di ricerca |&nbsp;</label><span id="radius-display-km"></span><span> km</span>
+                        <input id="radius" class="form-control" type="range" name="radius" min="5" max="50" value="20">
                     </div>
-                @endforeach
-            </div>
+                    <div class="col">
+                        <label for="rooms">Minimo di stanze</label>
+                        <input id="rooms" class="form-control search-input" type="number" name="rooms" min="0" max="10" value="1">
+                    </div>
+                    <div class="col">
+                        <label for="beds">Minimo posti letto</label>
+                        <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
+                    </div>
+                </div>
+                <div class="form-row">
+                    @foreach ($services as $service)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
+                            <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                        </div>
+                    @endforeach
+                </div>
+               
+
+            
 
             <input id="latitude" type="hidden" class="lat-input" name="latitude">
             <input id="longitude" type="hidden" class="lng-input" name="longitude">
@@ -43,14 +57,14 @@
 
     </div>
 
-    <div class="results-container">
+    <div class="results-container col-lg-8 offset-lg-2">
 
     </div>
 
-    @include('layouts.apartment-result-handlebars')
-    @include('layouts.apartment-result-handlebars-seed')
-    @include('layouts.apartment-sponsored-result-handlebars')
-    @include('layouts.apartment-sponsored-result-handlebars-seed')
+        @include('layouts.apartment-result-handlebars')
+        @include('layouts.apartment-result-handlebars-seed')
+        @include('layouts.apartment-sponsored-result-handlebars')
+        @include('layouts.apartment-sponsored-result-handlebars-seed')
 
 
         {{-- JAVASCRIPT --}}
@@ -399,7 +413,7 @@
             }
 
         </script>
-
+    </div>
 </div>
 
 @endsection
