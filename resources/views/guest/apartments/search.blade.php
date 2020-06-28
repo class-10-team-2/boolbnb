@@ -45,9 +45,9 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                         </div>
                     @endforeach
                 </div>
-               
 
-            
+
+
 
             <input id="latitude" type="hidden" class="lat-input" name="latitude">
             <input id="longitude" type="hidden" class="lng-input" name="longitude">
@@ -157,11 +157,31 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
+
+
 
                             if (apartment.id <= 13) {
                                 var apartmentHTMLSeed = apartmentTamplateSeed(apartmentData);
@@ -237,9 +257,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
                             if (apartment.id <= 13) {
@@ -312,9 +350,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
 
@@ -391,9 +447,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
 
