@@ -11239,14 +11239,14 @@ main .payment .options {
   border: 2px solid lightgrey;
   background-color: white;
   border-radius: 5px;
-  width: 330px;
+  width: 100%;
 }
 
 main .payment .options p {
   color: black;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 main .payment .options p i {
@@ -11514,7 +11514,9 @@ main .index-search-row .index-ricerca-row {
 
 main .index-search-row .index-ricerca-row .input-box-index {
   margin: 0 auto;
+  width: 90vw;
   width: 100%;
+  max-width: 1100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11533,7 +11535,8 @@ main .index-search-row input {
 main .index-search-row .second-row {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 1100px;
+  width: 90vw;
   margin: 0 auto;
 }
 

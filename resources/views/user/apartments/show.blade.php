@@ -21,28 +21,18 @@
             <div class="stats-mess row">
                 <a href="{{route('user.apartments.stats', $apartment->id)}}" class="btn btn-primary btn-space">Statistiche</a>
                 <a href="{{route('user.apartments.messages', $apartment->id)}}" class="btn btn-primary btn-space">Messaggi</a>
-
             </div>
-
         </div>
-
-
-
-
-
-
     </div>
     <hr>
     <div class="row container-margin">
-        <div class="col-md-6">
+        <div class="col-md-7 col-xl-8">
           <div class="apt-info">
             <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
             <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Posti letto' : '1 Posto letto'}}</span>
             <span><i class="fas fa-shower"></i> {{($apartment->baths > 1) ? $apartment->baths . ' Bagni' : '1 Bagno'}}</span>
             <span><i class="fas fa-home"> </i>{{$apartment->mq}}m<sup>2</sup></span>
           </div>
-
-
 
           <h4>Descrizione</h4>
           <p class="apt-description">
@@ -81,7 +71,7 @@
         </div>
 
 
-        <div class="col-md-3 offset-md-2 payment">
+        <div class="col-md-5 col-xl-4 payment">
             {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
             {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
                 {{-- @csrf

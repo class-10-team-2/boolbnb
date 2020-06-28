@@ -2,7 +2,7 @@
 
 @section('content')
         {{-- <section class="search-sec"> --}}
-            <div class="custom-container">
+            <div class="container">
 
                 <form action="{{route('guest.apartments.search')}}" method="POST">
                     @method('POST')
@@ -55,10 +55,10 @@
                     </div>
                 </form>
 
-                {{-- <div class="title-vetrina col-12">
+                <div class="title-vetrina col-12">
                     <hr>
-                    <h3>Gli appartamenti selezionati</h3>
-                </div> --}}
+                    <h3>Gli appartamenti in vetrina</h3>
+                </div>
                 <div class="results-container">
 
                     @foreach ($active_sponsorships as $active_sponsorship)

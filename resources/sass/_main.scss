@@ -254,12 +254,12 @@ main {
             border: 2px solid lightgrey;
             background-color: white;
             border-radius: 5px;
-            width: 330px;
+            width: 100%;
             p {
                 color: black;
                 border-bottom: 1px solid lightgrey;
                 padding-bottom: 10px;
-                width: 300px;
+                width: 100%;
                 i {
                     padding-right: 5px;
                 }
@@ -529,9 +529,9 @@ main {
             margin-bottom: 15px;
             .input-box-index {
                 margin: 0 auto;
-                // width: 90vw;
+                width: 90vw;
                 width: 100%;
-                // max-width: 1100px;
+                max-width: 1100px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -548,9 +548,9 @@ main {
         .second-row {
             display: flex;
             flex-direction: row;
-            // max-width: 1100px;
-            // width: 90vw;
-            width: 100%;
+            max-width: 1100px;
+            width: 90vw;
+            // width: 100%;
             margin: 0 auto;
             .radius-box,
             .rooms-box,
