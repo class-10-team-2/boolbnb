@@ -14,7 +14,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
     <div class="row search-row">
         {{-- <img class="bg-search-img" src="{{$randBgImg[rand(0,5)]}}" alt=""> --}}
         <div class="col-lg-12">
-            <div class="col-md-12 col-lg-8 offset-lg-2 search-box">
+            <div class="col-md-12 col-lg-10 offset-lg-1 search-box">
             <form>
                 {{-- @method('POST')
                 @csrf --}}
@@ -46,9 +46,6 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     @endforeach
                 </div>
                
-
-            
-
             <input id="latitude" type="hidden" class="lat-input" name="latitude">
             <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
@@ -69,6 +66,15 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
+            var slider = document.getElementById("radius");
+            var output = document.getElementById("radius-display-km");
+            output.innerHTML = slider.value; // Display the default slider value
+
+            // Update the current slider value (each time you drag the slider handle)
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            };
+            ////////////////////////////////////////////
 
             getSponsoredFromIndex();
             getJsonFromIndex();
@@ -411,6 +417,9 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     }
                 });
             }
+
+
+
 
         </script>
     </div>
