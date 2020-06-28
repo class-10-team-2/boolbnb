@@ -10,11 +10,8 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row search-row">
-        {{-- <img class="bg-search-img" src="{{$randBgImg[rand(0,5)]}}" alt=""> --}}
-        <div class="col-lg-12">
-            <div class="col-md-12 col-lg-10 offset-lg-1 search-box">
+    <div class="custom-container">
+        <div class="search-box">
             <form>
                 {{-- @method('POST')
                 @csrf --}}
@@ -46,26 +43,23 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     @endforeach
                 </div>
 
+                <input id="latitude" type="hidden" class="lat-input" name="latitude">
+                <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
+                <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
+            </form>
+        </div>
 
+        <div class="results-container">
 
-            <input id="latitude" type="hidden" class="lat-input" name="latitude">
-            <input id="longitude" type="hidden" class="lng-input" name="longitude">
-
-            <button id="search-button" class="btn-search-page-search" type="button">Cerca</button>
-        </form>
-
-    </div>
-
-    <div class="results-container col-lg-8 offset-lg-2">
-
-    </div>
+        </div>
 
         @include('layouts.apartment-result-handlebars')
         @include('layouts.apartment-result-handlebars-seed')
         @include('layouts.apartment-sponsored-result-handlebars')
         @include('layouts.apartment-sponsored-result-handlebars-seed')
 
+    </div>
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
@@ -494,12 +488,6 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     }
                 });
             }
-
-
-
-
         </script>
-    </div>
-</div>
 
 @endsection

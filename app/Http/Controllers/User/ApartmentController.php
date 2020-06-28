@@ -262,11 +262,17 @@ class ApartmentController extends Controller
         if ($user_id != $apartment->user_id) {
             abort('404');
         }
+
         $apartment->services()->detach();
+        $apartment->activesponsorship()->delete();
+        $apartment->sponsorships()->delete();
+        $apartment->request()->delete();
         $deleted = $apartment->delete();
 
+
+
         if (!$deleted) {
-            return redirect()->back();
+            return redirect()->back(); // aggiungere with status
         }
         return redirect()->route('user.apartments.index');
     }
