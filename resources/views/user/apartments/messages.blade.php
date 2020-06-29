@@ -1,17 +1,38 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  <h3>I tuoi messaggi per <strong>{{$apartment->title}}</strong></h3>
-  <hr>
+    <div class="title-margin">
+        <a href="{{route('user.apartments.show', $apartment->id)}}"><i class="fas fa-arrow-left"></i> Torna all'appartamento</a>
+
+        <h3>I tuoi messaggi per <strong>"{{$apartment->title}}"</strong></h3>
+
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Ora</th>
+                <th scope="col">Mittente</th>
+                <th scope="col">Testo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ $messages->links() }}
+            @foreach ($messages  as $message)
+                <tr>
+                    <td>{{Carbon\Carbon::parse($message->created_at)->addHour(2)->format('d-m-Y H:i')}}</td>
+                    <td> <a href="mailto:{{$message->sender}}">{{$message->sender}}</td>
+                    <td>{{$message->text}}</td>
+
+                </tr>
+
+            @endforeach
+        </tbody>
+
+    </table>
+
   {{ $messages->links() }}
-  @foreach ($messages  as $message)
-  <div class="row">
-    <div class="col-3 date">{{Carbon\Carbon::parse($message->created_at)->addHour(2)->format('d-m-Y | H:i')}}</div>
-    <div class="col-3 sender"><a href="mailto:{{$message->sender}}">{{$message->sender}}</a></div>
-    <div class="col-6 text">{{$message->text}}</div>
-  </div>
-  <hr>
-  @endforeach
-  {{ $messages->links() }}
+
+
 </div>
 @endsection

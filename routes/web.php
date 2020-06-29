@@ -45,26 +45,17 @@ Route::namespace('Guest')
         // Route::post('apartments/{apartment}', 'ApartmentController@message');
     });
 
-
-// Route::post('/search', 'Guest\SearchController@index')->name('guest.search');
-// Route::get('/search', 'Guest\SearchController@index')->name('guest.search'); // ???
-
 // Braintree
 Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
-Route::namespace('User')
-    ->prefix('user')
-    ->middleware('auth')
-    ->group(function () {
-        Route::post('store_sponsoship', 'ApartmentController@store_sponsorship')->name('user.apartments.store_sponsoship');
-        // Route::get('store_sponsoship', 'ApartmentController@view_sponsorship');
-    });
+Route::post('/user/store_sponsoship', 'User\SponsorshipController@store_sponsorship')->middleware('auth');
 
 // Pagina di ricerca
+Route::post('search', 'Guest\SearchController@index')->name('guest.apartments.search');
 Route::get('search', 'Guest\SearchController@index')->name('guest.apartments.search');
 
-// Ricevi json con risultati filtrati da Algolia
-Route::get('/search/get-json-with-algolia-results', 'Guest\SearchController@search')->name('search.get.json.with.algolia.results');
-Route::get('/search-highlights', 'Guest\SearchController@searchHighlights')->name('search.highlights');
+// Ricevi json con risultati filtrati
+Route::get('/search/get-json-results', 'Guest\SearchController@search');
+Route::get('/search-sponsored', 'Guest\SearchController@searchSponsored');
 
 
 
