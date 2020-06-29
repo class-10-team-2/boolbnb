@@ -10930,6 +10930,10 @@ a.text-dark:focus {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fe675d;
+}
+
 nav.navbar {
   background-color: #fe675d;
 }
@@ -10945,6 +10949,11 @@ nav.navbar {
   padding-left: 0;
 }
 
+main {
+  background: #f5f5f5;
+  padding-top: 30px;
+}
+
 main .container-fluid,
 main .container-sm,
 main .container-md,
@@ -10953,7 +10962,7 @@ main .container-xl {
   padding-bottom: 100px;
 }
 
-main .row img.bg-search-img {
+main img.bg-search-img {
   position: absolute;
   height: 300px;
   width: 100vw;
@@ -10961,52 +10970,54 @@ main .row img.bg-search-img {
      object-fit: cover;
 }
 
-main .row h1 {
+main h1 {
   margin-top: 20px;
   font-weight: 800;
 }
 
 @media screen and (max-width: 575px) {
-  main .row h1 {
+  main h1 {
     font-size: 1.5rem;
   }
 }
 
-main .row h4 {
+main h4 {
   font-weight: 800;
   padding-bottom: 3px;
 }
 
 @media screen and (max-width: 575px) {
-  main .row h4 {
+  main h4 {
     font-size: 1.05rem;
   }
 }
 
-main .row p {
+main p {
   color: #515151;
 }
 
-main .row .search-box {
-  margin-top: 30px;
+main .search-box {
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-main .row .search-box .search-input {
+main .search-box .search-input {
   border-radius: 40px;
 }
 
-main .show .underlined-h4 {
-  border-bottom: 1px solid #dfe1e2;
+main .search-box .range-label {
+  width: 100%;
+}
+
+main .search-box .range-input {
+  margin-top: 8px;
 }
 
 main .show .title-row {
   padding-bottom: 10px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #dfe1e2;
 }
 
 main .row-img img.apt-image {
@@ -11239,14 +11250,14 @@ main .payment .options {
   border: 2px solid lightgrey;
   background-color: white;
   border-radius: 5px;
-  width: 330px;
+  width: 100%;
 }
 
 main .payment .options p {
   color: black;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 main .payment .options p i {
@@ -11502,7 +11513,6 @@ main .service-form {
 
 main .index-search-row {
   margin: 0 auto;
-  margin-top: 30px;
   border-radius: 40px;
 }
 
@@ -11514,7 +11524,9 @@ main .index-search-row .index-ricerca-row {
 
 main .index-search-row .index-ricerca-row .input-box-index {
   margin: 0 auto;
+  width: 90vw;
   width: 100%;
+  max-width: 1100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11533,7 +11545,8 @@ main .index-search-row input {
 main .index-search-row .second-row {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 1100px;
+  width: 90vw;
   margin: 0 auto;
 }
 
@@ -11589,15 +11602,19 @@ main .sponsor-container-index {
   width: 90vw;
 }
 
+main .hr-index {
+  margin-top: 30px;
+}
+
 main .title-vetrina {
   display: block;
   width: 90vw;
-  margin: 40px auto;
+  margin: 45px auto;
   text-align: center;
 }
 
-main .title-vetrina h3 {
-  margin-top: 40px;
+main .form-row:first-child {
+  margin-bottom: 10px;
 }
 
 main .form-row.services-row {
@@ -11613,6 +11630,11 @@ main .form-control {
   border-radius: 40px;
 }
 
+main .form-control:focus {
+  border-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
 main .search-page-search {
   border-radius: 40px;
 }
@@ -11622,12 +11644,15 @@ main .radius-label {
 }
 
 main .btn-search-page-search {
+  width: 100%;
   border-radius: 40px;
   background-color: #fff;
-  border: 1px solid grey;
-  padding: 5px 12px;
+  border: 1px solid #fe675d;
+  color: #fe675d;
+  padding: 0.375rem 0.75rem;
   text-align: center;
-  font-size: 22px;
+  font-size: 15px;
+  font-weight: 700;
   transition: 0.2s ease;
 }
 
@@ -11642,5 +11667,44 @@ main .no-apt-btn {
   margin: 0 auto;
   margin-top: 30px;
   text-align: center;
+}
+
+.checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-round:checked {
+  border: 1px solid #fe675d;
+  background-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
+footer {
+  height: 300px;
+  margin-top: 30px;
+  background-color: #fe675d;
+}
+
+footer .container {
+  height: 100%;
+}
+
+footer .container .footer-logo-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .container .footer-logo-wrapper img {
+  width: auto;
 }
 

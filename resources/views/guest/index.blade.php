@@ -2,7 +2,7 @@
 
 @section('content')
         {{-- <section class="search-sec"> --}}
-            <div class="custom-container">
+            <div class="container">
 
                 <form action="{{route('guest.apartments.search')}}" method="POST">
                     @method('POST')
@@ -10,7 +10,7 @@
                     <div class="row search-row index-search-row ">
                         <div class="index-ricerca-row row">
                             <div class="input-box-index">
-                                <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder="Dove vuoi andare?">
+                                <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder=" Dove vuoi andare?">
                             </div>
                         </div>
                         <div class="row second-row">
@@ -43,7 +43,7 @@
                                 <div class="service-form">
                                     @foreach ($services as $service)
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
+                                            <input class="form-check-input checkbox-round" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
                                             <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
                                         </div>
                                     @endforeach
@@ -55,10 +55,12 @@
                     </div>
                 </form>
 
-                {{-- <div class="title-vetrina col-12">
-                    <hr>
-                    <h3>Gli appartamenti selezionati</h3>
-                </div> --}}
+                <hr class="hr-index">
+
+                <div class="title-vetrina col-12">
+
+                    <h3>Gli appartamenti in vetrina</h3>
+                </div>
                 <div class="results-container">
 
                     @foreach ($active_sponsorships as $active_sponsorship)
