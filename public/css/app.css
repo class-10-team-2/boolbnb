@@ -1,13 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;
 
-/* SCSS RGB */
+700;800&display=swap);@charset "UTF-8";
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 
 :root {
   --blue: #3490dc;
@@ -10930,18 +10924,35 @@ a.text-dark:focus {
   }
 }
 
-.img-in-results {
-  width: 200px;
-}
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fe675d;
+}
+
 nav.navbar {
   background-color: #fe675d;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*=col-] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+main {
+  background: #f5f5f5;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 main .container-fluid,
@@ -10952,7 +10963,7 @@ main .container-xl {
   padding-bottom: 100px;
 }
 
-main .row img.bg-search-img {
+main img.bg-search-img {
   position: absolute;
   height: 300px;
   width: 100vw;
@@ -10960,29 +10971,54 @@ main .row img.bg-search-img {
      object-fit: cover;
 }
 
-main .row h1 {
+main h1 {
   margin-top: 20px;
   font-weight: 800;
 }
 
-main .row h4 {
-  font-weight: 800;
+@media screen and (max-width: 575px) {
+  main h1 {
+    font-size: 1.5rem;
+  }
 }
 
-main .row p {
+main h4 {
+  font-weight: 800;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 575px) {
+  main h4 {
+    font-size: 1.05rem;
+  }
+}
+
+main p {
   color: #515151;
 }
 
-main .row .search-box {
-  margin-top: 30px;
+main .search-box {
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-main .row .search-box .search-input {
+main .search-box .search-input {
   border-radius: 40px;
+}
+
+main .search-box .range-label {
+  width: 100%;
+}
+
+main .search-box .range-input {
+  margin-top: 8px;
+}
+
+main .show .title-row {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 main .row-img img.apt-image {
@@ -10990,6 +11026,12 @@ main .row-img img.apt-image {
   height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media screen and (max-width: 575px) {
+  main .row-img img.apt-image {
+    height: 350px;
+  }
 }
 
 main .container-margin {
@@ -11021,6 +11063,12 @@ main .apt-info span {
   display: inline-block;
 }
 
+@media screen and (max-width: 575px) {
+  main .apt-info span {
+    padding-bottom: 10px;
+  }
+}
+
 main .apt-info span i {
   color: #8f8e8d;
   font-size: 20px;
@@ -11035,26 +11083,41 @@ main .apt-services span {
   padding-bottom: 10px;
 }
 
+main .contact-host-title {
+  font-size: 17px;
+}
+
 main textarea,
 main #email {
+  width: 100%;
+  padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #dfe1e2;
 }
 
 main ::-moz-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main :-ms-input-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main ::-ms-input-placeholder {
-  color: lightgrey;
+  color: #747371;
 }
 
 main ::placeholder {
-  color: lightgrey;
+  color: #747371;
+}
+
+main textarea:focus,
+main #email:focus {
+  border: 1px solid #3490dc;
+}
+
+main .map-container {
+  padding-top: 80px;
 }
 
 main .controls {
@@ -11080,16 +11143,59 @@ main .controls .btn-edit:hover {
   border: 1px solid green;
 }
 
+main .custom-container {
+  width: 90vw;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 575px) {
+  main .custom-container {
+    width: 95vw;
+  }
+}
+
+main .padding-trick {
+  padding: 10px;
+  flex: 0 1 50%;
+}
+
+@media screen and (max-width: 575px) {
+  main .padding-trick {
+    padding: 10px 5px;
+    flex: 1 1 100%;
+  }
+}
+
+main .results-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
 main .results-container .card {
-  border-radius: 40px;
+  border-radius: 30px;
   overflow: hidden;
-  margin: 40px 0;
+  height: 277.333px;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card {
+    height: 100%;
+  }
 }
 
 main .results-container .card .wrap {
   position: relative;
   display: flex;
   flex-direction: row;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap {
+    flex-direction: column;
+  }
 }
 
 main .results-container .card .wrap a.card-link {
@@ -11108,9 +11214,19 @@ main .results-container .card .wrap .card-img-top {
      object-fit: cover;
 }
 
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap .card-img-top {
+    width: 100%;
+  }
+}
+
+main .results-container .card .wrap .card-title {
+  font-size: 1.3rem;
+}
+
 main .results-container .card .wrap .info-card {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   padding: 4px;
   margin-right: 5px;
 }
@@ -11118,7 +11234,7 @@ main .results-container .card .wrap .info-card {
 main .results-container .card .wrap .info-card i {
   display: inline-block;
   color: #8f8e8d;
-  font-size: 20px;
+  font-size: 16px;
   min-width: 30px;
 }
 
@@ -11135,14 +11251,14 @@ main .payment .options {
   border: 2px solid lightgrey;
   background-color: white;
   border-radius: 5px;
-  width: 330px;
+  width: 100%;
 }
 
 main .payment .options p {
   color: black;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 main .payment .options p i {
@@ -11170,7 +11286,7 @@ main .box-paypal .paypal {
 }
 
 main .box-paypal .paypal button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
@@ -11178,7 +11294,36 @@ main .box-paypal .paypal button {
 
 main .box-paypal .paypal button:hover {
   color: white;
-  background-color: blue;
+  background-color: #3490dc;
+  border: 1px solid #3490dc;
+}
+
+main .box-paypal .paypal .payment-successfull-box {
+  text-align: center;
+  padding: 20px 30px;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert .icon-payment-check {
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button {
+  color: green;
+  border: 1px solid green;
+  font-weight: 700;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button:hover {
+  color: white;
+  background-color: green;
 }
 
 main .titolo-stats {
@@ -11365,5 +11510,204 @@ main .wrn-btn {
 
 main .service-form {
   padding-top: 20px;
+}
+
+main .index-search-row {
+  margin: 0 auto;
+  border-radius: 40px;
+}
+
+main .index-search-row .index-ricerca-row {
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+main .index-search-row .index-ricerca-row .input-box-index {
+  margin: 0 auto;
+  width: 90vw;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+main .index-search-row .input-box-index {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+main .index-search-row input {
+  border-radius: 40px;
+}
+
+main .index-search-row .second-row {
+  display: flex;
+  flex-direction: row;
+  max-width: 1100px;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+main .index-search-row .second-row .radius-box,
+main .index-search-row .second-row .rooms-box,
+main .index-search-row .second-row .beds-box,
+main .index-search-row .second-row .button-box {
+  margin-top: 15px;
+}
+
+main .index-search-row .second-row .button-box button {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid grey;
+  text-align: center;
+  font-size: 22px;
+}
+
+main .index-search-row .second-row .button-box button:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
+}
+
+main .index-search-row .second-row .label-index {
+  width: 20vw;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+main .index-search-row .second-row input.search-slt {
+  width: 90px;
+}
+
+main .index-search-row .second-row .second-row-left {
+  width: 50%;
+}
+
+main .index-search-row .second-row .second-row-left span {
+  font-size: 16px;
+}
+
+main .index-search-row .second-row .second-row-right {
+  width: 50%;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+main .sponsor-container-index {
+  margin: 0 auto;
+  width: 90vw;
+}
+
+main .hr-index {
+  margin-top: 30px;
+}
+
+main .title-vetrina {
+  display: block;
+  width: 90vw;
+  margin: 45px auto;
+  text-align: center;
+}
+
+main .form-row:first-child {
+  margin-bottom: 10px;
+}
+
+main .form-row.services-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+main .address-input {
+  border-radius: 40px;
+}
+
+main .form-control {
+  border-radius: 40px;
+}
+
+main .form-control:focus {
+  border-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
+main .search-page-search {
+  border-radius: 40px;
+}
+
+main .radius-label {
+  display: inline-block;
+}
+
+main .btn-search-page-search {
+  width: 100%;
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid #fe675d;
+  color: #fe675d;
+  padding: 0.375rem 0.75rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+main .btn-search-page-search:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
+}
+
+main .no-apt,
+main .no-apt-btn {
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-round:checked {
+  border: 1px solid #fe675d;
+  background-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
+footer {
+  max-height: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #fe675d;
+}
+
+footer .container {
+  height: 100%;
+}
+
+footer .container .footer-logo-wrapper {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .container .footer-logo-wrapper img {
+  width: auto;
+  max-width: 200px;
 }
 

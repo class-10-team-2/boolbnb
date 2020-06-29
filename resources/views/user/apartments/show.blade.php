@@ -4,11 +4,11 @@
   @if ($apartment->id <= 13)
   <div class="row row-img">
     <img class="apt-image" src="{{$apartment->img_path}}" alt="{{$apartment->title}}">
-  </div> 
+  </div>
   @else
   <div class="row row-img">
     <img class="apt-image" src="{{asset('storage/' . $apartment->img_path)}}" alt="{{$apartment->title}}">
-  </div>    
+  </div>
   @endif
     <div class="col-12 flex-dir">
         <div class="">
@@ -21,28 +21,18 @@
             <div class="stats-mess row">
                 <a href="{{route('user.apartments.stats', $apartment->id)}}" class="btn btn-primary btn-space">Statistiche</a>
                 <a href="{{route('user.apartments.messages', $apartment->id)}}" class="btn btn-primary btn-space">Messaggi</a>
-
             </div>
-
         </div>
-
-
-
-
-
-
     </div>
     <hr>
     <div class="row container-margin">
-        <div class="col-md-6">
+        <div class="col-md-7 col-xl-8">
           <div class="apt-info">
             <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
             <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Posti letto' : '1 Posto letto'}}</span>
             <span><i class="fas fa-shower"></i> {{($apartment->baths > 1) ? $apartment->baths . ' Bagni' : '1 Bagno'}}</span>
             <span><i class="fas fa-home"> </i>{{$apartment->mq}}m<sup>2</sup></span>
           </div>
-
-
 
           <h4>Descrizione</h4>
           <p class="apt-description">
@@ -81,7 +71,7 @@
         </div>
 
 
-        <div class="col-md-3 offset-md-2 payment">
+        <div class="col-md-5 col-xl-4 payment">
             {{-- <form class="" action="{{ route('user.apartments.store_sponsoship') }}" method="post"> --}}
             {{-- <form class="" action="/user/store_sponsoship" method="post"> --}}
                 {{-- @csrf
@@ -115,7 +105,12 @@
                         <div id="dropin-container"></div>
                         <button type="submit" id="submit-button">Conferma pagamento</button>
                         <button class="back-button">Indietro</button>
-
+                        <div class="payment-successfull-box d-none">
+                            <div class="payment-successfull-alert d-none">
+                                Pagamento andato a buon fine <i class="icon-payment-check fas fa-check-circle"></i>
+                            </div>
+                            <button class="refresh-button d-none">OK</button>
+                        </div>
                     </div>
                 </div>
 
@@ -126,15 +121,17 @@
     <script>
         //======= visualizzazione box pagamento
         $('button.go-to-payment').on('click', function () {
-
             $('.box-paypal').removeClass("d-none");
-
         });
+
         $('button.back-button').on('click', function () {
-
            $('.box-paypal').addClass("d-none");
+        });
 
-       });
+        $('.refresh-button').click(function () {
+           window.location.reload();
+        });
+
         //=======
         var button = document.querySelector('#submit-button');
 
@@ -152,7 +149,6 @@
                 instance.requestPaymentMethod(function (err, payload) {
                     $.get('{{ route('payment.make') }}', {payload}, function (response) {
                         if (response.success) {
-                            alert('Payment successfull!');
 
                             var radioValue = $("input[name='sponsorship']:checked").val();
                             // console.log('radio value: ' + radioValue);
@@ -187,6 +183,13 @@
 
                                 }
                             });
+
+                            $('.payment-successfull-alert').removeClass("d-none");
+                            $('.refresh-button').removeClass("d-none");
+                            $('.payment-successfull-box').removeClass("d-none");
+                            $('#dropin-container').addClass("d-none");
+                            $('#submit-button').addClass("d-none");
+                            $('.back-button').addClass("d-none");
 
                         } else {
                             alert('Pagamento fallito');

@@ -195,6 +195,7 @@ class ApartmentsTableSeeder extends Seeder
                 'visible' => 1,
                 'img_path' => 'https://images.unsplash.com/photo-1484301548518-d0e0a5db0fc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
             ],
+
             [
                 'title' => "Casa nel cuore di Napoli",
                 'description' => "La nostra casa è lo spazio ideale per trascorrere un piacevole soggiorno nel centro antico di Napoli.
@@ -210,6 +211,35 @@ class ApartmentsTableSeeder extends Seeder
                 'visible' => 1,
                 'img_path' => 'https://images.unsplash.com/photo-1483962550854-480cf765f227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80'
             ],
+            // [
+            //     'title' => "Loft al Vomero",
+            //     'description' => "L'appartamento è nel cuore del centro storico, dotato di terrazzo con vista a 360 gradi sulla città. Il Museo archeologico, il Duomo di Napoli, cappella San Severo, Napoli sotterranea, sono a 5 minuti. Le maggiori attrazioni della vita notturna, bar, ristoranti e le migliori pizzerie si trovano nel raggio di 500 metri. L'appartamento è al quarto piano senza ascensore in un palazzo del XVII secolo. ",
+            //     'address' => "Via Francesco Solimena, 6 Napoli",
+            //     'lat' => 40.8454,
+            //     'lng' => 14.2295,
+            //     'user_id' => 2,
+            //     'rooms' => 2,
+            //     'beds' => 4,
+            //     'baths' => 2,
+            //     'mq' => 110,
+            //     'visible' => 1,
+            //     'img_path' => 'https://images.unsplash.com/photo-1559599189-fe84dea4eb79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
+            // ],
+            // [
+            //     'title' => "Casa accogliente zona EUR",
+            //     'description' => "Elegante bilocale indipendente nuovissimo e luminoso nel prestigioso quartiere Eur. A 5 minuti a piedi dalla fermata della Metro, a due passi dai Centri Congressi, dal Palazzo della Civiltà del Lavoro, dalla Confindustria e da San Pietro e Paolo.",
+            //     'address' => "Via della Fisica, 5 00144 Roma ",
+            //     'lat' => 41.8338,
+            //     'lng' => 12.4654,
+            //     'user_id' => 4,
+            //     'rooms' => 2,
+            //     'beds' => 4,
+            //     'baths' => 2,
+            //     'mq' => 90,
+            //     'visible' => 1,
+            //     'img_path' => 'https://images.unsplash.com/photo-1553881646-772632e146d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'
+            // ],
+
         ];
 
 

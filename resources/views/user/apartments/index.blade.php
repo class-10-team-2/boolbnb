@@ -4,14 +4,14 @@
     @if ($apartments->count() != 0)
     <div class="title-margin">
         <h2>Gestisci i tuoi appartmenti</h2>
-        <a class="btn btn-ptimary btn-space" href="{{'user.apartments.create'}}">Inserisci un nuovo appartamento</a>
+        <a class="btn btn-ptimary btn-space" href="/user/apartments/create">Inserisci un nuovo appartamento</a>
     </div>
     @else
-        <div class="">
+        <div class="no-apt">
             <p>Non hai ancora registrato nessun appartamento</p>
 
         </div>
-        <div class="">
+        <div class="no-apt-btn">
             <a class="btn btn-primary btn-space" href="{{route('user.apartments.create')}}">Inserisci il tuo appartmento</a>
         </div>
     @endif

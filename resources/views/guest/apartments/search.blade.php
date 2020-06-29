@@ -10,23 +10,29 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row search-row">
-        {{-- <img class="bg-search-img" src="{{$randBgImg[rand(0,5)]}}" alt=""> --}}
-        <div class="col-lg-12">
-            <div class="col-md-12 col-lg-8 offset-lg-2 search-box">
+    {{-- <div class="custom-container"> --}}
+    <div class="container">
+        <div class="search-box">
             <form>
                 {{-- @method('POST')
                 @csrf --}}
 
-                <div class="form-group">
-                    <input id="search-input" type="search" class="address-input search-input" name="address" placeholder="Dove vuoi andare?" />
+                {{-- <div class="form-group">
+                    <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
+                </div> --}}
+                <div class="form-row">
+                    <div class="col-11">
+                        <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
+                    </div>
+                    <div class="col-1">
+                        <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button>
+                    </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="radius">Raggio di ricerca |&nbsp;</label><span id="radius-display-km"></span><span> km</span>
-                        <input id="radius" class="form-control" type="range" name="radius" min="5" max="50" value="20">
+                        <label class="range-label" for="radius">Raggio di ricerca <div class="radius-label">|&nbsp;</label><span id="radius-display-km"></span><span> km</span></div>
+                        <input id="radius" class="form-control range-input" type="range" name="radius" min="5" max="50" value="20">
                     </div>
                     <div class="col">
                         <label for="rooms">Minimo di stanze</label>
@@ -37,38 +43,44 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                         <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row services-row">
                     @foreach ($services as $service)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
+                            <input class="form-check-input checkbox-round" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
                             <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
                         </div>
                     @endforeach
                 </div>
-               
 
-            
+                <input id="latitude" type="hidden" class="lat-input" name="latitude">
+                <input id="longitude" type="hidden" class="lng-input" name="longitude">
 
-            <input id="latitude" type="hidden" class="lat-input" name="latitude">
-            <input id="longitude" type="hidden" class="lng-input" name="longitude">
+                {{-- <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button> --}}
+            </form>
+        </div>
 
-            <button id="search-button" class="btn btn-primary" type="button">Cerca</button>
-        </form>
+        <div class="results-container">
 
-    </div>
-
-    <div class="results-container col-lg-8 offset-lg-2">
-
-    </div>
+        </div>
 
         @include('layouts.apartment-result-handlebars')
         @include('layouts.apartment-result-handlebars-seed')
         @include('layouts.apartment-sponsored-result-handlebars')
         @include('layouts.apartment-sponsored-result-handlebars-seed')
 
+    </div>
 
         {{-- JAVASCRIPT --}}
         <script type="text/javascript">
+            var slider = document.getElementById("radius");
+            var output = document.getElementById("radius-display-km");
+            output.innerHTML = slider.value; // Display the default slider value
+
+            // Update the current slider value (each time you drag the slider handle)
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            };
+            ////////////////////////////////////////////
 
             getSponsoredFromIndex();
             getJsonFromIndex();
@@ -157,11 +169,31 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
+
+
 
                             if (apartment.id <= 13) {
                                 var apartmentHTMLSeed = apartmentTamplateSeed(apartmentData);
@@ -237,9 +269,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
                             if (apartment.id <= 13) {
@@ -312,9 +362,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
 
@@ -391,9 +459,27 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                                 img_path: apartment.img_path,
                                 address: apartment.address,
                                 title: apartment.title,
-                                rooms: apartment.rooms,
-                                beds: apartment.beds,
-                                baths: apartment.baths,
+                                rooms: function() {
+                                    if (apartment.rooms == 1) {
+                                        return apartment.rooms + ' Stanza'
+                                    } else {
+                                        return apartment.rooms + ' Stanze'
+                                    }
+                                },
+                                beds: function() {
+                                    if (apartment.beds == 1) {
+                                        return apartment.beds + ' Letto'
+                                    } else {
+                                        return apartment.beds + ' Letti'
+                                    }
+                                },
+                                baths: function() {
+                                    if (apartment.baths == 1) {
+                                        return apartment.baths + ' Bagno'
+                                    } else {
+                                        return apartment.baths + ' Bagni'
+                                    }
+                                },
                                 id: apartment.id
                             };
 
@@ -411,9 +497,6 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     }
                 });
             }
-
         </script>
-    </div>
-</div>
 
 @endsection

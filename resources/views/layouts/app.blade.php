@@ -12,8 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
-    
-    
+
+
     <script src="https://kit.fontawesome.com/25aedb670a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,9 +37,12 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+
+
+                <a class="navbar-brand-img" href="{{ url('/') }}"">
+                    <img src="https://i.ibb.co/gtDbGN2/boolbnb.png" alt="boolbnb" height="50px">
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,7 +79,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                   
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -92,6 +95,10 @@
         <main class="">
             @yield('content')
         </main>
+
+        <footer>
+            @include('layouts.footer')
+        </footer>
     </div>
 </body>
 </html>
