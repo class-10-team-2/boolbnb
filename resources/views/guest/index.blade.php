@@ -66,7 +66,7 @@
                 <div class="results-container">
 
                     @foreach ($active_sponsorships as $active_sponsorship)
-                        @if ($active_sponsorship->expiration_date > $now->toDateTimeString())
+                        @if ($active_sponsorship->expiration_date > $now->toDateTimeString() && $active_sponsorship->apartment->visible == 1)
                             <div class="padding-trick">
                                 <div class="card">
                                     <div class="wrap">
