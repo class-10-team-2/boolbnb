@@ -43,7 +43,7 @@ class MessagesTableSeeder extends Seeder
             'È possibile pagare in contanti in loco?',
             'Buonasera, accetatte già prenotazioni per il prossimo anno? Lucrezia e Maurizio'
         ];
-        for ($i = 2; $i <= 12; $i++) {
+        for ($i = 1; $i <= 13; $i++) {
             DB::table('messages')->insert([
                 'apartment_id' => $i,
                 'sender' => $faker->email,
@@ -52,7 +52,7 @@ class MessagesTableSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
-        for ($i = 3; $i <= 10; $i++) {
+        for ($i = 1; $i <= 13; $i++) {
             DB::table('messages')->insert([
                 'apartment_id' => $i,
                 'sender' => $faker->email,
@@ -61,7 +61,7 @@ class MessagesTableSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
-        for ($i = 3; $i <= 10; $i++) {
+        for ($i = 1; $i <= 13; $i++) {
             DB::table('messages')->insert([
                 'apartment_id' => $i,
                 'sender' => $faker->email,
