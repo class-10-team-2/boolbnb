@@ -12,52 +12,55 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
 @section('content')
     {{-- <div class="custom-container"> --}}
     <div class="container">
-        <div class="search-box">
-            <form>
-                {{-- @method('POST')
-                @csrf --}}
+        <div class="search-box-wrapper">
+            <div class="search-box">
+                <form>
+                    {{-- @method('POST')
+                    @csrf --}}
 
-                {{-- <div class="form-group">
-                    <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
-                </div> --}}
-                <div class="form-row">
-                    <div class="serch-input-wrapper col-12 col-md-10 col-lg-11">
+                    {{-- <div class="form-group">
                         <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
-                    </div>
-                    <div class="col-12 col-md-2 col-lg-1">
-                        <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <label class="range-label" for="radius">Raggio di ricerca <div class="radius-label">|&nbsp;</label><span id="radius-display-km"></span><span> km</span></div>
-                        <input id="radius" class="form-control range-input" type="range" name="radius" min="5" max="50" value="20">
-                    </div>
-                    <div class="col">
-                        <label for="rooms">Minimo di stanze</label>
-                        <input id="rooms" class="form-control search-input" type="number" name="rooms" min="0" max="10" value="1">
-                    </div>
-                    <div class="col">
-                        <label for="beds">Minimo posti letto</label>
-                        <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
-                    </div>
-                </div>
-                <div class="form-row services-row">
-                    @foreach ($services as $service)
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input checkbox-round" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
-                            <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                    </div> --}}
+                    <div class="form-row">
+                        <div class="serch-input-wrapper col-12 col-md-10 col-lg-11">
+                            <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
                         </div>
-                    @endforeach
-                </div>
+                        <div class="col-12 col-md-2 col-lg-1">
+                            <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button>
+                        </div>
+                    </div>
 
-                <input id="latitude" type="hidden" class="lat-input" name="latitude">
-                <input id="longitude" type="hidden" class="lng-input" name="longitude">
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="range-label" for="radius">Raggio di ricerca <div class="radius-label">|&nbsp;</label><span id="radius-display-km"></span><span> km</span></div>
+                            <input id="radius" class="form-control range-input" type="range" name="radius" min="5" max="50" value="20">
+                        </div>
+                        <div class="col">
+                            <label for="rooms">Minimo di stanze</label>
+                            <input id="rooms" class="form-control search-input" type="number" name="rooms" min="0" max="10" value="1">
+                        </div>
+                        <div class="col">
+                            <label for="beds">Minimo posti letto</label>
+                            <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
+                        </div>
+                    </div>
+                    <div class="form-row services-row">
+                        @foreach ($services as $service)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input checkbox-round" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">
+                                <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
+                            </div>
+                        @endforeach
+                    </div>
 
-                {{-- <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button> --}}
-            </form>
+                    <input id="latitude" type="hidden" class="lat-input" name="latitude">
+                    <input id="longitude" type="hidden" class="lng-input" name="longitude">
+
+                    {{-- <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button> --}}
+                </form>
+            </div>
         </div>
+
 
         <div class="results-container">
 
