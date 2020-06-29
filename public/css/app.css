@@ -10951,7 +10951,6 @@ nav.navbar {
 
 main {
   background: #f5f5f5;
-  padding-top: 30px;
   padding-bottom: 50px;
 }
 
@@ -10999,6 +10998,7 @@ main p {
 
 main .search-box {
   margin-bottom: 30px;
+  padding-top: 30px;
   padding: 20px;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -11525,18 +11525,17 @@ main .service-form {
   padding-top: 20px;
 }
 
-main .index-search-row {
-  margin: 0 auto;
-  border-radius: 40px;
+main .index-search-box {
+  padding-top: 30px;
 }
 
-main .index-search-row .index-ricerca-row {
+main .index-search-box .index-ricerca-row {
   margin: 0 auto;
   width: 100%;
   margin-bottom: 15px;
 }
 
-main .index-search-row .index-ricerca-row .input-box-index {
+main .index-search-box .index-ricerca-row .input-box-index {
   margin: 0 auto;
   width: 90vw;
   width: 100%;
@@ -11546,17 +11545,17 @@ main .index-search-row .index-ricerca-row .input-box-index {
   align-items: center;
 }
 
-main .index-search-row .input-box-index {
+main .index-search-box .input-box-index {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-main .index-search-row input {
+main .index-search-box input {
   border-radius: 40px;
 }
 
-main .index-search-row .second-row {
+main .index-search-box .second-row {
   display: flex;
   flex-direction: row;
   max-width: 1100px;
@@ -11564,14 +11563,14 @@ main .index-search-row .second-row {
   margin: 0 auto;
 }
 
-main .index-search-row .second-row .radius-box,
-main .index-search-row .second-row .rooms-box,
-main .index-search-row .second-row .beds-box,
-main .index-search-row .second-row .button-box {
+main .index-search-box .second-row .radius-box,
+main .index-search-box .second-row .rooms-box,
+main .index-search-box .second-row .beds-box,
+main .index-search-box .second-row .button-box {
   margin-top: 15px;
 }
 
-main .index-search-row .second-row .button-box button {
+main .index-search-box .second-row .button-box button {
   margin-top: 15px;
   width: 100%;
   border-radius: 40px;
@@ -11581,31 +11580,31 @@ main .index-search-row .second-row .button-box button {
   font-size: 22px;
 }
 
-main .index-search-row .second-row .button-box button:hover {
+main .index-search-box .second-row .button-box button:hover {
   background-color: #fe675d;
   color: white;
   border: 1px solid #fe675d;
 }
 
-main .index-search-row .second-row .label-index {
+main .index-search-box .second-row .label-index {
   width: 20vw;
   max-width: 200px;
   min-width: 100px;
 }
 
-main .index-search-row .second-row input.search-slt {
+main .index-search-box .second-row input.search-slt {
   width: 90px;
 }
 
-main .index-search-row .second-row .second-row-left {
+main .index-search-box .second-row .second-row-left {
   width: 50%;
 }
 
-main .index-search-row .second-row .second-row-left span {
+main .index-search-box .second-row .second-row-left span {
   font-size: 16px;
 }
 
-main .index-search-row .second-row .second-row-right {
+main .index-search-box .second-row .second-row-right {
   width: 50%;
   padding-left: 20px;
   margin-top: 15px;
