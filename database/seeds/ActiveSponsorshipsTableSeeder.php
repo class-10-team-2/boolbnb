@@ -26,5 +26,11 @@ class ActiveSponsorshipsTableSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
+        DB::table('active_sponsorships')->insert([
+            'apartment_id' => 8,
+            'expiration_date' => '2025-05-02 16:32:15',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
     }
 }
