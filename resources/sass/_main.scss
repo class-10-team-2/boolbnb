@@ -140,7 +140,7 @@ main {
     #email {
         width: 100%;
         padding: 5px 10px;
-        border-radius: 5px;
+        border-radius: 40px;
         border: 1px solid #dfe1e2;
     }
     ::placeholder {
@@ -428,7 +428,6 @@ main {
             @media screen and (max-width: 991px) {
                 height: 60%;
             }
-
         }
         .card-title {
             font-weight: 800;
@@ -640,11 +639,22 @@ main {
     .form-control {
         border-radius: 40px;
         &:focus {
-            border-color: $bittersweet;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                0 0 8px $bittersweet;
+            border-color: #3490dc;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #3490dc;
         }
     }
+    .index-search-box,
+    .search-box {
+        .form-control {
+            border-radius: 40px;
+            &:focus {
+                border-color: $bittersweet;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                    0 0 8px $bittersweet;
+            }
+        }
+    }
+
     .search-page-search {
         border-radius: 40px;
     }
