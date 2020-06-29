@@ -71,6 +71,8 @@ class ApartmentController extends Controller
         $message->apartment_id = $data['apt_id'];
 
         $message->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +81,24 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        $ip = $request->ip();
+        $today = Carbon::now()->format('Y-m-d');
+
+        $apart_visited_today_by_user = Session::where([['ip_address', '=', $ip], ['last_activity', '=', $today], ['apartment_id', '=', $id]])->get();
+
+
+        if ($apart_visited_today_by_user->isEmpty()) {
+            $session = new Session;
+            $session->ip_address = $ip;
+            $session->apartment_id = $id;
+            $session->last_activity = $today;
+            $session->user_id = Auth::id();
+
+            $session->save();
+        }
+        //=============================================
         $apartment = Apartment::findOrFail($id);
         return view('guest.apartments.show', compact('apartment'));
     }

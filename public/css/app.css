@@ -1,11 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+700;800&display=swap);@charset "UTF-8";
+
 
 :root {
   --blue: #3490dc;
@@ -10926,5 +10922,822 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fe675d;
+}
+
+nav.navbar {
+  background-color: #fe675d;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*=col-] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+main {
+  background: #f5f5f5;
+  padding-bottom: 50px;
+}
+
+main .container-fluid,
+main .container-sm,
+main .container-md,
+main .container-lg,
+main .container-xl {
+  padding-bottom: 100px;
+}
+
+main img.bg-search-img {
+  position: absolute;
+  height: 300px;
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main h1 {
+  margin-top: 20px;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 575px) {
+  main h1 {
+    font-size: 1.5rem;
+  }
+}
+
+main h4 {
+  font-weight: 800;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 575px) {
+  main h4 {
+    font-size: 1.05rem;
+  }
+}
+
+main p {
+  color: #515151;
+}
+
+main .search-box-wrapper {
+  padding-top: 30px;
+}
+
+main .search-box-wrapper .search-box {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+main .search-box-wrapper .search-box .search-input {
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  main .search-box-wrapper .search-box .serch-input-wrapper {
+    margin-bottom: 15px;
+  }
+}
+
+main .search-box-wrapper .search-box .range-label {
+  width: 100%;
+}
+
+main .search-box-wrapper .search-box .range-input {
+  margin-top: 8px;
+}
+
+main .show .title-row {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+main .row-img img.apt-image {
+  width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 575px) {
+  main .row-img img.apt-image {
+    height: 350px;
+  }
+}
+
+main .container-margin {
+  width: 90%;
+  margin: 0 auto;
+}
+
+main .flex-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+main .flex-dir {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+main .apt-info {
+  margin-bottom: 30px;
+}
+
+main .apt-info span {
+  padding-right: 20px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 575px) {
+  main .apt-info span {
+    padding-bottom: 10px;
+  }
+}
+
+main .apt-info span i {
+  color: #8f8e8d;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+main .apt-services {
+  height: 120px;
+}
+
+main .apt-services span {
+  padding-bottom: 10px;
+}
+
+main .contact-host-title {
+  font-size: 17px;
+}
+
+main textarea,
+main #email {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 40px;
+  border: 1px solid #dfe1e2;
+}
+
+main ::-moz-placeholder {
+  color: #747371;
+}
+
+main :-ms-input-placeholder {
+  color: #747371;
+}
+
+main ::-ms-input-placeholder {
+  color: #747371;
+}
+
+main ::placeholder {
+  color: #747371;
+}
+
+main textarea:focus,
+main #email:focus {
+  border: 1px solid #3490dc;
+}
+
+main .map-container {
+  padding-top: 80px;
+}
+
+main .controls {
+  display: flex;
+  margin-top: 20px;
+}
+
+main .controls .btn {
+  margin-right: 15px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+main .controls .btn:hover {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
+
+main .controls .btn-edit:hover {
+  background-color: green;
+  border: 1px solid green;
+}
+
+main .custom-container {
+  width: 90vw;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 575px) {
+  main .custom-container {
+    width: 95vw;
+  }
+}
+
+main .padding-trick {
+  padding: 10px;
+  flex: 0 1 50%;
+}
+
+@media screen and (max-width: 575px) {
+  main .padding-trick {
+    padding: 10px 5px;
+    flex: 1 1 100%;
+  }
+}
+
+main .results-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+main .results-container .card {
+  border-radius: 30px;
+  overflow: hidden;
+  height: 277.333px;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card {
+    height: 430px;
+  }
+}
+
+main .results-container .card .wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap {
+    flex-direction: column;
+  }
+}
+
+main .results-container .card .wrap a.card-link {
+  position: absolute;
+  border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+main .results-container .card .wrap .card-img-top {
+  width: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 991px) {
+  main .results-container .card .wrap .card-img-top {
+    width: 100%;
+    height: 40%;
+  }
+}
+
+main .results-container .card .wrap .card-title {
+  font-size: 1.3rem;
+}
+
+main .results-container .card .wrap .info-card {
+  display: block;
+  font-size: 14px;
+  padding: 4px;
+  margin-right: 5px;
+}
+
+main .results-container .card .wrap .info-card i {
+  display: inline-block;
+  color: #8f8e8d;
+  font-size: 16px;
+  min-width: 30px;
+}
+
+main .results-container .card .list-group-item {
+  padding: 5px;
+}
+
+main .payment {
+  margin-top: 30px;
+}
+
+main .payment .options {
+  padding: 15px;
+  border: 2px solid lightgrey;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+}
+
+main .payment .options p {
+  color: black;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+main .payment .options p i {
+  padding-right: 5px;
+}
+
+main .box-paypal {
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .box-paypal .paypal {
+  max-width: 400px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .box-paypal .paypal button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .box-paypal .paypal button:hover {
+  color: white;
+  background-color: #3490dc;
+  border: 1px solid #3490dc;
+}
+
+main .box-paypal .paypal .payment-successfull-box {
+  text-align: center;
+  padding: 20px 30px;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert .icon-payment-check {
+  color: green;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button {
+  color: green;
+  border: 1px solid green;
+  font-weight: 700;
+}
+
+main .box-paypal .paypal .payment-successfull-box .refresh-button:hover {
+  color: white;
+  background-color: green;
+}
+
+main .titolo-stats {
+  margin: 30px;
+}
+
+main .chart-views {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+main .chart-views p {
+  font-size: 20px;
+}
+
+main .create .apt-name,
+main .edit .apt-name {
+  width: 400px;
+}
+
+main .create .apt-address,
+main .edit .apt-address {
+  width: 720px;
+}
+
+main .create .input-short,
+main .edit .input-short {
+  width: 50px;
+}
+
+main .input-check {
+  margin-bottom: 0.5rem;
+  margin-right: 10px;
+}
+
+main .button-margin {
+  margin: 25px 0 100px;
+}
+
+main .button-margin input {
+  color: black;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .button-margin input:hover {
+  border: none;
+  color: white;
+  background-color: blue;
+}
+
+main .ap-input-icon {
+  display: none;
+}
+
+main .title-margin {
+  padding: 50px 0 30px;
+}
+
+main .card-img-top {
+  padding: 0px 0;
+}
+
+main .img-thumbnail {
+  width: 280px;
+  height: 220px;
+}
+
+main .apartments-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 30px auto;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  border: none;
+}
+
+main .apartments-card .link-card {
+  overflow: hidden;
+  position: absolute;
+  border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+main .apartments-card img {
+  width: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .apartments-card .card-body {
+  display: block;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  main .apartments-card .card-body {
+    height: 60%;
+  }
+}
+
+main .apartments-card .card-title {
+  font-weight: 800;
+}
+
+main .stats-mess {
+  margin: 20px 0;
+}
+
+main .btn-space {
+  margin-right: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+main .btn-space:hover {
+  color: white;
+  background-color: #fe675d;
+  border: 1px solid #fe675d;
+}
+
+main .margin-zero {
+  margin: 0;
+}
+
+main .content-center {
+  align-items: center;
+}
+
+main .search-bar {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  width: 80%;
+  margin: 30px auto;
+}
+
+main .search-bar input {
+  border: 0;
+  outline: 0;
+}
+
+main .search-bar input:focus {
+  outline: none !important;
+}
+
+main .flex {
+  display: flex;
+}
+
+main .search-sec {
+  padding: 2rem;
+  width: 90%;
+  margin: 30px auto;
+  background: rgba(26, 70, 104, 0.51);
+}
+
+main .search-slt {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .wrn-btn {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+
+main .service-form {
+  padding-top: 20px;
+}
+
+main .index-search-box {
+  padding-top: 30px;
+}
+
+main .index-search-box .index-ricerca-row {
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+main .index-search-box .index-ricerca-row .input-box-index {
+  margin: 0 auto;
+  width: 90vw;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+main .index-search-box .input-box-index {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+main .index-search-box input {
+  border-radius: 40px;
+}
+
+main .index-search-box .second-row {
+  display: flex;
+  flex-direction: row;
+  max-width: 1100px;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+main .index-search-box .second-row .radius-box,
+main .index-search-box .second-row .rooms-box,
+main .index-search-box .second-row .beds-box,
+main .index-search-box .second-row .button-box {
+  margin-top: 15px;
+}
+
+main .index-search-box .second-row .button-box button {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid grey;
+  text-align: center;
+  font-size: 22px;
+}
+
+main .index-search-box .second-row .button-box button:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
+}
+
+main .index-search-box .second-row .label-index {
+  width: 20vw;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+main .index-search-box .second-row input.search-slt {
+  width: 90px;
+}
+
+main .index-search-box .second-row .second-row-left {
+  width: 50%;
+}
+
+main .index-search-box .second-row .second-row-left span {
+  font-size: 16px;
+}
+
+main .index-search-box .second-row .second-row-right {
+  width: 50%;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+main .sponsor-container-index {
+  margin: 0 auto;
+  width: 90vw;
+}
+
+main .hr-index {
+  margin-top: 30px;
+}
+
+main .title-vetrina {
+  display: block;
+  width: 90vw;
+  margin: 45px auto;
+  text-align: center;
+}
+
+main .form-row:first-child {
+  margin-bottom: 10px;
+}
+
+main .form-row.services-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+main .address-input {
+  border-radius: 40px;
+}
+
+main .form-control {
+  border-radius: 40px;
+}
+
+main .form-control:focus {
+  border-color: #3490dc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #3490dc;
+}
+
+main .index-search-box .form-control,
+main .search-box .form-control {
+  border-radius: 40px;
+}
+
+main .index-search-box .form-control:focus,
+main .search-box .form-control:focus {
+  border-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
+main .search-page-search {
+  border-radius: 40px;
+}
+
+main .radius-label {
+  display: inline-block;
+}
+
+main .btn-search-page-search {
+  width: 100%;
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid #fe675d;
+  color: #fe675d;
+  padding: 0.375rem 0.75rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+main .btn-search-page-search:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
+}
+
+main .no-apt,
+main .no-apt-btn {
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-round:checked {
+  border: 1px solid #fe675d;
+  background-color: #fe675d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fe675d;
+}
+
+#message {
+  border-radius: 20px;
+}
+
+footer {
+  max-height: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #fe675d;
+}
+
+footer .container {
+  height: 100%;
+}
+
+footer .container .footer-logo-wrapper {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .container .footer-logo-wrapper img {
+  width: auto;
+  max-width: 200px;
 }
 

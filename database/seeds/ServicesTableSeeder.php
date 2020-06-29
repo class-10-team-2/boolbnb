@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Service;
+use Illuminate\Support\Facades\DB;
 
 class ServicesTableSeeder extends Seeder
 {
@@ -28,7 +29,5 @@ class ServicesTableSeeder extends Seeder
                 $new_service->save();
             }
         }
-
-
     }
 }
