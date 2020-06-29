@@ -3,6 +3,7 @@
         <div class="card">
             <div class="wrap">
                 <a href="guest/apartments/{{id}}" class="card-link"></a>
+                <img class="card-img-top" src="<?php echo e(asset('storage/')) ?>/{{img_path}}" alt="">
 
             <div class="card-body">
                 <small><i class="fas fa-star"></i> In vetrina</i></small>
