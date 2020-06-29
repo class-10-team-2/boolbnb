@@ -32,6 +32,8 @@ class SearchController extends Controller
         // il metodo search() di Scout Extended
         // $query = ''; // usare questa variabile non è obbligatorio
 
+        $is_sponsored = $request->input('is_sponsored');
+
         $rooms = $request->input('rooms');
         $beds = $request->input('beds');
         $radius = $request->input('radius');
@@ -40,46 +42,65 @@ class SearchController extends Controller
 
         $services = $request->input('services');
 
-        // if (!empty($request->input('services'))) {
-        //     $services = $request->input('services');
-        // } else {
-        //     $services = [];
-        // }
+        // $is_sponsored = 1;
+        //
+        // $rooms = 11;
+        // $beds = 10;
+        // $radius = 20;
+        // $latitude = 45.28;
+        // $longitude = 9.10;
+        //
+        // $services = [];
 
-        // var_dump($latitude, $longitude);
 
         // input del form
         $lat1 = $latitude;
         $lon1 = $longitude;
 
-        $unfiltered_apartments = Apartment::where('rooms', '>=', $rooms)
-            ->where('beds', '>=', $beds)
-            // ->where('beds', '<', ($beds + 6))
-            ->where('visible', 1)
-            ->get()->toArray();
+        // controllo sponsorizzati
 
+        if ($is_sponsored == 1) {
+            $prefiltered_apartments = Apartment::has('activesponsorship')
+                ->where('rooms', '>=', $rooms)
+                ->where('beds', '>=', $beds)
+                // ->where('beds', '<', ($beds + 6))
+                ->where('visible', 1)
+                ->get()
+                ->toArray();
+        } else {
+            $prefiltered_apartments = Apartment::doesntHave('activesponsorship')
+                ->where('rooms', '>=', $rooms)
+                ->where('beds', '>=', $beds)
+                // ->where('beds', '<', ($beds + 6))
+                ->where('visible', 1)
+                ->get()
+                ->toArray();
+        }
+        // dd($prefiltered_apartments);
         // dd($apartments);
         $filtered = []; // definisco l'array vuoto prima per evitare errori undefined quando richiamo json
         // cicliamo gli appartamenti filtrandoli per $radius
-        foreach ($unfiltered_apartments as $apartment) {
-            $lat2 = $apartment['latitude'];
-            $lon2 = $apartment['longitude'];
+        if (!empty($prefiltered_apartments)) {
+            foreach ($prefiltered_apartments as $apartment) {
+                $lat2 = $apartment['latitude'];
+                $lon2 = $apartment['longitude'];
 
-            $R = 6371e3; //mt
-            $φ1 = ($lat1 * pi()) / 180; // φ, λ in radians
-            $φ2 = ($lat2 * pi()) / 180;
-            $Δφ = (($lat2 - $lat1) * pi()) / 180;
-            $Δλ = (($lon2 - $lon1) * pi()) / 180;
-            $a =
-                sin($Δφ / 2) * sin($Δφ / 2) +
-                cos($φ1) * cos($φ2) * sin($Δλ / 2) * sin($Δλ / 2);
-            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $d = ($R * $c) / 1000; // distanza fra coordinate iniziali e coordinate degli appartamenti
+                $R = 6371e3; //mt
+                $φ1 = ($lat1 * pi()) / 180; // φ, λ in radians
+                $φ2 = ($lat2 * pi()) / 180;
+                $Δφ = (($lat2 - $lat1) * pi()) / 180;
+                $Δλ = (($lon2 - $lon1) * pi()) / 180;
+                $a =
+                    sin($Δφ / 2) * sin($Δφ / 2) +
+                    cos($φ1) * cos($φ2) * sin($Δλ / 2) * sin($Δλ / 2);
+                $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                $d = ($R * $c) / 1000; // distanza fra coordinate iniziali e coordinate degli appartamenti
 
 
-            if ($d <= $radius) {
-                $apartment['distance'] = $d;
-                $filtered[] = $apartment; // appartamenti localizzati all'interno del raggio (distanza)
+                if ($d <= $radius) {
+                    $apartment['distance'] = $d;
+                    $filtered[] = $apartment; // appartamenti localizzati all'interno del raggio (distanza)
+                }
             }
         }
 
@@ -92,7 +113,6 @@ class SearchController extends Controller
                     }
                 }
             }
-
 
             return response()->json($filtered);
         } else {
@@ -125,7 +145,7 @@ class SearchController extends Controller
     // {
     //     // Ritorna un json con gli appartamenti sponsorizzati
     //     $query = ''; // usare questa variabile non è obbligatorio
-
+    //
     //     $rooms = $request->input('rooms');
     //     $beds = $request->input('beds');
     //     // $radius = $request->input('radius');
@@ -136,20 +156,20 @@ class SearchController extends Controller
     //     } else {
     //         $services = [];
     //     }
-
-    // $apartments = Apartment::search($query)
-    //                             ->aroundLatLng($latitude, $logitude)
-    //                             ->with([
-    //                                 'aroundRadius' => 50000, // grande raggio di default
-    //                                 'hitsPerPage' => 5,
-    //                             ])
-    //                             ->where('rooms', '>=', $rooms)
-    //                             ->where('beds', '>=', $beds)
-    //                             // ->whereIn('services', $services)
-    //                             ->where('exp_date', '>', now())
-    //                             ->where('visible', 1)
-    //                             ->get();
     //
-    // return $apartments;
+    //     // $apartments = Apartment::search($query)
+    //     //                             ->aroundLatLng($latitude, $logitude)
+    //     //                             ->with([
+    //     //                                 'aroundRadius' => 50000, // grande raggio di default
+    //     //                                 'hitsPerPage' => 5,
+    //     //                             ])
+    //     //                             ->where('rooms', '>=', $rooms)
+    //     //                             ->where('beds', '>=', $beds)
+    //     //                             // ->whereIn('services', $services)
+    //     //                             ->where('exp_date', '>', now())
+    //     //                             ->where('visible', 1)
+    //     //                             ->get();
+    //     //
+    //     // return $apartments;
     // }
 }
