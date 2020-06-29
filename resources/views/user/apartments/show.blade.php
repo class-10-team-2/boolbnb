@@ -79,11 +79,21 @@
 
 
                 <input type="hidden" name="id" value="{{$apartment->id}}">
-
-
+                @if ($apartment->activesponsorship()->exists())
+                <div><p>Scadenza sponsorizzazione: {{date('d/m/Y H:i', strtotime($apartment->activesponsorship->expiration_date))}}</p></div>
+                @endif
+                
                 <div class="options">
+                    
+                    @if ($apartment->activesponsorship()->exists())
+                    <h4><i class="fas fa-chart-line"></i> Prolunga la tua sponsorizzazione</h4>
+                    <p>Aggiungi visibilità al tuo appartmento prolungando la tua sponsorizzazione oltre la data di scadenza. Scegli il piano più adatto alle tue esigenze.</p>
+
+                    @else
                     <h4><i class="fas fa-chart-line"></i> Metti in evidenza il tuo appartamento</h4>
                     <p>Scegli il piano di sponsorizzazione piu adatto alle tue esigenze. Otterrai maggiore visibiltà nei risultati di ricerca per il periodo in cui hai attivato la sponsorizzazione.</p>
+                    
+                    @endif
                     @foreach ($sponsorship_packs as $sponsorship_pack)
                         <div class="form-check">
                             @if ($sponsorship_pack->duration == 24)
