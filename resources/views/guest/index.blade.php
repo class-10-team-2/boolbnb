@@ -81,9 +81,9 @@
                                         <div class="card-body">
                                             <h3 class="card-title">{{$active_sponsorship->apartment->title}}</h3>
                                             <p class="card-text">{{$active_sponsorship->apartment->address}}</p>
-                                            <span class="info-card"><i class="fas fa-door-open"></i>&nbsp;{{$active_sponsorship->apartment->rooms}}</span>
-                                            <span class="info-card"><i class="fas fa-bed"></i>&nbsp;{{$active_sponsorship->apartment->beds}}</span>
-                                            <span class="info-card"><i class="fas fa-shower"></i>&nbsp;{{$active_sponsorship->apartment->baths}}</span>
+                                            <span class="info-card"><i class="fas fa-door-open"></i>&nbsp;{{($active_sponsorship->apartment->rooms == 1) ? $active_sponsorship->apartment->rooms.' Stanza' : $active_sponsorship->apartment->rooms.' Stanze'}}</span>
+                                            <span class="info-card"><i class="fas fa-bed"></i>&nbsp;{{($active_sponsorship->apartment->beds == 1) ? $active_sponsorship->apartment->beds.' Letto' : $active_sponsorship->apartment->beds.' Letti'}}</span>
+                                            <span class="info-card"><i class="fas fa-shower"></i>&nbsp;{{($active_sponsorship->apartment->baths == 1) ? $active_sponsorship->apartment->baths.' Bagno' : $active_sponsorship->apartment->baths.' Bagni'}}</span>
                                         </div>
                                     </div>
                                 </div>
