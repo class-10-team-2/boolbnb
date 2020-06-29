@@ -21,10 +21,10 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                     <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
                 </div> --}}
                 <div class="form-row">
-                    <div class="col-11">
+                    <div class="serch-input-wrapper col-12 col-md-10 col-lg-11">
                         <input id="search-input" type="search" class="address-input search-input form-control" name="address" placeholder=" Dove vuoi andare?" />
                     </div>
-                    <div class="col-1">
+                    <div class="col-12 col-md-2 col-lg-1">
                         <button id="search-button" class="btn btn-search-page-search" type="button">Cerca</button>
                     </div>
                 </div>

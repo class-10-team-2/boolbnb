@@ -11008,6 +11008,12 @@ main .search-box .search-input {
   border-radius: 40px;
 }
 
+@media screen and (max-width: 767px) {
+  main .search-box .serch-input-wrapper {
+    margin-bottom: 15px;
+  }
+}
+
 main .search-box .range-label {
   width: 100%;
 }
@@ -11181,7 +11187,7 @@ main .results-container .card {
 
 @media screen and (max-width: 991px) {
   main .results-container .card {
-    height: 100%;
+    height: 430px;
   }
 }
 
@@ -11217,6 +11223,7 @@ main .results-container .card .wrap .card-img-top {
 @media screen and (max-width: 991px) {
   main .results-container .card .wrap .card-img-top {
     width: 100%;
+    height: 40%;
   }
 }
 
@@ -11384,7 +11391,7 @@ main .ap-input-icon {
 }
 
 main .title-margin {
-  margin: 50px 0 30px;
+  padding: 50px 0 30px;
 }
 
 main .card-img-top {
@@ -11427,6 +11434,12 @@ main .apartments-card img {
 main .apartments-card .card-body {
   display: block;
   padding-left: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  main .apartments-card .card-body {
+    height: 60%;
+  }
 }
 
 main .apartments-card .card-title {
