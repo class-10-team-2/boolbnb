@@ -24,10 +24,10 @@ class CreateApartmentsTable extends Migration
             $table->unsignedTinyInteger('baths');
             $table->unsignedSmallInteger('mq');
             $table->text('address');
-            $table->string('longitude', 20);
-            $table->string('latitude', 20);
+            $table->float('longitude', 15, 12);
+            $table->float('latitude', 15, 12);
             $table->text('img_path');
-            $table->boolean('visible')->default(1);
+            $table->boolean('visible')->default(0);
             $table->timestamps();
         });
     }
