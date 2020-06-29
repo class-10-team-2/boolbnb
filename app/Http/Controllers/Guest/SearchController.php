@@ -31,7 +31,7 @@ class SearchController extends Controller
         // e li uso per filtrare gli appartamenti usando
         // il metodo search() di Scout Extended
         // $query = ''; // usare questa variabile non è obbligatorio
-        
+
         $is_sponsored = $request->input('is_sponsored');
 
         $rooms = $request->input('rooms');
@@ -61,21 +61,20 @@ class SearchController extends Controller
 
         if ($is_sponsored == 1) {
             $prefiltered_apartments = Apartment::has('activesponsorship')
-                                                ->where('rooms', '>=', $rooms)
-                                                ->where('beds', '>=', $beds)
-                                                // ->where('beds', '<', ($beds + 6))
-                                                ->where('visible', 1)
-                                                ->get()
-                                                ->toArray();
-        }
-        else {
+                ->where('rooms', '>=', $rooms)
+                ->where('beds', '>=', $beds)
+                // ->where('beds', '<', ($beds + 6))
+                ->where('visible', 1)
+                ->get()
+                ->toArray();
+        } else {
             $prefiltered_apartments = Apartment::doesntHave('activesponsorship')
-                                                ->where('rooms', '>=', $rooms)
-                                                ->where('beds', '>=', $beds)
-                                                // ->where('beds', '<', ($beds + 6))
-                                                ->where('visible', 1)
-                                                ->get()
-                                                ->toArray();
+                ->where('rooms', '>=', $rooms)
+                ->where('beds', '>=', $beds)
+                // ->where('beds', '<', ($beds + 6))
+                ->where('visible', 1)
+                ->get()
+                ->toArray();
         }
         // dd($prefiltered_apartments);
         // dd($apartments);
@@ -116,7 +115,6 @@ class SearchController extends Controller
             }
 
             return response()->json($filtered);
-
         } else {
             return response()->json($filtered);
         }
