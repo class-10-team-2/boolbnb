@@ -49,10 +49,10 @@ main {
             margin-bottom: 30px;
             // border: 4px solid #fff;
             padding: 20px;
-            border-radius: 40px;
+            border-radius: 15px;
             background-color: rgba(255, 255, 255, 0.9);
             .search-input {
-                border-radius: 40px;
+                border-radius: 15px;
             }
             @media screen and (max-width: 767px) {
                 .serch-input-wrapper {
@@ -140,7 +140,7 @@ main {
     #email {
         width: 100%;
         padding: 5px 10px;
-        border-radius: 40px;
+        border-radius: 15px;
         border: 1px solid #dfe1e2;
     }
     ::placeholder {
@@ -204,7 +204,7 @@ main {
         flex-wrap: wrap;
         margin-top: 30px;
         .card {
-            border-radius: 30px;
+            border-radius: 15px;
             overflow: hidden;
             // display: inline-block;
             // margin: 10px;
@@ -222,7 +222,7 @@ main {
                 }
                 a.card-link {
                     position: absolute;
-                    border-radius: 40px;
+                    border-radius: 15px;
                     width: 100%;
                     height: 100%;
                     top: 0px;
@@ -267,7 +267,7 @@ main {
             padding: 15px;
             border: 2px solid lightgrey;
             background-color: white;
-            border-radius: 5px;
+            border-radius: 15px;
             width: 100%;
             p {
                 color: black;
@@ -300,7 +300,7 @@ main {
                 padding: 10px 20px;
                 background-color: white;
                 border: 1px solid black;
-                border-radius: 5px;
+                border-radius: 15px;
                 &:hover {
                     color: white;
                     background-color: #3490dc;
@@ -311,7 +311,7 @@ main {
                 text-align: center;
                 padding: 20px 30px;
                 border: 1px solid green;
-                border-radius: 5px;
+                border-radius: 15px;
                 .payment-successfull-alert {
                     margin-bottom: 10px;
                     font-size: 20px;
@@ -340,7 +340,7 @@ main {
     .chart-views {
         background-color: white;
         border: 1px solid lightgrey;
-        border-radius: 5px;
+        border-radius: 15px;
         padding: 10px;
         p {
             font-size: 20px;
@@ -373,7 +373,7 @@ main {
             padding: 10px;
             background-color: white;
             border: 1px solid black;
-            border-radius: 5px;
+            border-radius: 15px;
             &:hover {
                 border: none;
                 color: white;
@@ -404,13 +404,13 @@ main {
         position: relative;
         margin: 30px auto;
         position: relative;
-        border-radius: 40px;
+        border-radius: 15px;
         overflow: hidden;
         border: none;
         .link-card {
             overflow: hidden;
             position: absolute;
-            border-radius: 40px;
+            border-radius: 15px;
             width: 100%;
             height: 100%;
             top: 0px;
@@ -499,7 +499,7 @@ main {
         background-image: none;
         border: 1px solid #ccc;
         height: calc(3rem + 2px) !important;
-        border-radius: 0;
+        // border-radius: 0;
     }
     .wrn-btn {
         width: 100%;
@@ -507,7 +507,7 @@ main {
         font-weight: 400;
         text-transform: capitalize;
         height: calc(3rem + 2px) !important;
-        border-radius: 0;
+        border-radius: 15px;;
     }
     // @media (min-width: 992px){
     //     .search-sec{
@@ -560,7 +560,7 @@ main {
             align-items: center;
         }
         input {
-            border-radius: 40px;
+            border-radius: 15px;
         }
         .second-row {
             display: flex;
@@ -578,7 +578,7 @@ main {
             .button-box button {
                 margin-top: 15px;
                 width: 100%;
-                border-radius: 40px;
+                border-radius: 15px;
                 background-color: #fff;
                 border: 1px solid grey;
                 text-align: center;
@@ -634,11 +634,11 @@ main {
     }
 
     .address-input {
-        border-radius: 40px;
+        border-radius: 15px;
     }
 
     .form-control {
-        border-radius: 40px;
+        border-radius: 15px;
         &:focus {
             border-color: #3490dc;
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #3490dc;
@@ -647,7 +647,7 @@ main {
     .index-search-box,
     .search-box {
         .form-control {
-            border-radius: 40px;
+            border-radius: 15px;
             &:focus {
                 border-color: $bittersweet;
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
@@ -657,7 +657,7 @@ main {
     }
 
     .search-page-search {
-        border-radius: 40px;
+        border-radius: 15px;
     }
 
     .radius-label {
@@ -665,7 +665,7 @@ main {
     }
     .btn-search-page-search {
         width: 100%;
-        border-radius: 40px;
+        border-radius: 15px;
         background-color: #fff;
         // border: 1px solid grey;
         border: 1px solid $bittersweet;
@@ -714,5 +714,5 @@ main {
 }
 
 #message {
-    border-radius: 20px;
+    border-radius: 15px;
 }

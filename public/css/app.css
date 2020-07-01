@@ -11003,12 +11003,12 @@ main .search-box-wrapper {
 main .search-box-wrapper .search-box {
   margin-bottom: 30px;
   padding: 20px;
-  border-radius: 40px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
 main .search-box-wrapper .search-box .search-input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 @media screen and (max-width: 767px) {
@@ -11100,7 +11100,7 @@ main textarea,
 main #email {
   width: 100%;
   padding: 5px 10px;
-  border-radius: 40px;
+  border-radius: 15px;
   border: 1px solid #dfe1e2;
 }
 
@@ -11183,7 +11183,7 @@ main .results-container {
 }
 
 main .results-container .card {
-  border-radius: 30px;
+  border-radius: 15px;
   overflow: hidden;
   height: 277.333px;
 }
@@ -11209,7 +11209,7 @@ main .results-container .card .wrap {
 
 main .results-container .card .wrap a.card-link {
   position: absolute;
-  border-radius: 40px;
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -11260,7 +11260,7 @@ main .payment .options {
   padding: 15px;
   border: 2px solid lightgrey;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 100%;
 }
 
@@ -11299,7 +11299,7 @@ main .box-paypal .paypal button {
   padding: 10px 20px;
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .box-paypal .paypal button:hover {
@@ -11312,7 +11312,7 @@ main .box-paypal .paypal .payment-successfull-box {
   text-align: center;
   padding: 20px 30px;
   border: 1px solid green;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert {
@@ -11343,7 +11343,7 @@ main .titolo-stats {
 main .chart-views {
   background-color: white;
   border: 1px solid lightgrey;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
 }
 
@@ -11380,7 +11380,7 @@ main .button-margin input {
   padding: 10px;
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .button-margin input:hover {
@@ -11412,7 +11412,7 @@ main .apartments-card {
   position: relative;
   margin: 30px auto;
   position: relative;
-  border-radius: 40px;
+  border-radius: 15px;
   overflow: hidden;
   border: none;
 }
@@ -11420,7 +11420,7 @@ main .apartments-card {
 main .apartments-card .link-card {
   overflow: hidden;
   position: absolute;
-  border-radius: 40px;
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -11512,7 +11512,6 @@ main .search-slt {
   background-image: none;
   border: 1px solid #ccc;
   height: calc(3rem + 2px) !important;
-  border-radius: 0;
 }
 
 main .wrn-btn {
@@ -11521,7 +11520,7 @@ main .wrn-btn {
   font-weight: 400;
   text-transform: capitalize;
   height: calc(3rem + 2px) !important;
-  border-radius: 0;
+  border-radius: 15px;
 }
 
 main .service-form {
@@ -11556,7 +11555,7 @@ main .index-search-box .input-box-index {
 }
 
 main .index-search-box input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .index-search-box .second-row {
@@ -11577,7 +11576,7 @@ main .index-search-box .second-row .button-box {
 main .index-search-box .second-row .button-box button {
   margin-top: 15px;
   width: 100%;
-  border-radius: 40px;
+  border-radius: 15px;
   background-color: #fff;
   border: 1px solid grey;
   text-align: center;
@@ -11640,11 +11639,11 @@ main .form-row.services-row {
 }
 
 main .address-input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .form-control {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .form-control:focus {
@@ -11654,7 +11653,7 @@ main .form-control:focus {
 
 main .index-search-box .form-control,
 main .search-box .form-control {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .index-search-box .form-control:focus,
@@ -11664,7 +11663,7 @@ main .search-box .form-control:focus {
 }
 
 main .search-page-search {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .radius-label {
@@ -11673,7 +11672,7 @@ main .radius-label {
 
 main .btn-search-page-search {
   width: 100%;
-  border-radius: 40px;
+  border-radius: 15px;
   background-color: #fff;
   border: 1px solid #fe675d;
   color: #fe675d;
@@ -11716,7 +11715,7 @@ main .no-apt-btn {
 }
 
 #message {
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 footer {
