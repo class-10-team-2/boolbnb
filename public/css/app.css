@@ -11165,7 +11165,7 @@ main .custom-container {
 }
 
 main .padding-trick {
-  padding: 10px;
+  padding-bottom: 10px;
   flex: 0 1 50%;
 }
 
@@ -11174,6 +11174,10 @@ main .padding-trick {
     padding: 10px 5px;
     flex: 1 1 100%;
   }
+}
+
+main .padding-trick:nth-child(2n+1) {
+  padding-right: 10px;
 }
 
 main .results-container {

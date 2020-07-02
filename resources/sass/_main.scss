@@ -191,12 +191,15 @@ main {
     ///////results container//////////////////////////////////
     // PADDING TRICK//
     .padding-trick {
-        padding: 10px;
+        padding-bottom: 10px;
         flex: 0 1 50%;
         @media screen and (max-width: 575px) {
             padding: 10px 5px;
             flex: 1 1 100%;
         }
+    }
+    .padding-trick:nth-child(2n+1) {
+        padding-right: 10px;
     }
 
     .results-container {
