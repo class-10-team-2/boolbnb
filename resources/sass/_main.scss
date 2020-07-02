@@ -540,18 +540,44 @@ main {
         // margin: 0 auto;
         // border-radius: 40px;
         .index-ricerca-row {
-            margin: 0 auto;
+            // margin: 0 auto;
             width: 100%;
-            max-width: 90vw;
+            // max-width: 90vw;
             margin-bottom: 15px;
-            .input-box-index {
-                margin: 0 auto;
-                width: 90vw;
+            display: flex;
+
+            .search-box-index {
+                // margin: 0 auto;
+                // width: 90vw;
+                padding-right: 10px;
                 width: 100%;
-                max-width: 1100px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
+                // max-width: 1100px;
+                // display: flex;
+                // flex-direction: row;
+                // align-items: center;
+                @media screen and (min-width: 992px) {
+                    flex-basis: 75%;
+                }
+            }
+            .button-box {
+                // margin-top: 15px;
+                @media screen and (min-width: 992px) {
+                    flex-basis: 25%;
+                }
+            }
+            .button-box button {
+                // margin-top: 15px;
+                width: 100%;
+                border-radius: 15px;
+                background-color: #fff;
+                border: 1px solid grey;
+                text-align: center;
+                font-size: 22px;
+                &:hover {
+                    background-color: $bittersweet;
+                    color: white;
+                    border: 1px solid $bittersweet;
+                }
             }
         }
         .input-box-index {
@@ -565,48 +591,53 @@ main {
         .second-row {
             display: flex;
             flex-direction: row;
-            max-width: 1100px;
-            width: 90vw;
+            flex-wrap: wrap;
+            // max-width: 1100px;
+            // width: 90vw;
             // width: 100%;
-            margin: 0 auto;
+            // margin: 0 auto;
             .radius-box,
             .rooms-box,
-            .beds-box,
-            .button-box {
+            .beds-box {
                 margin-top: 15px;
-            }
-            .button-box button {
-                margin-top: 15px;
-                width: 100%;
-                border-radius: 15px;
-                background-color: #fff;
-                border: 1px solid grey;
-                text-align: center;
-                font-size: 22px;
-                &:hover {
-                    background-color: $bittersweet;
-                    color: white;
-                    border: 1px solid $bittersweet;
-                }
             }
             .label-index {
-                width: 20vw;
-                max-width: 200px;
+                width: 70%;
                 min-width: 100px;
+                @media screen and (min-width: 992px) {
+                    max-width: 200px;
+                    width: 100%;
+                }
+
             }
             input.search-slt {
                 width: 90px;
             }
-            .second-row-left {
-                width: 50%;
+            .second-row-top {
+                width: 100%;
+                @media screen and (min-width: 768px) {
+                    width: 50%;
+                }
+                @media screen and (min-width: 992px) {
+                    width: 40%;
+                }
                 span {
                     font-size: 16px;
                 }
             }
-            .second-row-right {
-                width: 50%;
+            .second-row-bottom {
+                width: 100%;
                 padding-left: 20px;
                 margin-top: 15px;
+                @media screen and (min-width: 768px) {
+                    width: 50%;
+                }
+                @media screen and (min-width: 992px) {
+                    width: 60%;
+                }
+                h5 {
+                    margin-top: 12.2px;
+                }
             }
         }
     }
@@ -630,7 +661,7 @@ main {
     }
     .form-row.services-row {
         margin-top: 20px;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
     }
 
     .address-input {
@@ -695,17 +726,21 @@ main {
     padding-bottom: 50px;
 }
 
-.checkbox-round {
-    width: 1.3em;
-    height: 1.3em;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid #cccccc;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
+.checkbox-round-wrapper {
+    margin-bottom: 10px;
+    .checkbox-round {
+        width: 1.3em;
+        height: 1.3em;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #cccccc;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
 }
+
 
 .checkbox-round:checked {
     border: 1px solid $bittersweet;

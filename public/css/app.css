@@ -11532,20 +11532,41 @@ main .index-search-box {
 }
 
 main .index-search-box .index-ricerca-row {
-  margin: 0 auto;
   width: 100%;
-  max-width: 90vw;
   margin-bottom: 15px;
+  display: flex;
 }
 
-main .index-search-box .index-ricerca-row .input-box-index {
-  margin: 0 auto;
-  width: 90vw;
+main .index-search-box .index-ricerca-row .search-box-index {
+  padding-right: 10px;
   width: 100%;
-  max-width: 1100px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .index-ricerca-row .search-box-index {
+    flex-basis: 75%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .index-ricerca-row .button-box {
+    flex-basis: 25%;
+  }
+}
+
+main .index-search-box .index-ricerca-row .button-box button {
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid grey;
+  text-align: center;
+  font-size: 22px;
+}
+
+main .index-search-box .index-ricerca-row .button-box button:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
 }
 
 main .index-search-box .input-box-index {
@@ -11561,56 +11582,71 @@ main .index-search-box input {
 main .index-search-box .second-row {
   display: flex;
   flex-direction: row;
-  max-width: 1100px;
-  width: 90vw;
-  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 main .index-search-box .second-row .radius-box,
 main .index-search-box .second-row .rooms-box,
-main .index-search-box .second-row .beds-box,
-main .index-search-box .second-row .button-box {
+main .index-search-box .second-row .beds-box {
   margin-top: 15px;
-}
-
-main .index-search-box .second-row .button-box button {
-  margin-top: 15px;
-  width: 100%;
-  border-radius: 15px;
-  background-color: #fff;
-  border: 1px solid grey;
-  text-align: center;
-  font-size: 22px;
-}
-
-main .index-search-box .second-row .button-box button:hover {
-  background-color: #fe675d;
-  color: white;
-  border: 1px solid #fe675d;
 }
 
 main .index-search-box .second-row .label-index {
-  width: 20vw;
-  max-width: 200px;
+  width: 70%;
   min-width: 100px;
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .label-index {
+    max-width: 200px;
+    width: 100%;
+  }
 }
 
 main .index-search-box .second-row input.search-slt {
   width: 90px;
 }
 
-main .index-search-box .second-row .second-row-left {
-  width: 50%;
+main .index-search-box .second-row .second-row-top {
+  width: 100%;
 }
 
-main .index-search-box .second-row .second-row-left span {
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .second-row-top {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .second-row-top {
+    width: 40%;
+  }
+}
+
+main .index-search-box .second-row .second-row-top span {
   font-size: 16px;
 }
 
-main .index-search-box .second-row .second-row-right {
-  width: 50%;
+main .index-search-box .second-row .second-row-bottom {
+  width: 100%;
   padding-left: 20px;
   margin-top: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .second-row-bottom {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .second-row-bottom {
+    width: 60%;
+  }
+}
+
+main .index-search-box .second-row .second-row-bottom h5 {
+  margin-top: 12.2px;
 }
 
 main .sponsor-container-index {
@@ -11635,7 +11671,6 @@ main .form-row:first-child {
 
 main .form-row.services-row {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 main .address-input {
@@ -11696,7 +11731,11 @@ main .no-apt-btn {
   text-align: center;
 }
 
-.checkbox-round {
+.checkbox-round-wrapper {
+  margin-bottom: 10px;
+}
+
+.checkbox-round-wrapper .checkbox-round {
   width: 1.3em;
   height: 1.3em;
   background-color: white;
