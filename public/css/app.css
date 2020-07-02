@@ -11555,12 +11555,18 @@ main .index-search-box .index-ricerca-row .search-box-index {
 }
 
 main .index-search-box .index-ricerca-row .button-box button {
-  width: 100%;
+  width: 90px;
   border-radius: 15px;
   background-color: #fff;
   border: 1px solid grey;
   text-align: center;
   font-size: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .index-ricerca-row .button-box button {
+    width: 100%;
+  }
 }
 
 main .index-search-box .index-ricerca-row .button-box button:hover {
@@ -11592,8 +11598,14 @@ main .index-search-box .second-row .beds-box {
 }
 
 main .index-search-box .second-row .label-index {
-  width: 70%;
+  width: calc(100% - 90px);
   min-width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .label-index {
+    width: 70%;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -11629,13 +11641,14 @@ main .index-search-box .second-row .second-row-top span {
 
 main .index-search-box .second-row .second-row-bottom {
   width: 100%;
-  padding-left: 20px;
+  padding-left: 0;
   margin-top: 15px;
 }
 
 @media screen and (min-width: 768px) {
   main .index-search-box .second-row .second-row-bottom {
     width: 50%;
+    padding-left: 20px;
   }
 }
 
