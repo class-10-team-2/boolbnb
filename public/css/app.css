@@ -10949,6 +10949,64 @@ nav.navbar {
   padding-left: 0;
 }
 
+.btn:active,
+.btn:focus,
+.btn.active {
+  background-image: none;
+  outline: 0;
+  box-shadow: none;
+}
+
+.nav-item {
+  text-align: center;
+  background-color: #fe675d;
+  border-radius: 15px;
+  border: 1px solid #f5f5f5;
+  margin-bottom: 7px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-item {
+    margin-bottom: 0;
+  }
+}
+
+.nav-item:hover {
+  background-color: #f5f5f5;
+}
+
+.nav-item:first-child {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-item:first-child {
+    margin-right: 7px;
+    margin-top: 0;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f5f5f5;
+  font-weight: 800;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #fe675d;
+}
+
+.dropdown-menu {
+  border: none;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.dropdown-colored.show {
+  background-color: #f5f5f5;
+  color: #fe675d;
+}
+
 main {
   background: #f5f5f5;
   padding-bottom: 50px;
@@ -11003,12 +11061,12 @@ main .search-box-wrapper {
 main .search-box-wrapper .search-box {
   margin-bottom: 30px;
   padding: 20px;
-  border-radius: 40px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
 main .search-box-wrapper .search-box .search-input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 @media screen and (max-width: 767px) {
@@ -11064,11 +11122,12 @@ main .flex-dir {
 }
 
 main .apt-info {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 main .apt-info span {
   padding-right: 20px;
+  padding-bottom: 10px;
   display: inline-block;
 }
 
@@ -11100,7 +11159,7 @@ main textarea,
 main #email {
   width: 100%;
   padding: 5px 10px;
-  border-radius: 40px;
+  border-radius: 15px;
   border: 1px solid #dfe1e2;
 }
 
@@ -11165,7 +11224,7 @@ main .custom-container {
 }
 
 main .padding-trick {
-  padding: 10px;
+  padding-bottom: 10px;
   flex: 0 1 50%;
 }
 
@@ -11176,6 +11235,10 @@ main .padding-trick {
   }
 }
 
+main .padding-trick:nth-child(2n+1) {
+  padding-right: 10px;
+}
+
 main .results-container {
   display: flex;
   flex-wrap: wrap;
@@ -11183,7 +11246,7 @@ main .results-container {
 }
 
 main .results-container .card {
-  border-radius: 30px;
+  border-radius: 15px;
   overflow: hidden;
   height: 277.333px;
 }
@@ -11209,7 +11272,7 @@ main .results-container .card .wrap {
 
 main .results-container .card .wrap a.card-link {
   position: absolute;
-  border-radius: 40px;
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -11252,15 +11315,11 @@ main .results-container .card .list-group-item {
   padding: 5px;
 }
 
-main .payment {
-  margin-top: 30px;
-}
-
 main .payment .options {
   padding: 15px;
   border: 2px solid lightgrey;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 100%;
 }
 
@@ -11299,7 +11358,7 @@ main .box-paypal .paypal button {
   padding: 10px 20px;
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .box-paypal .paypal button:hover {
@@ -11312,7 +11371,7 @@ main .box-paypal .paypal .payment-successfull-box {
   text-align: center;
   padding: 20px 30px;
   border: 1px solid green;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .box-paypal .paypal .payment-successfull-box .payment-successfull-alert {
@@ -11343,7 +11402,7 @@ main .titolo-stats {
 main .chart-views {
   background-color: white;
   border: 1px solid lightgrey;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
 }
 
@@ -11380,13 +11439,13 @@ main .button-margin input {
   padding: 10px;
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 main .button-margin input:hover {
   border: none;
   color: white;
-  background-color: blue;
+  background-color: #3490dc;
 }
 
 main .ap-input-icon {
@@ -11412,7 +11471,7 @@ main .apartments-card {
   position: relative;
   margin: 30px auto;
   position: relative;
-  border-radius: 40px;
+  border-radius: 15px;
   overflow: hidden;
   border: none;
 }
@@ -11420,7 +11479,7 @@ main .apartments-card {
 main .apartments-card .link-card {
   overflow: hidden;
   position: absolute;
-  border-radius: 40px;
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -11512,7 +11571,6 @@ main .search-slt {
   background-image: none;
   border: 1px solid #ccc;
   height: calc(3rem + 2px) !important;
-  border-radius: 0;
 }
 
 main .wrn-btn {
@@ -11521,7 +11579,7 @@ main .wrn-btn {
   font-weight: 400;
   text-transform: capitalize;
   height: calc(3rem + 2px) !important;
-  border-radius: 0;
+  border-radius: 15px;
 }
 
 main .service-form {
@@ -11533,19 +11591,48 @@ main .index-search-box {
 }
 
 main .index-search-box .index-ricerca-row {
-  margin: 0 auto;
   width: 100%;
   margin-bottom: 15px;
+  display: flex;
 }
 
-main .index-search-box .index-ricerca-row .input-box-index {
-  margin: 0 auto;
-  width: 90vw;
+main .index-search-box .index-ricerca-row .search-box-index {
+  padding-right: 10px;
   width: 100%;
-  max-width: 1100px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .index-ricerca-row .search-box-index {
+    flex-basis: 75%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .index-ricerca-row .button-box {
+    flex-basis: 25%;
+  }
+}
+
+main .index-search-box .index-ricerca-row .button-box button {
+  width: 90px;
+  border-radius: 15px;
+  color: #fe675d;
+  background-color: #fff;
+  border: 1px solid #fe675d;
+  text-align: center;
+  font-size: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .index-ricerca-row .button-box button {
+    width: 100%;
+  }
+}
+
+main .index-search-box .index-ricerca-row .button-box button:hover {
+  background-color: #fe675d;
+  color: white;
+  border: 1px solid #fe675d;
 }
 
 main .index-search-box .input-box-index {
@@ -11555,62 +11642,84 @@ main .index-search-box .input-box-index {
 }
 
 main .index-search-box input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .index-search-box .second-row {
   display: flex;
   flex-direction: row;
-  max-width: 1100px;
-  width: 90vw;
-  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 main .index-search-box .second-row .radius-box,
 main .index-search-box .second-row .rooms-box,
-main .index-search-box .second-row .beds-box,
-main .index-search-box .second-row .button-box {
+main .index-search-box .second-row .beds-box {
   margin-top: 15px;
-}
-
-main .index-search-box .second-row .button-box button {
-  margin-top: 15px;
-  width: 100%;
-  border-radius: 40px;
-  background-color: #fff;
-  border: 1px solid grey;
-  text-align: center;
-  font-size: 22px;
-}
-
-main .index-search-box .second-row .button-box button:hover {
-  background-color: #fe675d;
-  color: white;
-  border: 1px solid #fe675d;
 }
 
 main .index-search-box .second-row .label-index {
-  width: 20vw;
-  max-width: 200px;
+  width: calc(100% - 90px);
   min-width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .label-index {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .label-index {
+    max-width: 200px;
+    width: 100%;
+  }
 }
 
 main .index-search-box .second-row input.search-slt {
   width: 90px;
 }
 
-main .index-search-box .second-row .second-row-left {
-  width: 50%;
+main .index-search-box .second-row .second-row-top {
+  width: 100%;
 }
 
-main .index-search-box .second-row .second-row-left span {
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .second-row-top {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .second-row-top {
+    width: 40%;
+  }
+}
+
+main .index-search-box .second-row .second-row-top span {
   font-size: 16px;
 }
 
-main .index-search-box .second-row .second-row-right {
-  width: 50%;
-  padding-left: 20px;
+main .index-search-box .second-row .second-row-bottom {
+  width: 100%;
+  padding-left: 0;
   margin-top: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  main .index-search-box .second-row .second-row-bottom {
+    width: 50%;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main .index-search-box .second-row .second-row-bottom {
+    width: 60%;
+  }
+}
+
+main .index-search-box .second-row .second-row-bottom h5 {
+  margin-top: 12.2px;
 }
 
 main .sponsor-container-index {
@@ -11635,15 +11744,14 @@ main .form-row:first-child {
 
 main .form-row.services-row {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 main .address-input {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .form-control {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .form-control:focus {
@@ -11653,7 +11761,7 @@ main .form-control:focus {
 
 main .index-search-box .form-control,
 main .search-box .form-control {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .index-search-box .form-control:focus,
@@ -11663,7 +11771,7 @@ main .search-box .form-control:focus {
 }
 
 main .search-page-search {
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 main .radius-label {
@@ -11672,7 +11780,7 @@ main .radius-label {
 
 main .btn-search-page-search {
   width: 100%;
-  border-radius: 40px;
+  border-radius: 15px;
   background-color: #fff;
   border: 1px solid #fe675d;
   color: #fe675d;
@@ -11696,7 +11804,11 @@ main .no-apt-btn {
   text-align: center;
 }
 
-.checkbox-round {
+.checkbox-round-wrapper {
+  margin-bottom: 10px;
+}
+
+.checkbox-round-wrapper .checkbox-round {
   width: 1.3em;
   height: 1.3em;
   background-color: white;
@@ -11715,7 +11827,7 @@ main .no-apt-btn {
 }
 
 #message {
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 footer {

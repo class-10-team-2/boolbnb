@@ -47697,6 +47697,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 $(document).ready(function () {//SLIDER RADIUS//////////////
   ////////////////////////////////
   ////////////////////////////////
+  // $('#dropdown').on('click', function() {
+  //     if (!$('#dropdown').hasClass('show')) {
+  //         $(this).addClass('dropdown-colored')
+  //     } else {
+  //         $(this).removeClass('dropdown-colored')
+  //     }
+  // })
 });
 
 /***/ }),
@@ -47764,8 +47771,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/frank/www/boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
