@@ -11211,6 +11211,10 @@ main .controls .btn-edit:hover {
   border: 1px solid green;
 }
 
+main .back-to-results {
+  padding: 10px 0;
+}
+
 main .custom-container {
   width: 90vw;
   padding: 10px;
