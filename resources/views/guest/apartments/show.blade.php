@@ -18,7 +18,7 @@
 
         <div class="row container-margin">
           <div class="row col-12">
-            <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
+            <a class="back-to-results" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
           </div>
 
             <h1 class="apt-title">{{$apartment->title}}</h1>
