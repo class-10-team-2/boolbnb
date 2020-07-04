@@ -1,5 +1,5 @@
 # BoolBnB
-Sviluppo di una complessa Applicazione Web.
+Sviluppo di una complessa Applicazione Web ispirata ad Airbnb.
 - Lovoro in team.
 - Laravel come back-end.
 - MySql come database.
