@@ -9,7 +9,7 @@ Sviluppo di una complessa Applicazione Web ispirata ad Airbnb.
 - Per il front-end HTML, SCSS e JS.
 - Abbiamo implementato le  seguenti librerie esterne: Chart.js per le statistiche, Handlebars per il rendering dei risultati di ricerca.
 
-## :earth_americas: Provala: https://frapgn.it/
+## :earth_americas: Provala: https://frapgn.dev/
 
 ![](screenshots/1.png)
 
