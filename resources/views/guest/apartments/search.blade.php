@@ -44,7 +44,7 @@ $randBgImg = [ 'https://images.unsplash.com/photo-1529260830199-42c24126f198?ixl
                             <input id="beds" class="form-control search-input" type="number" name="beds" min="1" max="20" value="1">
                         </div>
                     </div>
-                    <div class="form-row services-row">
+                    <div class="form-row services-row checkbox-round-wrapper">
                         @foreach ($services as $service)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input checkbox-round" name="services[]" type="checkbox" data-service-id="{{$service->id}}" value="{{$service->id}}">

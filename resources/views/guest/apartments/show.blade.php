@@ -18,7 +18,7 @@
 
         <div class="row container-margin">
           <div class="row col-12">
-            <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
+            <a class="back-to-results" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Torna ai risultati</a>
           </div>
 
             <h1 class="apt-title">{{$apartment->title}}</h1>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="row container-margin">
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-lg-7">
       <div class="apt-info">
         <span><i class="fas fa-door-open"></i> {{($apartment->rooms > 1) ? $apartment->rooms . ' Camere' : '1 Camera'}}</span>
         <span><i class="fas fa-bed"></i> {{($apartment->beds > 1) ? $apartment->beds . ' Posti letto' : '1 Posto letto'}}</span>
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-lg-4">
+    <div class="col-12 col-lg-5">
       <h4 class="contact-host-title">Contatta l'Host di questo appartamento.</h4>
       <form action="{{route('guest.apartments.store')}}" method="post">
         @csrf
