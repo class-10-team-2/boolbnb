@@ -8,14 +8,17 @@
                     <form action="{{route('guest.apartments.search')}}" method="POST">
                         @method('POST')
                         @csrf
-                        <div class="row search-row index-search-row ">
-                            <div class="index-ricerca-row row">
-                                <div class="input-box-index">
+                        <div class="search-row index-search-row ">
+                            <div class="index-ricerca-row">
+                                <div class="search-box-index">
                                     <input id="index-search" type="search" class="address-input form-control search-slt" name="address" placeholder=" Dove vuoi andare?">
                                 </div>
+                                <div class="button-box">
+                                    <button id="index-search-button" type="submit" class="btn">Cerca</button>
+                                </div>
                             </div>
-                            <div class="row second-row">
-                                <div class="second-row-left">
+                            <div class="second-row">
+                                <div class="second-row-top">
                                     <div class="input-box-index radius-box">
                                         <div class="label-index">
                                         <span>Raggio di ricerca (km)</span>
@@ -34,16 +37,14 @@
                                             </div>
                                         <input id="index-beds" class="form-control search-slt" type="number" name="beds" min="1" max="20" value="1" placeholder="Letti">
                                     </div>
-                                    <div class="button-box">
-                                        <button id="index-search-button" type="submit" class="btn">Cerca</button>
-                                    </div>
+
 
                                 </div>
-                                <div class="second-row-right">
+                                <div class="second-row-bottom">
                                     <h5>Scegli i servizi</h5>
                                     <div class="service-form">
                                         @foreach ($services as $service)
-                                            <div class="form-check form-check-inline">
+                                            <div class="checkbox-round-wrapper form-check form-check-inline">
                                                 <input class="form-check-input checkbox-round" name="services[]" type="checkbox" id="{{$service->name}}" value="{{$service->id}}">
                                                 <label class="form-check-label" for="{{$service->name}}">{{$service->name}}</label>
                                             </div>
