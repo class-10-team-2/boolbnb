@@ -1,6 +1,6 @@
 # BoolBnB
 Sviluppo di una complessa Applicazione Web ispirata ad Airbnb.
-- Lovoro in team.
+- Lavoro in team.
 - Laravel come back-end.
 - MySql come database.
 - Algolia Places per il geocoding.
