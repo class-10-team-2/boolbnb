@@ -18,7 +18,7 @@ class CreateApartmentsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title', 255);
             $table->text('description');
-            $table->text('slug')->unique();
+            $table->text('slug');
             $table->unsignedTinyInteger('rooms');
             $table->unsignedTinyInteger('beds');
             $table->unsignedTinyInteger('baths');
