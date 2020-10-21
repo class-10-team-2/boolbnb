@@ -259,7 +259,8 @@ class ApartmentsTableSeeder extends Seeder
                 'mq' => $seedApt['mq'],
                 'img_path' => $seedApt['img_path'],
                 'visible' => 1,
-                'slug' => trim($seedApt['title'] . "-" . Carbon::now('Y-m-d'), '-'),
+                'slug' => trim($seedApt['title'] . "-" . Carbon::now(), '-'),
+
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
 
