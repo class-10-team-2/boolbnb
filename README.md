@@ -1,6 +1,6 @@
 # BoolBnB
-Sviluppo di una complessa Applicazione Web.
-- Lovoro in team.
+Sviluppo di una complessa Applicazione Web ispirata ad Airbnb.
+- Lavoro in team.
 - Laravel come back-end.
 - MySql come database.
 - Algolia Places per il geocoding.
@@ -8,6 +8,8 @@ Sviluppo di una complessa Applicazione Web.
 - Per la funzione di ricerca abbiamo usato Scout Extended, Algolia e logica personalizzata con JavaScript e jQuery.
 - Per il front-end HTML, SCSS e JS.
 - Abbiamo implementato le  seguenti librerie esterne: Chart.js per le statistiche, Handlebars per il rendering dei risultati di ricerca.
+
+## :earth_americas: Provala: https://boolbnb.frapgn.dev/
 
 ![](screenshots/1.png)
 
